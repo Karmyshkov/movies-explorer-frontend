@@ -1,5 +1,3 @@
-const NavTab = () => {
+export const NavTab = () => {
   return <></>;
 };
-
-export default NavTab;

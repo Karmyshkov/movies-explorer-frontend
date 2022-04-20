@@ -1,5 +1,3 @@
-const MoviesCardList = () => {
-  return <></>
-}
-
-export default MoviesCardList
+export const MoviesCardList = () => {
+  return <></>;
+};

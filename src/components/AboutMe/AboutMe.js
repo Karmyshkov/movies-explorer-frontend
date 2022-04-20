@@ -1,5 +1,3 @@
-const AboutMe = () => {
+export const AboutMe = () => {
   return <></>;
 };
-
-export default AboutMe;

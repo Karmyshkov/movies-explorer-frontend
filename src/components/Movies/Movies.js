@@ -1,5 +1,3 @@
-const Movies = () => {
+export const Movies = () => {
   return <></>;
 };
-
-export default Movies;

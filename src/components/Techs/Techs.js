@@ -1,5 +1,3 @@
-const Techs = () => {
+export const Techs = () => {
   return <></>;
 };
-
-export default Techs;

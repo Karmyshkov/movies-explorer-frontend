@@ -1,5 +1,3 @@
-const MoviesCard = () => {
+export const MoviesCard = () => {
   return <></>;
 };
-
-export default MoviesCard;

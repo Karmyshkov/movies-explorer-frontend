@@ -1,5 +1,3 @@
-const Navigation = () => {
+export const Navigation = () => {
   return <></>;
 };
-
-export default Navigation;

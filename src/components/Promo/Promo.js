@@ -1,5 +1,3 @@
-const Promo = () => {
+export const Promo = () => {
   return <></>;
 };
-
-export default Promo;

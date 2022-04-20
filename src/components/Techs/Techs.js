@@ -1,5 +1,5 @@
 const Techs = () => {
-  return <></>
-}
+  return <></>;
+};
 
-export default Techs
+export default Techs;

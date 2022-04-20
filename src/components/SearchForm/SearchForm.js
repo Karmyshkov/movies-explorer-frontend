@@ -1,5 +1,5 @@
 const SearchForm = () => {
-  return <></>
-}
+  return <></>;
+};
 
-export default SearchForm
+export default SearchForm;

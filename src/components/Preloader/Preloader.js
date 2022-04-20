@@ -1,5 +1,5 @@
 const Preloader = () => {
-  return <></>
-}
+  return <></>;
+};
 
-export default Preloader
+export default Preloader;

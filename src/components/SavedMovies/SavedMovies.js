@@ -1,5 +1,5 @@
 const SavedMovies = () => {
-  return <></>
-}
+  return <></>;
+};
 
-export default SavedMovies
+export default SavedMovies;

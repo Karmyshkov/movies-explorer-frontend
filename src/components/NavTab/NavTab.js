@@ -1,5 +1,5 @@
 const NavTab = () => {
-  return <></>
-}
+  return <></>;
+};
 
-export default NavTab
+export default NavTab;

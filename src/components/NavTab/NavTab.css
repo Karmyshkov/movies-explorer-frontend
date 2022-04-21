@@ -1,5 +1,17 @@
 .navtab {
+  margin: 0;
+  padding: 0;
   margin-bottom: 30px;
+  display: flex;
+}
+
+.navtab__item {
+  list-style: none;
+  margin-right: 10px;
+}
+
+.navtab__item:last-of-type {
+  margin: 0;
 }
 
 .navtab__link {
@@ -11,12 +23,7 @@
   background-color: var(--bg-link);
   padding: 10px 17px;
   border-radius: 10px;
-  margin-right: 10px;
   transition: 0.3s opacity;
-}
-
-.navtab__link:last-of-type {
-  margin: 0;
 }
 
 .navtab__link:hover {

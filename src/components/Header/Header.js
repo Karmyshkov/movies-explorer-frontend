@@ -7,14 +7,18 @@ export const Header = () => {
       <a className="header__logo" href="/">
         <img src={logo} alt="Логотип учебного проекта" />
       </a>
-      <div className="header__wrap">
-        <a className="header__link" href="/sign-up">
-          Регистрация
-        </a>
-        <a className="header__link header__link_active" href="/sign-in">
-          Войти
-        </a>
-      </div>
+      <ul className="header__wrap">
+        <li className="header__item">
+          <a className="header__link" href="/sign-up">
+            Регистрация
+          </a>
+        </li>
+        <li className="header__item">
+          <a className="header__link header__link_active" href="/sign-in">
+            Войти
+          </a>
+        </li>
+      </ul>
     </div>
   );
 };

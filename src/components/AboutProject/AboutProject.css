@@ -1,5 +1,6 @@
 .about-project {
-  margin: 110px 0;
+  max-width: 1140px;
+  margin: 110px auto 110px;
 }
 
 .about-project__title {

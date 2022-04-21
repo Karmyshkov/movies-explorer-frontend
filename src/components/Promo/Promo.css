@@ -1,4 +1,6 @@
 .promo {
+  max-width: 1140px;
+  margin: 0 auto;
   min-height: 493px;
   background-color: var(--bg-secondary);
   border-radius: 10px;

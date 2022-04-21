@@ -1,9 +1,10 @@
 .header {
+  max-width: 1140px;
+  margin: 0 auto 20px;
   min-height: 74px;
   display: flex;
   justify-content: space-between;
   align-items: center;
-  margin-bottom: 20px;
 }
 
 .header__logo {

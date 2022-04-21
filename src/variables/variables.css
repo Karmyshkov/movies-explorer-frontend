@@ -7,5 +7,6 @@
   --bg-third: #f2f2f2;
   --bg-dark-grey: #e8e8e8;
   --bg-link: #e8e8e8;
-  --border: #000;
+  --border-primary: #000;
+  --border-secondary: #e8e8e8;
 }

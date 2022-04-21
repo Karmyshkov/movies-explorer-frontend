@@ -20,7 +20,7 @@
   display: grid;
   grid-template-columns: repeat(2, 1fr);
   gap: 40px;
-  border-top: 1px solid var(--border);
+  border-top: 1px solid var(--border-primary);
 }
 
 .about-project__column {

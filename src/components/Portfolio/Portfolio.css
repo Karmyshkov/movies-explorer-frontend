@@ -23,7 +23,7 @@
   justify-content: space-between;
   align-items: center;
   padding-bottom: 19px;
-  border-bottom: 1px solid var(--border-secondary);
+  border-bottom: 1px solid var(--bg-light-grey);
   margin-bottom: 20px;
 }
 

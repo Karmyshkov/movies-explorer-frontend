@@ -27,7 +27,7 @@
   display: flex;
   justify-content: space-between;
   padding-top: 20px;
-  border-top: 1px solid var(--bg-dark-grey);
+  border-top: 1px solid var(--bg-light-grey);
 }
 
 .footer__column {

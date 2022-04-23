@@ -58,15 +58,16 @@
 .about-project__week {
   list-style: none;
   font-size: 14px;
-  color: var(--color-secondary);
+  color: var(--color-primary);
   font-weight: 400;
   line-height: 17px;
   text-align: center;
-  background-color: var(--bg-third);
+  background-color: var(--bg-link);
   padding: 9px 14px;
 }
 
 .about-project__week_backend {
+  color: var(--color-secondary);
   background-color: var(--bg-primary);
 }
 

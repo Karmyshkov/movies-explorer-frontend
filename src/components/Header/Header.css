@@ -45,6 +45,7 @@
 }
 
 .header__link_active {
+  color: var(--color-secondary);
   background-color: var(--bg-primary);
   border-radius: 3px;
   padding: 8px 20px;

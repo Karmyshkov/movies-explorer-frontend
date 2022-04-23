@@ -58,7 +58,7 @@
 .about-project__week {
   list-style: none;
   font-size: 14px;
-  color: var(--color-primary);
+  color: var(--color-secondary);
   font-weight: 400;
   line-height: 17px;
   text-align: center;
@@ -76,7 +76,7 @@
   max-width: 200px;
   justify-self: center;
   font-size: 14px;
-  color: var(--color-secondary);
+  color: var(--color-third);
   font-weight: 500;
   line-height: 17px;
 }

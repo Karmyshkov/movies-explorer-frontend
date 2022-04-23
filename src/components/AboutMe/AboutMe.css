@@ -1,6 +1,6 @@
 .about-me {
   max-width: 1140px;
-  margin: 110px auto 125px;
+  margin: 110px auto 100px;
 }
 
 .about-me__title {
@@ -92,7 +92,7 @@
 @media screen and (max-width: 1200px) {
   .about-me {
     max-width: none;
-    margin: 100px 50px 110px;
+    margin: 100px 50px;
   }
 }
 

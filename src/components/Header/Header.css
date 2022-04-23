@@ -5,6 +5,7 @@
   display: flex;
   justify-content: space-between;
   align-items: center;
+  margin-bottom: 20px;
 }
 
 .header__logo {
@@ -49,4 +50,11 @@
   background-color: var(--bg-primary);
   border-radius: 3px;
   padding: 8px 20px;
+}
+
+@media screen and (max-width: 1200px) {
+  .header {
+    max-width: none;
+    margin: 0 20px 20px;
+  }
 }

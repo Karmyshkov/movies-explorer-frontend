@@ -5,6 +5,7 @@
 
 .portfolio__title {
   margin: 0;
+  max-width: 250px;
   font-size: 18px;
   color: var(--color-third);
   font-weight: 400;
@@ -52,4 +53,11 @@
 }
 
 .portfolio__icon {
+}
+
+@media screen and (max-width: 1200px) {
+  .portfolio {
+    max-width: none;
+    margin: 0 50px 90px;
+  }
 }

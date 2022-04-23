@@ -15,7 +15,7 @@
 }
 
 .about-me__row {
-  border-top: 1px solid var(--border-primary);
+  border-top: 1px solid var(--line);
   display: flex;
   justify-content: space-between;
   padding-top: 66px;
@@ -57,6 +57,8 @@
 
 .about-me__avatar {
   border-radius: 10px;
+  max-width: 270px;
+  object-fit: cover;
 }
 
 .about-me__wrap {
@@ -85,4 +87,41 @@
 
 .about-me__link:hover {
   opacity: 0.8;
+}
+
+@media screen and (max-width: 1200px) {
+  .about-me {
+    max-width: none;
+    margin: 100px 50px 110px;
+  }
+}
+
+@media screen and (max-width: 1100px) {
+  .about-me {
+    margin: 90px 50px;
+  }
+
+  .about-me__name {
+    max-width: 348px;
+    margin-bottom: 16px;
+  }
+
+  .about-me__profession {
+    max-width: 348px;
+    margin-bottom: 20px;
+  }
+
+  .about-me__description {
+    margin-right: 26px;
+  }
+
+  .about-me__avatar {
+    max-width: 255px;
+  }
+}
+
+@media screen and (max-width: 838px) {
+  .about-me__description {
+    margin-right: 32px;
+  }
 }

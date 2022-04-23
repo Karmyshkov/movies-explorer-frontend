@@ -3,7 +3,7 @@ import logo from "../../images/icons/logo.svg";
 
 export const Header = () => {
   return (
-    <div className="header">
+    <header className="header">
       <a className="header__logo" href="/">
         <img src={logo} alt="Логотип учебного проекта" />
       </a>
@@ -19,6 +19,6 @@ export const Header = () => {
           </a>
         </li>
       </ul>
-    </div>
+    </header>
   );
 };

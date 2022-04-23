@@ -139,3 +139,78 @@
     line-height: 18px;
   }
 }
+
+@media screen and (max-width: 790px) {
+  .about-me__description {
+    margin-right: 49px;
+  }
+}
+
+@media screen and (max-width: 720px) {
+  .about-me {
+    margin: 70px 50px 69px;
+  }
+
+  .about-me__name {
+    font-size: 34px;
+    line-height: 36px;
+  }
+}
+
+@media screen and (max-width: 634px) {
+  .about-me {
+    margin: 70px 32px 69px;
+  }
+}
+
+@media screen and (max-width: 604px) {
+  .about-me {
+    margin: 70px 14px 69px;
+  }
+
+  .about-me__row {
+    flex-direction: column-reverse;
+  }
+
+  .about-me__avatar {
+    max-width: 320px;
+    margin-bottom: 40px;
+  }
+
+  .about-me__description {
+    margin-right: 0;
+    margin-bottom: 40px;
+  }
+}
+
+@media screen and (max-width: 468px) {
+  .about-me__title {
+    font-size: 18px;
+    line-height: 22px;
+    margin-bottom: 28px;
+  }
+
+  .about-me__row {
+    padding-top: 60px;
+  }
+
+  .about-me__name {
+    font-size: 30px;
+    line-height: 36px;
+    margin-bottom: 20px;
+  }
+
+  .about-me__profession {
+    font-size: 11px;
+    line-height: 16px;
+  }
+
+  .about-me__description {
+    font-size: 11px;
+    line-height: 16px;
+  }
+
+  .about-me__item {
+    margin-right: 26px;
+  }
+}

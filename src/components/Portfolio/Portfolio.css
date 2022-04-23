@@ -31,6 +31,7 @@
 .portfolio__item:last-of-type {
   border: none;
   margin: 0;
+  padding: 0;
 }
 
 .portfolio__link {
@@ -69,5 +70,38 @@
 
   .portfolio__text {
     font-size: 28px;
+  }
+}
+
+@media screen and (max-width: 720px) {
+  .portfolio__title {
+    margin-bottom: 40px;
+  }
+
+  .portfolio__text {
+    font-size: 22px;
+    line-height: 28px;
+  }
+}
+
+@media screen and (max-width: 634px) {
+  .portfolio {
+    margin: 0 32px 70px;
+  }
+}
+
+@media screen and (max-width: 604px) {
+  .portfolio {
+    margin: 0 14px 70px;
+  }
+}
+
+@media screen and (max-width: 468px) {
+  .portfolio__title {
+    font-size: 14px;
+  }
+
+  .portfolio__text {
+    font-size: 18px;
   }
 }

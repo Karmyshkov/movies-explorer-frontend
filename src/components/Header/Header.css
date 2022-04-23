@@ -58,3 +58,25 @@
     margin: 0 30px 20px 25px;
   }
 }
+
+@media screen and (max-width: 604px) {
+  .header {
+    margin: 0 14px 14px;
+  }
+}
+
+@media screen and (max-width: 468px) {
+  .header__item {
+    margin-right: 14px;
+  }
+
+  .header__link {
+    font-size: 10px;
+    line-height: 16px;
+    padding: 5px 0;
+  }
+
+  .header__link_active {
+    padding: 5px 12px;
+  }
+}

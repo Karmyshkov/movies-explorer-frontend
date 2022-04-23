@@ -29,3 +29,13 @@
 .navtab__link:hover {
   opacity: 0.8;
 }
+
+@media screen and (max-width: 468px) {
+  .navtab__item {
+    margin-right: 6px;
+  }
+
+  .navtab__link {
+    padding: 5px 16px;
+  }
+}

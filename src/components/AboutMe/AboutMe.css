@@ -104,11 +104,14 @@
   .about-me__name {
     max-width: 348px;
     margin-bottom: 16px;
+    font-size: 46px;
+    line-height: 52px;
   }
 
   .about-me__profession {
     max-width: 348px;
     margin-bottom: 20px;
+    font-size: 16px;
   }
 
   .about-me__description {
@@ -121,7 +124,18 @@
 }
 
 @media screen and (max-width: 838px) {
+  .about-me__name {
+    font-size: 40px;
+    line-height: 40px;
+  }
+
+  .about-me__profession {
+    font-size: 12px;
+  }
+
   .about-me__description {
     margin-right: 32px;
+    font-size: 12px;
+    line-height: 18px;
   }
 }

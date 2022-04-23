@@ -91,4 +91,18 @@
   .techs__subtitle {
     margin-bottom: 83px;
   }
+
+  .techs__subtitle {
+    font-size: 12px;
+    line-height: 18px;
+  }
+
+  .techs__grid {
+    grid-template-columns: repeat(7, 84px);
+  }
+
+  .techs__item {
+    font-size: 12px;
+    line-height: 15px;
+  }
 }

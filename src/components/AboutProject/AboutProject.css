@@ -110,4 +110,20 @@
     max-width: none;
     margin: 90px 50px 90px;
   }
+
+  .about-project__progress {
+    grid-template-columns: 200px 1fr;
+  }
+}
+
+@media screen and (max-width: 867px) {
+  .about-project__progress {
+    grid-template-columns: 180px 1fr;
+  }
+}
+
+@media screen and (max-width: 768px) {
+  .about-project__progress {
+    grid-template-columns: 140px 1fr;
+  }
 }

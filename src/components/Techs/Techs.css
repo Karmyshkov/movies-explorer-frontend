@@ -149,6 +149,12 @@
 }
 
 @media screen and (max-width: 468px) {
+  .techs__title {
+    font-size: 18px;
+    line-height: 22px;
+    margin-bottom: 28px;
+  }
+
   .techs__headline {
     font-size: 30px;
     line-height: 36px;
@@ -161,6 +167,6 @@
   }
 
   .techs__grid {
-    grid-template-columns: repeat(2, 1fr);
+    grid-template-columns: repeat(2, 84px);
   }
 }

@@ -101,7 +101,15 @@
     font-size: 14px;
   }
 
+  .portfolio__item {
+    align-items: flex-start;
+  }
+
   .portfolio__text {
     font-size: 18px;
+  }
+
+  .portfolio__icon {
+    width: 12px;
   }
 }

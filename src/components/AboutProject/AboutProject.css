@@ -180,6 +180,11 @@
     margin-bottom: 16px;
   }
 
+  .about-project__text {
+    font-size: 11px;
+    line-height: 16px;
+  }
+
   .about-project__progress {
     grid-template-columns: 100px 1fr;
     gap: 10px 0;

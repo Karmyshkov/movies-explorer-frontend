@@ -1,5 +1,6 @@
 import React from "react";
 import "./MoviesCardList.css";
+import { MoviesCard } from "../MoviesCard";
 import card_01 from "../../images/cards/01_card.jpg";
 import card_02 from "../../images/cards/02_card.jpg";
 import card_03 from "../../images/cards/03_card.jpg";
@@ -14,145 +15,80 @@ import card_11 from "../../images/cards/11_card.jpg";
 import card_12 from "../../images/cards/12_card.jpg";
 
 export const MoviesCardList = () => {
+  const initArr = [
+    { img: card_01, alt: "", url: "/", title: "33 слова о дизайне", time: "1ч 17м" },
+    {
+      img: card_02,
+      alt: "",
+      url: "/",
+      title: "Киноальманах «100 лет дизайна»",
+      time: "1ч 17м",
+    },
+    { img: card_03, alt: "", url: "/", title: "В погоне за Бенкси", time: "1ч 17м" },
+    {
+      img: card_04,
+      alt: "",
+      url: "/",
+      title: "Баския: Взрыв реальности",
+      time: "1ч 17м",
+    },
+    { img: card_05, alt: "", url: "/", title: "Бег это свобода", time: "1ч 17м" },
+    { img: card_06, alt: "", url: "/", title: "Книготорговцы", time: "1ч 17м" },
+    {
+      img: card_07,
+      alt: "",
+      url: "/",
+      title: "Когда я думаю о Германии ночью",
+      time: "1ч 17м",
+    },
+    {
+      img: card_08,
+      alt: "",
+      url: "/",
+      title: "Gimme Danger: История Игги и The Stooges",
+      time: "1ч 17м",
+    },
+    {
+      img: card_09,
+      alt: "",
+      url: "/",
+      title: "Дженис: Маленькая девочка грустит",
+      time: "1ч 17м",
+    },
+    {
+      img: card_10,
+      alt: "",
+      url: "/",
+      title: "Соберись перед прыжком",
+      time: "1ч 17м",
+    },
+    {
+      img: card_11,
+      alt: "",
+      url: "/",
+      title: "Пи Джей Харви: A dog called money",
+      time: "1ч 17м",
+    },
+    {
+      img: card_12,
+      alt: "",
+      url: "/",
+      title: "По волнам: Искусство звука в кино",
+      time: "1ч 17м",
+    },
+  ];
+
   return (
     <ul className="movies-card-list">
-      <li className="movies-card-list__item">
-        <a className="movies-card-list__link" href="/">
-          <img className="movies-card-list__img" src={card_01} alt="" />
-        </a>
-        <div className="movies-card-list__inner">
-          <a className="movies-card-list__link" href="/">
-            <h3 className="movies-card-list__title">33 слова о дизайне</h3>
-          </a>
-          <p className="movies-card-list__time">1ч 17м</p>
-        </div>
-      </li>
-      <li className="movies-card-list__item">
-        <a className="movies-card-list__link" href="/">
-          <img className="movies-card-list__img" src={card_02} alt="" />
-        </a>
-        <div className="movies-card-list__inner">
-          <a className="movies-card-list__link" href="/">
-            <h3 className="movies-card-list__title">Киноальманах «100 лет дизайна»</h3>
-          </a>
-          <p className="movies-card-list__time">1ч 17м</p>
-        </div>
-      </li>
-      <li className="movies-card-list__item">
-        <a className="movies-card-list__link" href="/">
-          <img className="movies-card-list__img" src={card_03} alt="" />
-        </a>
-        <div className="movies-card-list__inner">
-          <a className="movies-card-list__link" href="/">
-            <h3 className="movies-card-list__title">В погоне за Бенкси</h3>
-          </a>
-          <p className="movies-card-list__time">1ч 17м</p>
-        </div>
-      </li>
-
-      <li className="movies-card-list__item">
-        <a className="movies-card-list__link" href="/">
-          <img className="movies-card-list__img" src={card_04} alt="" />
-        </a>
-        <div className="movies-card-list__inner">
-          <a className="movies-card-list__link" href="/">
-            <h3 className="movies-card-list__title">Баския: Взрыв реальности</h3>
-          </a>
-          <p className="movies-card-list__time">1ч 17м</p>
-        </div>
-      </li>
-      <li className="movies-card-list__item">
-        <a className="movies-card-list__link" href="/">
-          <img className="movies-card-list__img" src={card_05} alt="" />
-        </a>
-        <div className="movies-card-list__inner">
-          <a className="movies-card-list__link" href="/">
-            <h3 className="movies-card-list__title">Бег это свобода</h3>
-          </a>
-          <p className="movies-card-list__time">1ч 17м</p>
-        </div>
-      </li>
-      <li className="movies-card-list__item">
-        <a className="movies-card-list__link" href="/">
-          <img className="movies-card-list__img" src={card_06} alt="" />
-        </a>
-        <div className="movies-card-list__inner">
-          <a className="movies-card-list__link" href="/">
-            <h3 className="movies-card-list__title">Книготорговцы</h3>
-          </a>
-          <p className="movies-card-list__time">1ч 17м</p>
-        </div>
-      </li>
-
-      <li className="movies-card-list__item">
-        <a className="movies-card-list__link" href="/">
-          <img className="movies-card-list__img" src={card_07} alt="" />
-        </a>
-        <div className="movies-card-list__inner">
-          <a className="movies-card-list__link" href="/">
-            <h3 className="movies-card-list__title">Когда я думаю о Германии ночью</h3>
-          </a>
-          <p className="movies-card-list__time">1ч 17м</p>
-        </div>
-      </li>
-      <li className="movies-card-list__item">
-        <a className="movies-card-list__link" href="/">
-          <img className="movies-card-list__img" src={card_08} alt="" />
-        </a>
-        <div className="movies-card-list__inner">
-          <a className="movies-card-list__link" href="/">
-            <h3 className="movies-card-list__title">
-              Gimme Danger: История Игги и The Stooges
-            </h3>
-          </a>
-          <p className="movies-card-list__time">1ч 17м</p>
-        </div>
-      </li>
-      <li className="movies-card-list__item">
-        <a className="movies-card-list__link" href="/">
-          <img className="movies-card-list__img" src={card_09} alt="" />
-        </a>
-        <div className="movies-card-list__inner">
-          <a className="movies-card-list__link" href="/">
-            <h3 className="movies-card-list__title">Дженис: Маленькая девочка грустит</h3>
-          </a>
-          <p className="movies-card-list__time">1ч 17м</p>
-        </div>
-      </li>
-
-      <li className="movies-card-list__item">
-        <a className="movies-card-list__link" href="/">
-          <img className="movies-card-list__img" src={card_10} alt="" />
-        </a>
-        <div className="movies-card-list__inner">
-          <a className="movies-card-list__link" href="/">
-            <h3 className="movies-card-list__title">Соберись перед прыжком</h3>
-          </a>
-          <p className="movies-card-list__time">1ч 17м</p>
-        </div>
-      </li>
-      <li className="movies-card-list__item">
-        <a className="movies-card-list__link" href="/">
-          <img className="movies-card-list__img" src={card_11} alt="" />
-        </a>
-        <div className="movies-card-list__inner">
-          <a className="movies-card-list__link" href="/">
-            <h3 className="movies-card-list__title">Пи Джей Харви: A dog called money</h3>
-          </a>
-          <p className="movies-card-list__time">1ч 17м</p>
-        </div>
-      </li>
-      <li className="movies-card-list__item">
-        <a className="movies-card-list__link" href="/">
-          <img className="movies-card-list__img" src={card_12} alt="" />
-        </a>
-        <div className="movies-card-list__inner">
-          <a className="movies-card-list__link" href="/">
-            <h3 className="movies-card-list__title">По волнам: Искусство звука в кино</h3>
-          </a>
-          <p className="movies-card-list__time">1ч 17м</p>
-        </div>
-      </li>
+      {initArr.map((card) => (
+        <MoviesCard
+          img={card.img}
+          alt={card.alt}
+          url={card.url}
+          title={card.title}
+          time={card.time}
+        />
+      ))}
     </ul>
   );
 };

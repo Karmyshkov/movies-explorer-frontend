@@ -80,8 +80,9 @@ export const MoviesCardList = () => {
 
   return (
     <ul className="movies-card-list">
-      {initArr.map((card) => (
+      {initArr.map((card, index) => (
         <MoviesCard
+          key={index}
           img={card.img}
           alt={card.alt}
           url={card.url}

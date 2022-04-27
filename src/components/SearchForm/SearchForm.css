@@ -46,6 +46,7 @@
   line-height: 34px;
   text-align: center;
   position: relative;
+  left: 20px;
 }
 
 .search-form__btn {

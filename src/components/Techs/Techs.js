@@ -1,3 +1,4 @@
+import React from "react";
 import "./Techs.css";
 
 export const Techs = () => {

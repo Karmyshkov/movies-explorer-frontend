@@ -1,3 +1,4 @@
+import React from "react";
 import "./FilterCheckbox.css";
 
 export const FilterCheckbox = () => {

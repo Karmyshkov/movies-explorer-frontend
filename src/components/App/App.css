@@ -8,4 +8,6 @@
   box-sizing: border-box;
   min-height: 100vh;
   background-color: var(--bg);
+  display: flex;
+  flex-direction: column;
 }

@@ -1,6 +1,6 @@
 :root {
   --ff: "Inter", "Arial", sans-serif;
-  --color-primary: #ffffff;
+  --color-primary: #fff;
   --color-secondary: #000;
   --color-third: #8b8b8b;
   --bg: #202020;
@@ -8,5 +8,8 @@
   --bg-secondary: #272727;
   --bg-dark-grey: #303030;
   --bg-light-grey: #424242;
+  --bg-blue: #4285f4;
   --line: #dadada;
+  --light-line: #fff;
+  --dark-line: #424242;
 }

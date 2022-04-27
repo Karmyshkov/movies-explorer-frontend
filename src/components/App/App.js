@@ -9,7 +9,7 @@ import { NotFound } from "../NotFound";
 
 export const App = () => {
   return (
-    <div className="wrapper">
+    <div className="body">
       <Header />
       <Routes>
         <Route path="/" element={<Main />} />

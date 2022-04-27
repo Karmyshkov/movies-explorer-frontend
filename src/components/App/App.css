@@ -1,4 +1,4 @@
-.wrapper {
+.body {
   font-family: var(--ff);
   -moz-osx-font-smoothing: grayscale;
   -webkit-font-smoothing: antialiased;
@@ -10,4 +10,19 @@
   background-color: var(--bg);
   display: flex;
   flex-direction: column;
+}
+
+.body__promo {
+}
+
+@media screen and (max-width: 1252px) {
+  .body__promo {
+    margin: 0 20px;
+  }
+}
+
+@media screen and (max-width: 604) {
+  .body__promo {
+    margin: 0 14px;
+  }
 }

@@ -93,13 +93,15 @@
 @media screen and (max-width: 1200px) {
   .about-me {
     max-width: none;
-    margin: 100px 50px;
+    box-sizing: border-box;
+    margin: 100px 0;
+    padding: 0 50px;
   }
 }
 
 @media screen and (max-width: 1100px) {
   .about-me {
-    margin: 90px 50px;
+    margin: 90px 0;
   }
 
   .about-me__name {
@@ -149,7 +151,7 @@
 
 @media screen and (max-width: 720px) {
   .about-me {
-    margin: 70px 50px 69px;
+    margin: 70px 0 69px;
   }
 
   .about-me__name {
@@ -160,13 +162,14 @@
 
 @media screen and (max-width: 634px) {
   .about-me {
-    margin: 70px 32px 69px;
+    margin: 70px 0 69px;
+    padding: 0 32px;
   }
 }
 
 @media screen and (max-width: 604px) {
   .about-me {
-    margin: 70px 14px 69px;
+    margin: 70px 0 69px;
   }
 
   .about-me__row {

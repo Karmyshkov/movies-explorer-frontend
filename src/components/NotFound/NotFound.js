@@ -1,5 +1,5 @@
 import React from "react";
 
-export const FindNotFound = () => {
+export const NotFound = () => {
   return <></>;
 };

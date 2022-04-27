@@ -5,7 +5,7 @@ import { Header } from "../Header";
 import { Main } from "../Main";
 import { Movies } from "../Movies";
 import { Footer } from "../Footer";
-import { FindNotFound } from "../FindNotFound";
+import { NotFound } from "../NotFound";
 
 export const App = () => {
   return (
@@ -14,7 +14,7 @@ export const App = () => {
       <Routes>
         <Route path="/" element={<Main />} />
         <Route path="/movies" element={<Movies />} />
-        <Route path="*" element={<FindNotFound />} />
+        <Route path="*" element={<NotFound />} />
       </Routes>
       <Footer />
     </div>

@@ -7,13 +7,14 @@ import { Movies } from "../Movies";
 import { Footer } from "../Footer";
 import { Login } from "../Login";
 import { Register } from "../Register";
+import { Profile } from "../Profile";
 import { NotFound } from "../NotFound";
 
 export const App = () => {
-  const [isloggedIn, setLoggedIn] = useState(false);
+  const [isloggedIn, setLoggedIn] = useState(true);
 
   const location = useLocation();
-  const isRenderBlocks =
+  const isRenderHeader =
     location.pathname === "/" ||
     location.pathname === "/movies" ||
     location.pathname === "/saved-movies" ||
@@ -21,17 +22,23 @@ export const App = () => {
     location.pathname === "/sign-in" ||
     location.pathname === "/sign-up";
 
+  const isRenderFooter =
+    location.pathname === "/" ||
+    location.pathname === "/movies" ||
+    location.pathname === "/saved-movies";
+
   return (
     <div className="body">
-      {isRenderBlocks && <Header isloggedIn={isloggedIn} />}
+      {isRenderHeader && <Header isloggedIn={isloggedIn} />}
       <Routes>
         <Route path="/" element={<Main />} />
         <Route path="/movies" element={<Movies />} />
         <Route path="/sign-in" element={<Login />} />
         <Route path="/sign-up" element={<Register />} />
+        <Route path="/profile" element={<Profile />} />
         <Route path="*" element={<NotFound />} />
       </Routes>
-      {isRenderBlocks && <Footer />}
+      {isRenderFooter && <Footer />}
     </div>
   );
 };

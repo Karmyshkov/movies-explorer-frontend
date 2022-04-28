@@ -44,7 +44,7 @@ export const Header = ({ isloggedIn }) => {
   };
 
   return (
-    <header className={`header ${(isSignIn || isSignUp) && "header_auth"}`}>
+    <header className={`header ${isSignIn || isSignUp ? "header_auth" : ""}`}>
       <div className="header__inner">
         <Link className="header__logo" to="/">
           <img src={logo} alt="Логотип учебного проекта" />

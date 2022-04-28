@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { Routes, Route, useLocation } from "react-router-dom";
+import { Routes, Route, useLocation, useNavigate } from "react-router-dom";
 import "./App.css";
 import { Header } from "../Header";
 import { Main } from "../Main";
@@ -10,7 +10,7 @@ import { Register } from "../Register";
 import { NotFound } from "../NotFound";
 
 export const App = () => {
-  const [isloggedIn, setLoggedIn] = useState(true);
+  const [isloggedIn, setLoggedIn] = useState(false);
 
   const location = useLocation();
   const isRenderBlocks =
@@ -21,15 +21,21 @@ export const App = () => {
     location.pathname === "/sign-in" ||
     location.pathname === "/sign-up";
 
-  const handleLogin = () => setLoggedIn(true);
+  const navigate = useNavigate();
+
+  const handleLogin = (evt) => {
+    evt.preventDefault();
+    setLoggedIn(true);
+    navigate("/movies");
+  };
 
   return (
     <div className="body">
-      {isRenderBlocks && <Header loggedIn={isloggedIn} />}
+      {isRenderBlocks && <Header isloggedIn={isloggedIn} />}
       <Routes>
         <Route path="/" element={<Main />} />
         <Route path="/movies" element={<Movies />} />
-        <Route path="/sign-in" element={<Login />} />
+        <Route path="/sign-in" element={<Login onlogin={handleLogin} />} />
         <Route path="/sign-up" element={<Register />} />
         <Route path="*" element={<NotFound />} />
       </Routes>

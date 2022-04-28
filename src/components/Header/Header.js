@@ -1,16 +1,17 @@
 import React from "react";
+import { Link } from "react-router-dom";
 import "./Header.css";
 import logo from "../../images/icons/logo.svg";
 import user from "../../images/icons/user.svg";
 
-export const Header = ({ loggedIn }) => {
+export const Header = ({ isloggedIn }) => {
   return (
     <header className="header">
       <div className="header__inner">
-        <a className="header__logo" href="/">
+        <Link className="header__logo" to="/">
           <img src={logo} alt="Логотип учебного проекта" />
-        </a>
-        {loggedIn && (
+        </Link>
+        {isloggedIn && (
           <>
             <h2 className="header__title">Фильмы</h2>
             <p className="header__hint">Сохранённые фильмы</p>
@@ -18,7 +19,7 @@ export const Header = ({ loggedIn }) => {
         )}
       </div>
 
-      {loggedIn ? (
+      {isloggedIn ? (
         <button className="header__btn" type="button">
           <span className="header__text">Аккаунт</span>
           <img className="header__img" src={user} alt="" />
@@ -26,14 +27,14 @@ export const Header = ({ loggedIn }) => {
       ) : (
         <ul className="header__wrap">
           <li className="header__item">
-            <a className="header__link" href="/sign-up">
+            <Link className="header__link" to="/sign-up">
               Регистрация
-            </a>
+            </Link>
           </li>
           <li className="header__item">
-            <a className="header__link header__link_active" href="/sign-in">
+            <Link className="header__link header__link_active" to="/sign-in">
               Войти
-            </a>
+            </Link>
           </li>
         </ul>
       )}

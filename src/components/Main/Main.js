@@ -7,12 +7,12 @@ import { Portfolio } from "../Portfolio";
 
 export const Main = () => {
   return (
-    <>
+    <main>
       <Promo />
       <AboutProject />
       <Techs />
       <AboutMe />
       <Portfolio />
-    </>
+    </main>
   );
 };

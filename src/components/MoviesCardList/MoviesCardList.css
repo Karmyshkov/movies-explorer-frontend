@@ -5,6 +5,26 @@
   margin: 70px auto 28px;
   display: grid;
   grid-template-columns: repeat(3, 1fr);
-  gap: 60px 30px;
+  gap: 54px 30px;
   flex-grow: 1;
+}
+
+.movies-card-list__btn {
+  cursor: pointer;
+  background-color: transparent;
+  border: 1px solid var(--dark-line);
+  max-width: 320px;
+  width: 100%;
+  margin: 50px auto 80px;
+  padding: 11px 0 9px;
+  border-radius: 5px;
+  font-size: 12px;
+  color: var(--color-primary);
+  font-weight: 500;
+  line-height: 15px;
+  transition: 0.3s opacity;
+}
+
+.movies-card-list__btn:hover {
+  opacity: 0.8;
 }

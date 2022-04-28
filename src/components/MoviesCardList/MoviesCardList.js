@@ -79,17 +79,22 @@ export const MoviesCardList = () => {
   ];
 
   return (
-    <ul className="movies-card-list">
-      {initArr.map((card, index) => (
-        <MoviesCard
-          key={index}
-          img={card.img}
-          alt={card.alt}
-          url={card.url}
-          title={card.title}
-          time={card.time}
-        />
-      ))}
-    </ul>
+    <>
+      <ul className="movies-card-list">
+        {initArr.map((card, index) => (
+          <MoviesCard
+            key={index}
+            img={card.img}
+            alt={card.alt}
+            url={card.url}
+            title={card.title}
+            time={card.time}
+          />
+        ))}
+      </ul>
+      <button className="movies-card-list__btn" type="button">
+        Ещё
+      </button>
+    </>
   );
 };

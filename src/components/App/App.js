@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { Routes, Route, useLocation, useNavigate } from "react-router-dom";
+import { Routes, Route, useLocation } from "react-router-dom";
 import "./App.css";
 import { Header } from "../Header";
 import { Main } from "../Main";
@@ -21,21 +21,13 @@ export const App = () => {
     location.pathname === "/sign-in" ||
     location.pathname === "/sign-up";
 
-  const navigate = useNavigate();
-
-  const handleLogin = (evt) => {
-    evt.preventDefault();
-    setLoggedIn(true);
-    navigate("/movies");
-  };
-
   return (
     <div className="body">
       {isRenderBlocks && <Header isloggedIn={isloggedIn} />}
       <Routes>
         <Route path="/" element={<Main />} />
         <Route path="/movies" element={<Movies />} />
-        <Route path="/sign-in" element={<Login onlogin={handleLogin} />} />
+        <Route path="/sign-in" element={<Login />} />
         <Route path="/sign-up" element={<Register />} />
         <Route path="*" element={<NotFound />} />
       </Routes>

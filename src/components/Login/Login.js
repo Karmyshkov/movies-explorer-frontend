@@ -2,7 +2,7 @@ import React from "react";
 import { Link } from "react-router-dom";
 import "./Login.css";
 
-export const Login = ({ onlogin }) => {
+export const Login = () => {
   return (
     <form className="login">
       <label className="login__label">
@@ -23,12 +23,12 @@ export const Login = ({ onlogin }) => {
       </label>
       <p className="login__error login__error_show">Что-то пошло не так...</p>
 
-      <button onClick={onlogin} className="login__btn" type="submit">
+      <button className="login__btn" type="submit">
         Войти
       </button>
       <p className="login__text">
         Ещё не зарегистрированы?
-        <Link className="login__link" to="/sign-in">
+        <Link className="login__link" to="/sign-up">
           Регистрация
         </Link>
       </p>

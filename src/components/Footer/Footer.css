@@ -42,6 +42,14 @@
   line-height: 16px;
 }
 
+.footer__text_copirate {
+}
+
+.footer__text_copirate::before {
+  content: "©";
+  padding-right: 4px;
+}
+
 .footer__menu {
 }
 
@@ -106,6 +114,7 @@
 
 @media screen and (max-width: 394px) {
   .footer__inner {
+    padding-top: 28px;
     flex-direction: column-reverse;
     align-items: center;
   }
@@ -121,6 +130,10 @@
 
   .footer__item {
     margin-right: 0;
-    margin-bottom: 12px;
+    margin-bottom: 8px;
+  }
+
+  .footer__text_copirate::before {
+    padding-right: 0;
   }
 }

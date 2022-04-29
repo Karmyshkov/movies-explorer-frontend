@@ -1,7 +1,7 @@
 .portfolio {
   max-width: 1140px;
   width: 100%;
-  margin: 0 auto 104px;
+  margin: 0 auto 125px;
 }
 
 .portfolio__title {
@@ -68,7 +68,11 @@
 
 @media screen and (max-width: 1100px) {
   .portfolio {
-    margin-bottom: 70px;
+    margin-bottom: 90px;
+  }
+
+  .portfolio__item {
+    border-color: var(--line-grey);
   }
 
   .portfolio__text {
@@ -95,6 +99,7 @@
 
 @media screen and (max-width: 604px) {
   .portfolio {
+    margin-bottom: 70px;
     padding: 0 14px;
   }
 }

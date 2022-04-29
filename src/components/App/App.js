@@ -11,7 +11,7 @@ import { Profile } from "../Profile";
 import { NotFound } from "../NotFound";
 
 export const App = () => {
-  const [isloggedIn, setLoggedIn] = useState(true);
+  const [isloggedIn, setLoggedIn] = useState(false);
 
   const location = useLocation();
   const isRenderHeader =

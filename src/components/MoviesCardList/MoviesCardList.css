@@ -28,3 +28,10 @@
 .movies-card-list__btn:hover {
   opacity: 0.8;
 }
+
+@media screen and (max-width: 1240px) {
+  .movies-card-list {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 47px 30px;
+  }
+}

@@ -16,63 +16,55 @@ import card_12 from "../../images/cards/12_card.jpg";
 
 export const MoviesCardList = () => {
   const initArr = [
-    { img: card_01, alt: "", url: "/", title: "33 слова о дизайне", time: "1ч 17м" },
+    { img: card_01, alt: "", title: "33 слова о дизайне", time: "1ч 17м" },
     {
       img: card_02,
       alt: "",
-      url: "/",
       title: "Киноальманах «100 лет дизайна»",
       time: "1ч 17м",
     },
-    { img: card_03, alt: "", url: "/", title: "В погоне за Бенкси", time: "1ч 17м" },
+    { img: card_03, alt: "", title: "В погоне за Бенкси", time: "1ч 17м" },
     {
       img: card_04,
       alt: "",
-      url: "/",
       title: "Баския: Взрыв реальности",
       time: "1ч 17м",
     },
-    { img: card_05, alt: "", url: "/", title: "Бег это свобода", time: "1ч 17м" },
-    { img: card_06, alt: "", url: "/", title: "Книготорговцы", time: "1ч 17м" },
+    { img: card_05, alt: "", title: "Бег это свобода", time: "1ч 17м" },
+    { img: card_06, alt: "", title: "Книготорговцы", time: "1ч 17м" },
     {
       img: card_07,
       alt: "",
-      url: "/",
       title: "Когда я думаю о Германии ночью",
       time: "1ч 17м",
     },
     {
       img: card_08,
       alt: "",
-      url: "/",
       title: "Gimme Danger: История Игги и The Stooges",
       time: "1ч 17м",
     },
     {
       img: card_09,
       alt: "",
-      url: "/",
       title: "Дженис: Маленькая девочка грустит",
       time: "1ч 17м",
     },
     {
       img: card_10,
       alt: "",
-      url: "/",
       title: "Соберись перед прыжком",
       time: "1ч 17м",
     },
     {
       img: card_11,
       alt: "",
-      url: "/",
       title: "Пи Джей Харви: A dog called money",
       time: "1ч 17м",
     },
     {
       img: card_12,
       alt: "",
-      url: "/",
       title: "По волнам: Искусство звука в кино",
       time: "1ч 17м",
     },
@@ -86,7 +78,6 @@ export const MoviesCardList = () => {
             key={index}
             img={card.img}
             alt={card.alt}
-            url={card.url}
             title={card.title}
             time={card.time}
           />

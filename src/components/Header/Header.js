@@ -4,12 +4,16 @@ import "./Header.css";
 import logo from "../../images/icons/logo.svg";
 import user from "../../images/icons/user.svg";
 
-export const Header = ({ isloggedIn }) => {
+export const Header = () => {
   const location = useLocation();
 
   const isMain = location.pathname === "/";
   const isSignIn = location.pathname === "/sign-in";
   const isSignUp = location.pathname === "/sign-up";
+  const isloggedIn =
+    location.pathname === "/movies" ||
+    location.pathname === "/saved-movies" ||
+    location.pathname === "/profile ";
 
   const renderElements = () => {
     if (isMain) {

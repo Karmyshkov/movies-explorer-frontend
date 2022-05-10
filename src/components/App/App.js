@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React from "react";
 import { Routes, Route, useLocation } from "react-router-dom";
 import "./App.css";
 import { Header } from "../Header";
@@ -11,8 +11,6 @@ import { Profile } from "../Profile";
 import { NotFound } from "../NotFound";
 
 export const App = () => {
-  const [isloggedIn, setLoggedIn] = useState(false);
-
   const location = useLocation();
   const isRenderHeader =
     location.pathname === "/" ||
@@ -29,7 +27,7 @@ export const App = () => {
 
   return (
     <div className="body">
-      {isRenderHeader && <Header isloggedIn={isloggedIn} />}
+      {isRenderHeader && <Header />}
       <Routes>
         <Route path="/" element={<Main />} />
         <Route path="/movies" element={<Movies />} />

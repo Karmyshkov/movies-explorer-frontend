@@ -16,12 +16,19 @@ import card_12 from "../../images/cards/12_card.jpg";
 
 export const MoviesCardList = () => {
   const initArr = [
-    { img: card_01, alt: "", title: "33 слова о дизайне", time: "1ч 17м" },
+    {
+      img: card_01,
+      alt: "",
+      title: "33 слова о дизайне",
+      time: "1ч 17м",
+      isSaved: false,
+    },
     {
       img: card_02,
       alt: "",
       title: "Киноальманах «100 лет дизайна»",
       time: "1ч 17м",
+      isSaved: true,
     },
     { img: card_03, alt: "", title: "В погоне за Бенкси", time: "1ч 17м" },
     {
@@ -29,44 +36,51 @@ export const MoviesCardList = () => {
       alt: "",
       title: "Баския: Взрыв реальности",
       time: "1ч 17м",
+      isSaved: false,
     },
-    { img: card_05, alt: "", title: "Бег это свобода", time: "1ч 17м" },
-    { img: card_06, alt: "", title: "Книготорговцы", time: "1ч 17м" },
+    { img: card_05, alt: "", title: "Бег это свобода", time: "1ч 17м", isSaved: false },
+    { img: card_06, alt: "", title: "Книготорговцы", time: "1ч 17м", isSaved: true },
     {
       img: card_07,
       alt: "",
       title: "Когда я думаю о Германии ночью",
       time: "1ч 17м",
+      isSaved: false,
     },
     {
       img: card_08,
       alt: "",
       title: "Gimme Danger: История Игги и The Stooges",
       time: "1ч 17м",
+      isSaved: false,
     },
     {
       img: card_09,
       alt: "",
       title: "Дженис: Маленькая девочка грустит",
       time: "1ч 17м",
+      isSaved: false,
     },
     {
       img: card_10,
       alt: "",
       title: "Соберись перед прыжком",
       time: "1ч 17м",
+      isSaved: false,
     },
     {
       img: card_11,
       alt: "",
       title: "Пи Джей Харви: A dog called money",
       time: "1ч 17м",
+      isSaved: false,
     },
     {
       img: card_12,
       alt: "",
       title: "По волнам: Искусство звука в кино",
       time: "1ч 17м",
+      isSaved: false,
     },
   ];
 
@@ -80,6 +94,7 @@ export const MoviesCardList = () => {
             alt={card.alt}
             title={card.title}
             time={card.time}
+            isSaved={card.isSaved}
           />
         ))}
       </ul>

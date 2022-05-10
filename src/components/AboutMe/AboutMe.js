@@ -1,4 +1,5 @@
 import React from "react";
+import { Link } from "react-router-dom";
 import "./AboutMe.css";
 import avatar from "../../images/avatar.jpg";
 
@@ -20,14 +21,14 @@ export const AboutMe = () => {
           </p>
           <ul className="about-me__wrap">
             <li className="about-me__item">
-              <a className="about-me__link" href="/">
+              <Link to="/" target="_blank" className="about-me__link">
                 Facebook
-              </a>
+              </Link>
             </li>
             <li className="about-me__item">
-              <a className="about-me__link" href="/">
+              <Link to="/" target="_blank" className="about-me__link">
                 Github
-              </a>
+              </Link>
             </li>
           </ul>
         </div>

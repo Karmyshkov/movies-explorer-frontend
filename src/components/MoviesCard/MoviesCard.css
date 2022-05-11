@@ -80,6 +80,24 @@
   opacity: 1;
 }
 
+.movies-card__btn {
+  border: none;
+  cursor: pointer;
+  position: absolute;
+  top: 14px;
+  right: 14px;
+  display: flex;
+  padding: 5px;
+  border-radius: 50%;
+  background-color: var(--bg-user);
+  opacity: 0;
+  transition: 0.3s opacity;
+}
+
+.movies-card__item:hover > .movies-card__btn {
+  opacity: 1;
+}
+
 @media screen and (max-width: 1240px) {
   .movies-card__img {
     max-width: none;

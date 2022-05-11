@@ -9,6 +9,7 @@ import { Login } from "../Login";
 import { Register } from "../Register";
 import { Profile } from "../Profile";
 import { NotFound } from "../NotFound";
+import { SavedMovies } from "../SavedMovies";
 
 export const App = () => {
   const location = useLocation();
@@ -31,9 +32,10 @@ export const App = () => {
       <Routes>
         <Route path="/" element={<Main />} />
         <Route path="/movies" element={<Movies />} />
+        <Route path="/saved-movies" element={<SavedMovies />} />
+        <Route path="/profile" element={<Profile />} />
         <Route path="/sign-in" element={<Login />} />
         <Route path="/sign-up" element={<Register />} />
-        <Route path="/profile" element={<Profile />} />
         <Route path="*" element={<NotFound />} />
       </Routes>
       {isRenderFooter && <Footer />}

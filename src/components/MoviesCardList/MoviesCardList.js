@@ -1,4 +1,5 @@
 import React from "react";
+import { useLocation } from "react-router-dom";
 import "./MoviesCardList.css";
 import { MoviesCard } from "../MoviesCard";
 import card_01 from "../../images/cards/01_card.jpg";
@@ -84,23 +85,41 @@ export const MoviesCardList = () => {
     },
   ];
 
+  const location = useLocation();
+  const isMovies = location.pathname === "/movies";
+
   return (
     <>
       <ul className="movies-card-list">
-        {initArr.map((card, index) => (
-          <MoviesCard
-            key={index}
-            img={card.img}
-            alt={card.alt}
-            title={card.title}
-            time={card.time}
-            isSaved={card.isSaved}
-          />
-        ))}
+        {isMovies
+          ? initArr.map((card, index) => (
+              <MoviesCard
+                key={index}
+                img={card.img}
+                alt={card.alt}
+                title={card.title}
+                time={card.time}
+                isSaved={card.isSaved}
+              />
+            ))
+          : initArr
+              .filter((card) => card.isSaved)
+              .map((card, index) => (
+                <MoviesCard
+                  key={index}
+                  img={card.img}
+                  alt={card.alt}
+                  title={card.title}
+                  time={card.time}
+                  isSaved={card.isSaved}
+                />
+              ))}
       </ul>
-      <button className="movies-card-list__btn" type="button">
-        Ещё
-      </button>
+      {isMovies && (
+        <button className="movies-card-list__btn" type="button">
+          Ещё
+        </button>
+      )}
     </>
   );
 };

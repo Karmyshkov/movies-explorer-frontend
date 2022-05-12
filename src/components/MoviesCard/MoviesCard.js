@@ -9,7 +9,7 @@ export const MoviesCard = ({ img, alt, title, time, isSaved }) => {
   return (
     <li
       className={`movies-card__item ${
-        isMovies === true && isSaved && "movies-card__item_saved"
+        isMovies === true && isSaved ? "movies-card__item_saved" : ""
       }`}
     >
       <img className="movies-card__img" src={img} alt={alt} />

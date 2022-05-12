@@ -4,6 +4,9 @@
   margin: 0 auto;
   text-align: center;
   margin-bottom: 48px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
 .filter-checkbox__input {
@@ -49,4 +52,21 @@
 
 .filter-checkbox__input:checked + label:after {
   left: 18px;
+}
+
+@media screen and (max-width: 768px) {
+  .filter-checkbox {
+    margin-bottom: 62px;
+  }
+}
+
+@media screen and (max-width: 692px) {
+  .filter-checkbox {
+    margin-bottom: 50px;
+  }
+
+  .filter-checkbox__label {
+    font-size: 11px;
+    line-height: 18px;
+  }
 }

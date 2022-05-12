@@ -119,10 +119,43 @@
   padding: 8px 20px;
 }
 
+.header__burger {
+  cursor: pointer;
+  background-color: transparent;
+  padding: 0;
+  border: none;
+  display: none;
+}
+
+.header__burger-img {
+}
+
 @media screen and (max-width: 1200px) {
   .header {
     box-sizing: border-box;
     padding: 0 30px 0 25px;
+  }
+}
+
+@media screen and (max-width: 768px) {
+  .header__title {
+    display: none;
+  }
+
+  .header__hint {
+    display: none;
+  }
+
+  .header__btn {
+    display: none;
+  }
+
+  .header__burger {
+    display: block;
+  }
+
+  .header__burger-img {
+    width: 38px;
   }
 }
 

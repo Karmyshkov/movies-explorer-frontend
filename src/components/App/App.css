@@ -21,7 +21,7 @@
   }
 }
 
-@media screen and (max-width: 604) {
+@media screen and (max-width: 604px) {
   .body__promo {
     margin: 0 14px;
   }

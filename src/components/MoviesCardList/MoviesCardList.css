@@ -32,7 +32,39 @@
 
 @media screen and (max-width: 1240px) {
   .movies-card-list {
-    grid-template-columns: repeat(2, 1fr);
+    grid-template-columns: repeat(2, minmax(300px, 360px));
     gap: 47px 30px;
+  }
+}
+
+@media screen and (max-width: 828px) {
+  .movies-card-list {
+    padding: 0 30px;
+  }
+}
+
+@media screen and (max-width: 692px) {
+  .movies-card-list {
+    box-sizing: border-box;
+    grid-template-columns: 1fr;
+    width: 100%;
+    margin-top: 40px;
+    gap: 36px;
+  }
+}
+
+@media screen and (max-width: 604px) {
+  .movies-card-list {
+    padding: 0 20px;
+  }
+}
+
+@media screen and (max-width: 510px) {
+  .movies-card-list {
+    padding: 0 10px;
+  }
+
+  .movies-card-list__btn {
+    max-width: 240px;
   }
 }

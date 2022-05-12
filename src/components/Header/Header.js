@@ -3,6 +3,7 @@ import { Link, useLocation } from "react-router-dom";
 import "./Header.css";
 import logo from "../../images/icons/logo.svg";
 import user from "../../images/icons/user.svg";
+import burger from "../../images/icons/burger.svg";
 
 export const Header = () => {
   const location = useLocation();
@@ -34,10 +35,15 @@ export const Header = () => {
     }
     if (isloggedIn) {
       return (
-        <button className="header__btn" type="button">
-          <span className="header__text">Аккаунт</span>
-          <img className="header__img" src={user} alt="" />
-        </button>
+        <>
+          <button className="header__btn" type="button">
+            <span className="header__text">Аккаунт</span>
+            <img className="header__img" src={user} alt="" />
+          </button>
+          <button className="header__burger" type="button">
+            <img className="header__burger-img" src={burger} alt="" />
+          </button>
+        </>
       );
     }
     return (

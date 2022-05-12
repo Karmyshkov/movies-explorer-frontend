@@ -36,7 +36,7 @@ export const MoviesCardList = () => {
       alt: "",
       title: "В погоне за Бенкси",
       time: "1ч 17м",
-      isSaved: false,
+      isSaved: true,
     },
     {
       img: card_04,

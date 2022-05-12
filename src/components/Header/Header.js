@@ -14,7 +14,7 @@ export const Header = () => {
   const isloggedIn =
     location.pathname === "/movies" ||
     location.pathname === "/saved-movies" ||
-    location.pathname === "/profile ";
+    location.pathname === "/profile";
 
   const renderElements = () => {
     if (isMain) {
@@ -36,10 +36,10 @@ export const Header = () => {
     if (isloggedIn) {
       return (
         <>
-          <button className="header__btn" type="button">
+          <Link to="/profile" className="header__btn" type="button">
             <span className="header__text">Аккаунт</span>
             <img className="header__img" src={user} alt="" />
-          </button>
+          </Link>
           <button className="header__burger" type="button">
             <img className="header__burger-img" src={burger} alt="" />
           </button>

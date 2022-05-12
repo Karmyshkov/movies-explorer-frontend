@@ -16,7 +16,6 @@
   color: var(--color-third);
   font-weight: 400;
   line-height: 12px;
-  margin-bottom: 10px;
 }
 
 .register__input {
@@ -31,11 +30,12 @@
   color: var(--color-primary);
   font-weight: 400;
   line-height: 16px;
-  margin-bottom: 10px;
+  margin: 10px 0;
 }
 
 .register__error {
   margin: 0;
+  display: none;
   font-size: 10px;
   color: var(--color-error);
   font-weight: 400;
@@ -46,6 +46,7 @@
 
 .register__error_show {
   opacity: 1;
+  display: block;
 }
 
 .register__btn {
@@ -88,4 +89,28 @@
 
 .register__link:hover {
   opacity: 0.8;
+}
+
+@media screen and (max-width: 500px) {
+  .register {
+    box-sizing: border-box;
+    max-width: none;
+    padding: 0 30px;
+  }
+
+  .register__btn {
+    margin-top: 158px;
+    font-size: 12px;
+    line-height: 15px;
+  }
+
+  .register__text {
+    font-size: 12px;
+    line-height: 15px;
+  }
+
+  .register__link {
+    font-size: 12px;
+    line-height: 15px;
+  }
 }

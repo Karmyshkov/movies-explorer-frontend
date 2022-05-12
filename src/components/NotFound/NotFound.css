@@ -32,3 +32,22 @@
   font-weight: 400;
   line-height: 17px;
 }
+
+@media screen and (max-width: 700px) {
+  .not-found__title {
+    font-size: 80px;
+    line-height: 97px;
+    margin-bottom: 10px;
+  }
+
+  .not-found__subtitle {
+    font-size: 12px;
+    line-height: 15px;
+    margin-bottom: 284px;
+  }
+
+  .not-found__link {
+    font-size: 12px;
+    line-height: 15px;
+  }
+}

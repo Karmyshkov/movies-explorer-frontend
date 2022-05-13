@@ -1,11 +1,14 @@
-import React from "react";
+import React, { useState } from "react";
 import { Link, useLocation } from "react-router-dom";
 import "./Header.css";
 import logo from "../../images/icons/logo.svg";
 import user from "../../images/icons/user.svg";
 import burger from "../../images/icons/burger.svg";
+import close from "../../images/icons/close.svg";
 
 export const Header = () => {
+  const [isOpenMenu, setOpenMenu] = useState(false);
+
   const location = useLocation();
 
   const isMain = location.pathname === "/";
@@ -36,13 +39,62 @@ export const Header = () => {
     if (isloggedIn) {
       return (
         <>
+          <nav className={`header__menu ${isOpenMenu ? "header__menu_open" : ""}`}>
+            <ul className="header__list">
+              <li className="header__row">
+                <Link to="/" className="header__menu-link">
+                  Главная
+                </Link>
+              </li>
+              <li className="header__row">
+                <Link to="/movies" className="header__menu-link header__menu-link_active">
+                  Фильмы
+                </Link>
+              </li>
+              <li className="header__row">
+                <Link to="/saved-movies" className="header__menu-link">
+                  Сохранённые фильмы
+                </Link>
+              </li>
+              <li className="header__row">
+                <Link
+                  to="/profile"
+                  className={`header__btn ${isOpenMenu ? "header__btn_open" : ""}`}
+                  type="button"
+                >
+                  <span className="header__text">Аккаунт</span>
+                  <img className="header__img" src={user} alt="" />
+                </Link>
+              </li>
+            </ul>
+          </nav>
           <Link to="/profile" className="header__btn" type="button">
             <span className="header__text">Аккаунт</span>
             <img className="header__img" src={user} alt="" />
           </Link>
-          <button className="header__burger" type="button">
-            <img className="header__burger-img" src={burger} alt="" />
-          </button>
+          {isOpenMenu ? (
+            <button
+              onClick={() => {
+                setOpenMenu(false);
+                document.body.style.overflow = "auto";
+              }}
+              className="header__burger"
+              type="button"
+            >
+              <img className="header__close" src={close} alt="" />
+            </button>
+          ) : (
+            <button
+              onClick={() => {
+                setOpenMenu(true);
+                document.body.style.overflow = "hidden";
+              }}
+              className="header__burger"
+              type="button"
+            >
+              <img className="header__burger-img" src={burger} alt="" />
+            </button>
+          )}
         </>
       );
     }

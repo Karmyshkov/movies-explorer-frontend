@@ -14,6 +14,7 @@
   --bg-white: #fff;
   --bg-grey: #2f2f2f;
   --bg-user: #313131;
+  --bg-overlay: rgba(0, 0, 0, 0.5);
   --line: #dadada;
   --light-line: #fff;
   --dark-line: #424242;

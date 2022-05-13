@@ -22,12 +22,12 @@
   padding-left: 48px;
 }
 
-.filter-checkbox__input + label {
+.filter-checkbox__input + .filter-checkbox__label {
   position: relative;
   cursor: pointer;
 }
 
-.filter-checkbox__input + label::before {
+.filter-checkbox__input + .filter-checkbox__label::before {
   content: "";
   position: absolute;
   top: 0;
@@ -38,7 +38,7 @@
   background-color: var(--bg-primary);
 }
 
-.filter-checkbox__input + label::after {
+.filter-checkbox__input + .filter-checkbox__label::after {
   content: "";
   position: absolute;
   top: 2px;
@@ -50,7 +50,7 @@
   transition: 0.2s left;
 }
 
-.filter-checkbox__input:checked + label:after {
+.filter-checkbox__input:checked + .filter-checkbox__label:after {
   left: 18px;
 }
 

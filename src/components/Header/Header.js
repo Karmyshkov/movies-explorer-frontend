@@ -82,14 +82,14 @@ export const Header = () => {
                   type="button"
                 >
                   <span className="header__text">Аккаунт</span>
-                  <img className="header__img" src={user} alt="" />
+                  <img className="header__img" src={user} alt="Иконка аккаунт" />
                 </Link>
               </li>
             </ul>
           </nav>
           <Link to="/profile" className="header__btn" type="button">
             <span className="header__text">Аккаунт</span>
-            <img className="header__img" src={user} alt="" />
+            <img className="header__img" src={user} alt="Иконка аккаунт" />
           </Link>
           {isOpenMenu ? (
             <button
@@ -99,8 +99,9 @@ export const Header = () => {
               }}
               className="header__burger"
               type="button"
+              aria-label="Закрыть меню"
             >
-              <img className="header__close" src={close} alt="" />
+              <img className="header__close" src={close} alt="Иконка закрыть" />
             </button>
           ) : (
             <button
@@ -110,8 +111,13 @@ export const Header = () => {
               }}
               className="header__burger"
               type="button"
+              aria-label="Закрыть меню"
             >
-              <img className="header__burger-img" src={burger} alt="" />
+              <img
+                className="header__burger-img"
+                src={burger}
+                alt="Иконка меню бургера"
+              />
             </button>
           )}
         </>

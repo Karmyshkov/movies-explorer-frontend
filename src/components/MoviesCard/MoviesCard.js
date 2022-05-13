@@ -26,7 +26,7 @@ export const MoviesCard = ({ img, alt, title, time, isSaved }) => {
           type="button"
           aria-label="Удалить из избранного"
         >
-          <img src={closeIcon} alt="" />
+          <img src={closeIcon} alt="Иконка крестика" />
         </button>
       )}
     </li>

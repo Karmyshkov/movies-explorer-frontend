@@ -13,7 +13,7 @@ export const Portfolio = () => {
             <h4 className="portfolio__text">Статичный сайт</h4>
           </Link>
           <Link to="/" className="portfolio__link">
-            <img className="portfolio__icon" src={arrow} alt="" />
+            <img className="portfolio__icon" src={arrow} alt="Иконка стрелки" />
           </Link>
         </li>
         <li className="portfolio__item">
@@ -21,7 +21,7 @@ export const Portfolio = () => {
             <h4 className="portfolio__text">Адаптивный сайт</h4>
           </Link>
           <Link to="/" className="portfolio__link">
-            <img className="portfolio__icon" src={arrow} alt="" />
+            <img className="portfolio__icon" src={arrow} alt="Иконка стрелки" />
           </Link>
         </li>
         <li className="portfolio__item">
@@ -29,7 +29,7 @@ export const Portfolio = () => {
             <h4 className="portfolio__text">Одностраничное приложение</h4>
           </Link>
           <Link to="/" className="portfolio__link">
-            <img className="portfolio__icon" src={arrow} alt="" />
+            <img className="portfolio__icon" src={arrow} alt="Иконка стрелки" />
           </Link>
         </li>
       </ul>

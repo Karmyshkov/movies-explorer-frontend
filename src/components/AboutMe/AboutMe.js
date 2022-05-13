@@ -32,7 +32,7 @@ export const AboutMe = () => {
             </li>
           </ul>
         </div>
-        <img className="about-me__avatar" src={avatar} alt="" />
+        <img className="about-me__avatar" src={avatar} alt="Аватар пользователя" />
       </div>
     </div>
   );

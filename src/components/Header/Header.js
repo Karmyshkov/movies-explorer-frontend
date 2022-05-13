@@ -46,7 +46,10 @@ export const Header = () => {
             <ul className="header__list">
               <li className="header__row">
                 <NavLink
-                  onClick={() => setOpenMenu(false)}
+                  onClick={() => {
+                    setOpenMenu(false);
+                    document.body.style.overflow = "auto";
+                  }}
                   to="/"
                   className={setActiveLink}
                 >
@@ -73,6 +76,7 @@ export const Header = () => {
               </li>
               <li className="header__row">
                 <Link
+                  onClick={() => setOpenMenu(false)}
                   to="/profile"
                   className={`header__btn ${isOpenMenu ? "header__btn_open" : ""}`}
                   type="button"

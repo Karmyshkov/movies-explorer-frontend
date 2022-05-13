@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { Link, useLocation } from "react-router-dom";
+import { Link, NavLink, useLocation } from "react-router-dom";
 import "./Header.css";
 import logo from "../../images/icons/logo.svg";
 import user from "../../images/icons/user.svg";
@@ -18,6 +18,9 @@ export const Header = () => {
     location.pathname === "/movies" ||
     location.pathname === "/saved-movies" ||
     location.pathname === "/profile";
+
+  const setActiveLink = ({ isActive }) =>
+    isActive ? "header__menu-link header__menu-link_active" : "header__menu-link";
 
   const renderElements = () => {
     if (isMain) {
@@ -42,19 +45,31 @@ export const Header = () => {
           <nav className={`header__menu ${isOpenMenu ? "header__menu_open" : ""}`}>
             <ul className="header__list">
               <li className="header__row">
-                <Link to="/" className="header__menu-link">
+                <NavLink
+                  onClick={() => setOpenMenu(false)}
+                  to="/"
+                  className={setActiveLink}
+                >
                   Главная
-                </Link>
+                </NavLink>
               </li>
               <li className="header__row">
-                <Link to="/movies" className="header__menu-link header__menu-link_active">
+                <NavLink
+                  onClick={() => setOpenMenu(false)}
+                  to="/movies"
+                  className={setActiveLink}
+                >
                   Фильмы
-                </Link>
+                </NavLink>
               </li>
               <li className="header__row">
-                <Link to="/saved-movies" className="header__menu-link">
+                <NavLink
+                  onClick={() => setOpenMenu(false)}
+                  to="/saved-movies"
+                  className={setActiveLink}
+                >
                   Сохранённые фильмы
-                </Link>
+                </NavLink>
               </li>
               <li className="header__row">
                 <Link

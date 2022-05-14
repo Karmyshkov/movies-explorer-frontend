@@ -6,10 +6,10 @@ export const SearchForm = () => {
   return (
     <form className="search-form">
       <label className="search-form__label">
-        <input className="search-form__input" placeholder="Фильм" />
+        <input className="search-form__input" placeholder="Фильм" required />
         <img className="search-form__icon" src={searchIcon} alt="Иконка поиска" />
       </label>
-      <button className="search-form__btn" type="button" aria-label="Поиск" />
+      <button className="search-form__btn" type="submit" aria-label="Поиск" />
     </form>
   );
 };

@@ -149,6 +149,14 @@
 }
 
 @media screen and (max-width: 468px) {
+  .techs {
+    background-color: var(--bg);
+  }
+
+  .techs__inner {
+    border-color: var(--bg-black);
+  }
+
   .techs__title {
     font-size: 18px;
     line-height: 22px;

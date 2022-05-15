@@ -1,5 +1,5 @@
-const Navigation = () => {
-  return <></>
-}
+import React from "react";
 
-export default Navigation
+export const Navigation = () => {
+  return <></>;
+};

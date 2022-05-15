@@ -1,5 +1,14 @@
-const Movies = () => {
-  return <></>
-}
+import React from "react";
+import { SearchForm } from "../SearchForm";
+import { FilterCheckbox } from "../FilterCheckbox";
+import { MoviesCardList } from "../MoviesCardList";
 
-export default Movies
+export const Movies = () => {
+  return (
+    <>
+      <SearchForm />
+      <FilterCheckbox />
+      <MoviesCardList />
+    </>
+  );
+};

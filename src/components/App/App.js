@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import { Routes, Route, useLocation, useNavigate } from "react-router-dom";
 import "./App.css";
 import { Header } from "../Header";
@@ -10,6 +10,7 @@ import { Register } from "../Register";
 import { Profile } from "../Profile";
 import { NotFound } from "../NotFound";
 import { SavedMovies } from "../SavedMovies";
+import { ProtectedRoute } from "../ProtectedRoute";
 import { api } from "../../utils/MainApi";
 
 export const App = () => {
@@ -27,12 +28,17 @@ export const App = () => {
     location.pathname === "/movies" ||
     location.pathname === "/saved-movies";
 
+  const [isLoginIn, setLoggedIn] = useState(false);
+
   const navigate = useNavigate();
 
   const handleLogin = (data) => {
     api
       .login(data)
-      .then((data) => console.log(data))
+      .then(() => {
+        setLoggedIn(true);
+        navigate("/movies");
+      })
       .catch((err) => console.log(err));
   };
 
@@ -48,9 +54,19 @@ export const App = () => {
       {isRenderHeader && <Header />}
       <Routes>
         <Route path="/" element={<Main />} />
-        <Route path="/movies" element={<Movies />} />
-        <Route path="/saved-movies" element={<SavedMovies />} />
-        <Route path="/profile" element={<Profile />} />
+        <Route exact path="/movies" element={<ProtectedRoute isLoginIn={isLoginIn} />}>
+          <Route path="/movies" element={<Movies />} />
+        </Route>
+        <Route
+          exact
+          path="/saved-movies"
+          element={<ProtectedRoute isLoginIn={isLoginIn} />}
+        >
+          <Route isLoginIn={isLoginIn} path="/saved-movies" element={<SavedMovies />} />
+        </Route>
+        <Route exact path="/profile" element={<ProtectedRoute isLoginIn={isLoginIn} />}>
+          <Route isLoginIn={isLoginIn} path="/profile" element={<Profile />} />
+        </Route>
         <Route path="/sign-in" element={<Login onLogin={handleLogin} />} />
         <Route path="/sign-up" element={<Register onregister={handleRegister} />} />
         <Route path="*" element={<NotFound />} />

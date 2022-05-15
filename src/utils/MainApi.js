@@ -13,6 +13,17 @@ class Api {
     return Promise.reject(`Error: ${res.status}`);
   }
 
+  login({ email, password }) {
+    return fetch(`${this.url}/signin`, {
+      method: "POST",
+      headers: this.headers,
+      body: JSON.stringify({
+        email,
+        password,
+      }),
+    }).then((dataCard) => this._checkStatus(dataCard));
+  }
+
   register({ name, email, password }) {
     return fetch(`${this.url}/signup`, {
       method: "POST",

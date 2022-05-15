@@ -13,7 +13,7 @@ class Api {
     return Promise.reject(`Error: ${res.status}`);
   }
 
-  registration({ name, email, password }) {
+  register({ name, email, password }) {
     return fetch(`${this.url}/signup`, {
       method: "POST",
       headers: this.headers,

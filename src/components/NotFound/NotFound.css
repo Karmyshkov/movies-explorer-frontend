@@ -25,8 +25,10 @@
   margin-bottom: 184px;
 }
 
-.not-found__link {
-  text-decoration: none;
+.not-found__btn {
+  cursor: pointer;
+  background-color: transparent;
+  border: none;
   font-size: 14px;
   color: var(--color-blue);
   font-weight: 400;
@@ -46,7 +48,7 @@
     margin-bottom: 284px;
   }
 
-  .not-found__link {
+  .not-found__btn {
     font-size: 12px;
     line-height: 15px;
   }

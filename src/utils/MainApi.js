@@ -1,4 +1,5 @@
-const BASE_URL = "https://api.karmyskov-cinema.nomoredomains.work";
+//const BASE_URL = "https://api.karmyskov-cinema.nomoredomains.work";
+const BASE_URL = "http://localhost:3000";
 
 class Api {
   constructor({ url, headers }) {
@@ -43,6 +44,18 @@ class Api {
       headers: this.headers,
       credentials: "include",
     }).then((token) => this._checkStatus(token));
+  };
+
+  changeUserIngo = ({ name, email }) => {
+    return fetch(`${this.url}/users/me`, {
+      method: "PATCH",
+      headers: this.headers,
+      credentials: "include",
+      body: JSON.stringify({
+        name,
+        email,
+      }),
+    }).then((dataCard) => this._checkStatus(dataCard));
   };
 }
 

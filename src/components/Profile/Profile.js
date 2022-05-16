@@ -1,27 +1,38 @@
-import React, { useState } from "react";
+import React, { useContext, useState } from "react";
 import "./Profile.css";
+import { UserContext } from "../../context/UserContext";
 
 export const Profile = () => {
+  const userContext = useContext(UserContext);
+
   const [isDisable, setDisable] = useState(true);
+  const [dataForm, setDataForm] = useState({
+    userName: userContext.name,
+    userEmail: userContext.email,
+  });
 
   const handleDisable = (evt) => {
     evt.preventDefault();
     setDisable(!isDisable);
   };
+
+  const handleChangeForm = (evt) => setDataForm({ [evt.target.name]: evt.target.value });
+
   return (
     <div className="profile">
-      <p className="profile__title">Привет, Виталий!</p>
+      <p className="profile__title">{`Привет, ${userContext.name}!`}</p>
       <form className="profile__form">
         <div className="profile__row">
           <label className="profile__label" htmlFor="user-name">
             Имя
           </label>
           <input
-            onChange={() => console.log("user name")}
-            value={"Виталий"}
+            onChange={handleChangeForm}
+            value={dataForm.userName}
             className="profile__input"
             id="user-name"
             disabled={isDisable}
+            name="userName"
           />
         </div>
         <div className="profile__row">
@@ -29,11 +40,12 @@ export const Profile = () => {
             E-mail
           </label>
           <input
-            onChange={() => console.log("user email")}
-            value={"pochta@yandex.ru"}
+            onChange={handleChangeForm}
+            value={dataForm.userEmail}
             className="profile__input"
             id="user-email"
             disabled={isDisable}
+            name="userEmail"
           />
         </div>
         <button

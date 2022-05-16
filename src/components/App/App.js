@@ -51,6 +51,16 @@ export const App = () => {
       .catch((err) => console.log(err));
   };
 
+  const handleLogout = () => {
+    api
+      .logout()
+      .then(() => {
+        setLoggedIn(false);
+        setCurrentUser({});
+      })
+      .catch((err) => console.log(err));
+  };
+
   const handleChangeUserInfo = (data) => {
     api
       .changeUserIngo(data)
@@ -64,16 +74,20 @@ export const App = () => {
       .then(({ data }) => {
         setCurrentUser(data);
         setLoggedIn(true);
+        (location.pathname === "/" ||
+          location.pathname === "/sign-in" ||
+          location.pathname === "/sign-up") &&
+          navigate("/movies");
       })
       .catch((err) => {
         setLoggedIn(false);
         console.log(err);
         navigate("/");
       });
-  }, [navigate]);
+  }, [location.pathname, navigate]);
 
   useEffect(() => {
-    isLoginIn && checkToken();
+    checkToken();
   }, [checkToken, isLoginIn]);
 
   return (

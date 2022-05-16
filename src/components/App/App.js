@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useCallback, useEffect } from "react";
 import { Routes, Route, useLocation, useNavigate } from "react-router-dom";
 import "./App.css";
 import { Header } from "../Header";
@@ -48,6 +48,23 @@ export const App = () => {
       .then(() => navigate("/sign-in"))
       .catch((err) => console.log(err));
   };
+
+  const checkToken = useCallback(() => {
+    api
+      .getUserData()
+      .then((user) => {
+        setLoggedIn(true);
+        navigate("/");
+      })
+      .catch((err) => {
+        setLoggedIn(false);
+        console.log(err);
+      });
+  }, [navigate]);
+
+  useEffect(() => {
+    checkToken();
+  }, [checkToken, isLoginIn]);
 
   return (
     <div className="body">

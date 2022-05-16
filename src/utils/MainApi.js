@@ -17,6 +17,7 @@ class Api {
     return fetch(`${this.url}/signin`, {
       method: "POST",
       headers: this.headers,
+      credentials: "include",
       body: JSON.stringify({
         email,
         password,
@@ -28,6 +29,7 @@ class Api {
     return fetch(`${this.url}/signup`, {
       method: "POST",
       headers: this.headers,
+      credentials: "include",
       body: JSON.stringify({
         name,
         email,
@@ -35,6 +37,15 @@ class Api {
       }),
     }).then((dataCard) => this._checkStatus(dataCard));
   }
+
+  getUserData = () => {
+    return fetch(`${BASE_URL}/users/me`, {
+      headers: {
+        "Content-Type": "application/json",
+      },
+      credentials: "include",
+    }).then((token) => this._checkStatus(token));
+  };
 }
 
 export const api = new Api({

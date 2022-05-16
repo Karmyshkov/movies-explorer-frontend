@@ -3,17 +3,17 @@ import { Link } from "react-router-dom";
 import "./Login.css";
 
 export const Login = ({ onLogin }) => {
-  const [formData, setFormData] = useState({});
+  const [dataForm, setDataForm] = useState({});
 
   const handleChangeForm = (evt) =>
-    setFormData({ ...formData, [evt.target.name]: evt.target.value });
+    setDataForm({ ...dataForm, [evt.target.name]: evt.target.value });
 
   return (
     <form
       className="login"
       onSubmit={(evt) => {
         evt.preventDefault();
-        onLogin(formData);
+        onLogin(dataForm);
       }}
     >
       <label className="login__label">

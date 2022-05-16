@@ -3,17 +3,17 @@ import { Link } from "react-router-dom";
 import "./Register.css";
 
 export const Register = ({ onregister }) => {
-  const [formData, setFormData] = useState({});
+  const [dataForm, setDataForm] = useState({});
 
   const handleChangeForm = (evt) =>
-    setFormData({ ...formData, [evt.target.name]: evt.target.value });
+    setDataForm({ ...dataForm, [evt.target.name]: evt.target.value });
 
   return (
     <form
       className="register"
       onSubmit={(evt) => {
         evt.preventDefault();
-        onregister(formData);
+        onregister(dataForm);
       }}
     >
       <label className="register__label">

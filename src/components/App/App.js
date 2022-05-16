@@ -12,7 +12,7 @@ import { Profile } from "../Profile";
 import { NotFound } from "../NotFound";
 import { SavedMovies } from "../SavedMovies";
 import { ProtectedRoute } from "../ProtectedRoute";
-import { api } from "../../utils/MainApi";
+import { mainApi } from "../../utils/MainApi";
 
 export const App = () => {
   const location = useLocation();
@@ -35,7 +35,7 @@ export const App = () => {
   const navigate = useNavigate();
 
   const handleLogin = (data) => {
-    api
+    mainApi
       .login(data)
       .then(() => {
         setLoggedIn(true);
@@ -45,14 +45,14 @@ export const App = () => {
   };
 
   const handleRegister = (data) => {
-    api
+    mainApi
       .register(data)
       .then(() => navigate("/sign-in"))
       .catch((err) => console.log(err));
   };
 
   const handleLogout = () => {
-    api
+    mainApi
       .logout()
       .then(() => {
         setLoggedIn(false);
@@ -62,14 +62,14 @@ export const App = () => {
   };
 
   const handleChangeUserInfo = (data) => {
-    api
+    mainApi
       .changeUserIngo(data)
       .then((data) => console.log(data))
       .catch((err) => console.log(err));
   };
 
   const checkToken = useCallback(() => {
-    api
+    mainApi
       .getUserData()
       .then(({ data }) => {
         setCurrentUser(data);
@@ -87,7 +87,7 @@ export const App = () => {
   }, [location.pathname, navigate]);
 
   useEffect(() => {
-    checkToken();
+    isLoginIn && checkToken();
   }, [checkToken, isLoginIn]);
 
   return (

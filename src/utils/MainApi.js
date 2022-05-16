@@ -1,7 +1,7 @@
 //const BASE_URL = "https://api.karmyskov-cinema.nomoredomains.work";
 const BASE_URL = "http://localhost:3000";
 
-class Api {
+class MainApi {
   constructor({ url, headers }) {
     this.url = url;
     this.headers = headers;
@@ -68,7 +68,7 @@ class Api {
   };
 }
 
-export const api = new Api({
+export const mainApi = new MainApi({
   url: BASE_URL,
   headers: {
     "Content-Type": "application/json",

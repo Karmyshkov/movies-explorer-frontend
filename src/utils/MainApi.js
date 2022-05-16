@@ -39,6 +39,15 @@ class Api {
     }).then((dataCard) => this._checkStatus(dataCard));
   }
 
+  logout = () => {
+    return fetch(`${BASE_URL}/signout`, {
+      headers: {
+        "Content-Type": "application/json",
+      },
+      credentials: "include",
+    }).then((res) => this._checkStatus(res));
+  };
+
   getUserData = () => {
     return fetch(`${BASE_URL}/users/me`, {
       headers: this.headers,

@@ -52,18 +52,18 @@ export const App = () => {
   const checkToken = useCallback(() => {
     api
       .getUserData()
-      .then((user) => {
+      .then(() => {
         setLoggedIn(true);
-        navigate("/");
       })
       .catch((err) => {
         setLoggedIn(false);
         console.log(err);
+        navigate("/");
       });
   }, [navigate]);
 
   useEffect(() => {
-    checkToken();
+    isLoginIn && checkToken();
   }, [checkToken, isLoginIn]);
 
   return (

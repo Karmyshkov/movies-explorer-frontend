@@ -40,9 +40,7 @@ class Api {
 
   getUserData = () => {
     return fetch(`${BASE_URL}/users/me`, {
-      headers: {
-        "Content-Type": "application/json",
-      },
+      headers: this.headers,
       credentials: "include",
     }).then((token) => this._checkStatus(token));
   };

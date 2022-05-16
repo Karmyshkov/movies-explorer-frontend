@@ -2,37 +2,36 @@ import React, { useContext, useState } from "react";
 import "./Profile.css";
 import { UserContext } from "../../context/UserContext";
 
-export const Profile = () => {
+export const Profile = ({ onChangeUserInfo }) => {
   const userContext = useContext(UserContext);
 
-  const [isDisable, setDisable] = useState(true);
   const [dataForm, setDataForm] = useState({
-    userName: userContext.name,
-    userEmail: userContext.email,
+    name: userContext.name,
+    email: userContext.email,
   });
-
-  const handleDisable = (evt) => {
-    evt.preventDefault();
-    setDisable(!isDisable);
-  };
 
   const handleChangeForm = (evt) => setDataForm({ [evt.target.name]: evt.target.value });
 
   return (
     <div className="profile">
       <p className="profile__title">{`Привет, ${userContext.name}!`}</p>
-      <form className="profile__form">
+      <form
+        className="profile__form"
+        onSubmit={(evt) => {
+          evt.preventDefault();
+          onChangeUserInfo(dataForm);
+        }}
+      >
         <div className="profile__row">
           <label className="profile__label" htmlFor="user-name">
             Имя
           </label>
           <input
             onChange={handleChangeForm}
-            value={dataForm.userName}
+            value={dataForm.name}
             className="profile__input"
             id="user-name"
-            disabled={isDisable}
-            name="userName"
+            name="name"
           />
         </div>
         <div className="profile__row">
@@ -41,19 +40,14 @@ export const Profile = () => {
           </label>
           <input
             onChange={handleChangeForm}
-            value={dataForm.userEmail}
+            value={dataForm.email}
             className="profile__input"
             id="user-email"
-            disabled={isDisable}
-            name="userEmail"
+            name="email"
           />
         </div>
-        <button
-          onClick={handleDisable}
-          className="profile__btn"
-          type={`${isDisable ? "button" : "submit"}`}
-        >
-          {isDisable ? "Редактировать" : "Сохранить"}
+        <button className="profile__btn" type="submit">
+          Редактировать
         </button>
         <button className="profile__btn profile__btn_color_red" type="submit">
           Выйти из аккаунта

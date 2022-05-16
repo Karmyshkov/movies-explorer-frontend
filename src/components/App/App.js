@@ -51,6 +51,13 @@ export const App = () => {
       .catch((err) => console.log(err));
   };
 
+  const handleChangeUserInfo = (data) => {
+    api
+      .changeUserIngo(data)
+      .then((data) => console.log(data))
+      .catch((err) => console.log(err));
+  };
+
   const checkToken = useCallback(() => {
     api
       .getUserData()
@@ -86,7 +93,11 @@ export const App = () => {
             <Route isLoginIn={isLoginIn} path="/saved-movies" element={<SavedMovies />} />
           </Route>
           <Route exact path="/profile" element={<ProtectedRoute isLoginIn={isLoginIn} />}>
-            <Route isLoginIn={isLoginIn} path="/profile" element={<Profile />} />
+            <Route
+              isLoginIn={isLoginIn}
+              path="/profile"
+              element={<Profile onChangeUserInfo={handleChangeUserInfo} />}
+            />
           </Route>
           <Route path="/sign-in" element={<Login onLogin={handleLogin} />} />
           <Route path="/sign-up" element={<Register onregister={handleRegister} />} />

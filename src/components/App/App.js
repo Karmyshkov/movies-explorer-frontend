@@ -110,7 +110,12 @@ export const App = () => {
             <Route
               isLoginIn={isLoginIn}
               path="/profile"
-              element={<Profile onChangeUserInfo={handleChangeUserInfo} />}
+              element={
+                <Profile
+                  onChangeUserInfo={handleChangeUserInfo}
+                  onLogout={handleLogout}
+                />
+              }
             />
           </Route>
           <Route path="/sign-in" element={<Login onLogin={handleLogin} />} />

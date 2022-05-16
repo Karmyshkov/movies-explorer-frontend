@@ -2,7 +2,7 @@ import React, { useContext, useState } from "react";
 import "./Profile.css";
 import { UserContext } from "../../context/UserContext";
 
-export const Profile = ({ onChangeUserInfo }) => {
+export const Profile = ({ onChangeUserInfo, onLogout }) => {
   const userContext = useContext(UserContext);
 
   const [dataForm, setDataForm] = useState({
@@ -49,7 +49,11 @@ export const Profile = ({ onChangeUserInfo }) => {
         <button className="profile__btn" type="submit">
           Редактировать
         </button>
-        <button className="profile__btn profile__btn_color_red" type="submit">
+        <button
+          onClick={onLogout}
+          className="profile__btn profile__btn_color_red"
+          type="button"
+        >
           Выйти из аккаунта
         </button>
       </form>

@@ -2,8 +2,9 @@ import React from "react";
 import { useLocation } from "react-router-dom";
 import "./MoviesCard.css";
 import closeIcon from "../../images/icons/close.svg";
+import { BEATFILM_URL } from "../../utils/constants";
 
-export const MoviesCard = ({ img, alt, title, time, isSaved }) => {
+export const MoviesCard = ({ movie, isSaved }) => {
   const location = useLocation();
   const isMovies = location.pathname === "/movies";
   return (
@@ -12,11 +13,15 @@ export const MoviesCard = ({ img, alt, title, time, isSaved }) => {
         isMovies === true && isSaved ? "movies-card__item_saved" : ""
       }`}
     >
-      <img className="movies-card__img" src={img} alt={alt} />
+      <img
+        className="movies-card__img"
+        src={`${BEATFILM_URL}${movie.image.url}`}
+        alt={`Обложка фильма ${movie.nameRU}`}
+      />
       <div className="movies-card__inner">
-        <h3 className="movies-card__title">{title}</h3>
+        <h3 className="movies-card__title">{movie.nameRU}</h3>
 
-        <p className="movies-card__time">{time}</p>
+        <p className="movies-card__time">{movie.duration}</p>
       </div>
       {isMovies ? (
         <p className="movies-card__text">Сохранить</p>

@@ -13,6 +13,7 @@ import { NotFound } from "../NotFound";
 import { SavedMovies } from "../SavedMovies";
 import { ProtectedRoute } from "../ProtectedRoute";
 import { mainApi } from "../../utils/MainApi";
+import { moviesApi } from "../../utils/MoviesApi";
 
 export const App = () => {
   const location = useLocation();
@@ -31,6 +32,9 @@ export const App = () => {
 
   const [isLoginIn, setLoggedIn] = useState(false);
   const [currentUser, setCurrentUser] = useState({});
+  const [cards, setCards] = useState([]);
+  const [isFilteredMovie, setFilteredMovie] = useState(false);
+  const [searchMovie, setSerchMovie] = useState("");
 
   const navigate = useNavigate();
 
@@ -87,8 +91,23 @@ export const App = () => {
   }, [location.pathname, navigate]);
 
   useEffect(() => {
-    isLoginIn && checkToken();
+    checkToken();
   }, [checkToken, isLoginIn]);
+
+  //movies
+
+  useEffect(() => {
+    if (isLoginIn) {
+      moviesApi
+        .getMovies()
+        .then((dataCard) => setCards(dataCard))
+        .catch((err) => console.log(err));
+    }
+  }, [isLoginIn]);
+
+  const handleFilteredMovie = () => setFilteredMovie(!isFilteredMovie);
+
+  const handleSerchMovie = (word) => setSerchMovie(word);
 
   return (
     <div className="body">
@@ -97,7 +116,18 @@ export const App = () => {
         <Routes>
           <Route path="/" element={<Main />} />
           <Route exact path="/movies" element={<ProtectedRoute isLoginIn={isLoginIn} />}>
-            <Route path="/movies" element={<Movies />} />
+            <Route
+              path="/movies"
+              element={
+                <Movies
+                  cards={cards}
+                  isFilteredMovie={isFilteredMovie}
+                  onFilteredMovie={handleFilteredMovie}
+                  searchMovie={searchMovie}
+                  onSerchMovie={handleSerchMovie}
+                />
+              }
+            />
           </Route>
           <Route
             exact

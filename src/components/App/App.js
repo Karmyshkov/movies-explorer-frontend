@@ -35,6 +35,7 @@ export const App = () => {
   const [cards, setCards] = useState([]);
   const [isFilteredMovie, setFilteredMovie] = useState(false);
   const [searchMovie, setSerchMovie] = useState("");
+  const [errorSearchMovie, setErrorSearchMovie] = useState("");
 
   const navigate = useNavigate();
 
@@ -109,6 +110,9 @@ export const App = () => {
         setCards(cards);
         localStorage.setItem("cards", JSON.stringify(cards));
         localStorage.setItem("statusFilter", isFilteredMovie);
+        cards.length === 0
+          ? setErrorSearchMovie("Ничего не найдено")
+          : setErrorSearchMovie("");
       })
       .catch((err) => console.log(err));
   };
@@ -130,6 +134,7 @@ export const App = () => {
                   searchMovie={searchMovie}
                   onSerchMovie={handleSerchMovie}
                   onSubmitSearcMovie={handleSubmitSearcMovie}
+                  errorSearchMovie={errorSearchMovie}
                 />
               }
             />

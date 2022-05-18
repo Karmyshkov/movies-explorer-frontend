@@ -3,7 +3,7 @@ import { useLocation } from "react-router-dom";
 import "./MoviesCardList.css";
 import { MoviesCard } from "../MoviesCard";
 
-export const MoviesCardList = ({ cards }) => {
+export const MoviesCardList = ({ cards, errorSearchMovie }) => {
   const location = useLocation();
   const isMoviesPage = location.pathname === "/movies";
 
@@ -12,6 +12,7 @@ export const MoviesCardList = ({ cards }) => {
   return (
     <>
       <ul className="movies-card-list">
+        {errorSearchMovie && <p className="movies-card-list__text">{errorSearchMovie}</p>}
         {isMoviesPage
           ? cards.map((movie) => (
               <MoviesCard key={movie.id} isSaved={isSaved} movie={movie} />
@@ -22,7 +23,7 @@ export const MoviesCardList = ({ cards }) => {
                 <MoviesCard key={movie.id} isSaved={isSaved} movie={movie} />
               ))}
       </ul>
-      {isMoviesPage && (
+      {Boolean(errorSearchMovie) !== true && isMoviesPage && (
         <button className="movies-card-list__btn" type="button">
           Ещё
         </button>

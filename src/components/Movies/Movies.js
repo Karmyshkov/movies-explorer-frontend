@@ -10,6 +10,7 @@ export const Movies = ({
   searchMovie,
   onSerchMovie,
   onSubmitSearcMovie,
+  errorSearchMovie,
 }) => {
   return (
     <>
@@ -21,9 +22,15 @@ export const Movies = ({
       <FilterCheckbox
         isFilteredMovie={isFilteredMovie}
         onFilteredMovie={onFilteredMovie}
-        isNotCards={cards.length === 0}
+        isNotCards={cards.length === 0 && Boolean(errorSearchMovie) !== true}
       />
-      {cards.length !== 0 && <MoviesCardList cards={cards} />}
+      {Boolean(errorSearchMovie) === true ? (
+        <MoviesCardList cards={cards} errorSearchMovie={errorSearchMovie} />
+      ) : (
+        cards.length !== 0 && (
+          <MoviesCardList cards={cards} errorSearchMovie={errorSearchMovie} />
+        )
+      )}
     </>
   );
 };

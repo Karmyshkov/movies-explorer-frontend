@@ -93,7 +93,7 @@ export const App = () => {
   useEffect(() => {
     checkToken();
     setCards(JSON.parse(localStorage.getItem("cards")));
-    setFilteredMovie(localStorage.getItem("statusFilter"));
+    setFilteredMovie(Boolean(localStorage.getItem("statusFilter")));
   }, [checkToken, isLoginIn]);
 
   //movies

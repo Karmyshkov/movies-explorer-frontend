@@ -33,6 +33,7 @@ export const App = () => {
   const [isLoginIn, setLoggedIn] = useState(false);
   const [currentUser, setCurrentUser] = useState({});
   const [cards, setCards] = useState([]);
+  const [filteredCards, setFilteredCards] = useState([]);
   const [isFilteredMovie, setFilteredMovie] = useState(false);
   const [searchMovie, setSerchMovie] = useState("");
   const [errorSearchMovie, setErrorSearchMovie] = useState("");
@@ -101,13 +102,14 @@ export const App = () => {
   //movies
 
   useEffect(() => {
-    moviesApi
-      .getMovie(searchMovie)
-      .then((cards) => {
-        setCards(cards);
-      })
-      .catch((err) => console.log(err));
-  }, [searchMovie]);
+    cards.length === 0 &&
+      moviesApi
+        .getMovie(searchMovie)
+        .then((cards) => {
+          setCards(cards);
+        })
+        .catch((err) => console.log(err));
+  }, [cards.length, searchMovie]);
 
   const handleFilteredMovie = () => setFilteredMovie(!isFilteredMovie);
 
@@ -129,8 +131,8 @@ export const App = () => {
     findedMovies.length === 0
       ? setErrorSearchMovie("Ничего не найдено")
       : setErrorSearchMovie("");
-    setCards(findedMovies);
-    setShowCards(true);
+    setFilteredCards(findedMovies);
+    findedMovies.length > 0 && setShowCards(true);
   };
 
   return (
@@ -144,7 +146,7 @@ export const App = () => {
               path="/movies"
               element={
                 <Movies
-                  cards={cards}
+                  cards={filteredCards}
                   isFilteredMovie={isFilteredMovie}
                   onFilteredMovie={handleFilteredMovie}
                   searchMovie={searchMovie}

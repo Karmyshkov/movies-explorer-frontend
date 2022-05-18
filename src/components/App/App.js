@@ -96,18 +96,16 @@ export const App = () => {
 
   //movies
 
-  useEffect(() => {
-    if (isLoginIn) {
-      moviesApi
-        .getMovies()
-        .then((dataCard) => setCards(dataCard))
-        .catch((err) => console.log(err));
-    }
-  }, [isLoginIn]);
-
   const handleFilteredMovie = () => setFilteredMovie(!isFilteredMovie);
 
   const handleSerchMovie = (word) => setSerchMovie(word);
+
+  const handleSubmitSearcMovie = () => {
+    moviesApi
+      .searchMovie(searchMovie)
+      .then((dataCard) => setCards(dataCard))
+      .catch((err) => console.log(err));
+  };
 
   return (
     <div className="body">
@@ -125,6 +123,7 @@ export const App = () => {
                   onFilteredMovie={handleFilteredMovie}
                   searchMovie={searchMovie}
                   onSerchMovie={handleSerchMovie}
+                  onSubmitSearcMovie={handleSubmitSearcMovie}
                 />
               }
             />

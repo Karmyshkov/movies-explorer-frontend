@@ -2,12 +2,18 @@ import React from "react";
 import "./SearchForm.css";
 import searchIcon from "../../images/icons/search.svg";
 
-export const SearchForm = ({ searchMovie, onSerchMovie }) => {
+export const SearchForm = ({ searchMovie, onSerchMovie, onSubmitSearcMovie }) => {
   return (
-    <form className="search-form">
+    <form
+      className="search-form"
+      onSubmit={(evt) => {
+        evt.preventDefault();
+        onSubmitSearcMovie(searchMovie);
+      }}
+    >
       <label className="search-form__label">
         <input
-          onChange={onSerchMovie}
+          onChange={(evt) => onSerchMovie(evt.target.value)}
           value={searchMovie}
           className="search-form__input"
           placeholder="Фильм"

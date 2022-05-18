@@ -5,7 +5,7 @@ export const FilterCheckbox = ({ isFilteredMovie, onFilteredMovie }) => {
   return (
     <div className="filter-checkbox">
       <input
-        onClick={onFilteredMovie}
+        onChange={onFilteredMovie}
         className="filter-checkbox__input"
         type="checkbox"
         id="checkbox"

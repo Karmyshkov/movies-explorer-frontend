@@ -9,15 +9,20 @@ export const Movies = ({
   onFilteredMovie,
   searchMovie,
   onSerchMovie,
+  onSubmitSearcMovie,
 }) => {
   return (
     <>
-      <SearchForm searchMovie={searchMovie} onSerchMovie={onSerchMovie} />
+      <SearchForm
+        searchMovie={searchMovie}
+        onSerchMovie={onSerchMovie}
+        onSubmitSearcMovie={onSubmitSearcMovie}
+      />
       <FilterCheckbox
         isFilteredMovie={isFilteredMovie}
         onFilteredMovie={onFilteredMovie}
       />
-      {searchMovie.length !== 0 && <MoviesCardList cards={cards} />}
+      {cards.length !== 0 && <MoviesCardList cards={cards} />}
     </>
   );
 };

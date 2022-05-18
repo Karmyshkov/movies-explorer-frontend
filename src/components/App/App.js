@@ -92,6 +92,8 @@ export const App = () => {
 
   useEffect(() => {
     checkToken();
+    setCards(JSON.parse(localStorage.getItem("cards")));
+    setFilteredMovie(localStorage.getItem("statusFilter"));
   }, [checkToken, isLoginIn]);
 
   //movies
@@ -103,7 +105,11 @@ export const App = () => {
   const handleSubmitSearcMovie = () => {
     moviesApi
       .searchMovie(searchMovie)
-      .then((dataCard) => setCards(dataCard))
+      .then((cards) => {
+        setCards(cards);
+        localStorage.setItem("cards", JSON.stringify(cards));
+        localStorage.setItem("statusFilter", isFilteredMovie);
+      })
       .catch((err) => console.log(err));
   };
 

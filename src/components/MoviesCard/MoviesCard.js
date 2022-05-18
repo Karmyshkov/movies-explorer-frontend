@@ -1,10 +1,10 @@
-import React from "react";
+import React, { memo } from "react";
 import { useLocation } from "react-router-dom";
 import "./MoviesCard.css";
 import closeIcon from "../../images/icons/close.svg";
 import { BEATFILM_URL } from "../../utils/constants";
 
-export const MoviesCard = ({ movie, isSaved }) => {
+export const MoviesCard = memo(({ movie, isSaved }) => {
   const location = useLocation();
   const isMovies = location.pathname === "/movies";
   return (
@@ -36,4 +36,4 @@ export const MoviesCard = ({ movie, isSaved }) => {
       )}
     </li>
   );
-};
+});

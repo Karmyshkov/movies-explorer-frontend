@@ -1,8 +1,8 @@
-import React from "react";
+import React, { memo } from "react";
 import { Link } from "react-router-dom";
 import "./NavTab.css";
 
-export const NavTab = () => {
+export const NavTab = memo(() => {
   return (
     <ul className="navtab">
       <li className="navtab__item">
@@ -22,4 +22,4 @@ export const NavTab = () => {
       </li>
     </ul>
   );
-};
+});

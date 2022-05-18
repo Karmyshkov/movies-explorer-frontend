@@ -1,8 +1,8 @@
-import React from "react";
+import React, { memo } from "react";
 import "./SearchForm.css";
 import searchIcon from "../../images/icons/search.svg";
 
-export const SearchForm = ({ searchMovie, onSerchMovie, onSubmitSearcMovie }) => {
+export const SearchForm = memo(({ searchMovie, onSerchMovie, onSubmitSearcMovie }) => {
   return (
     <form
       className="search-form"
@@ -24,4 +24,4 @@ export const SearchForm = ({ searchMovie, onSerchMovie, onSubmitSearcMovie }) =>
       <button className="search-form__btn" type="submit" aria-label="Поиск" />
     </form>
   );
-};
+});

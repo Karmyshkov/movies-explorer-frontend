@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { memo, useState } from "react";
 import { Link, NavLink, useLocation } from "react-router-dom";
 import "./Header.css";
 import logo from "../../images/icons/logo.svg";
@@ -6,7 +6,7 @@ import user from "../../images/icons/user.svg";
 import burger from "../../images/icons/burger.svg";
 import close from "../../images/icons/close.svg";
 
-export const Header = () => {
+export const Header = memo(() => {
   const [isOpenMenu, setOpenMenu] = useState(false);
 
   const location = useLocation();
@@ -147,4 +147,4 @@ export const Header = () => {
       {renderElements()}
     </header>
   );
-};
+});

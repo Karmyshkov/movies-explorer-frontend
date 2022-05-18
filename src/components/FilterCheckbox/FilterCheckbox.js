@@ -1,7 +1,7 @@
-import React from "react";
+import React, { memo } from "react";
 import "./FilterCheckbox.css";
 
-export const FilterCheckbox = ({ isFilteredMovie, onFilteredMovie, isNotCards }) => {
+export const FilterCheckbox = memo(({ isFilteredMovie, onFilteredMovie, isNotCards }) => {
   return (
     <div
       className={`filter-checkbox ${isNotCards ? "filter-checkbox_full-container" : ""}`}
@@ -18,4 +18,4 @@ export const FilterCheckbox = ({ isFilteredMovie, onFilteredMovie, isNotCards })
       </label>
     </div>
   );
-};
+});

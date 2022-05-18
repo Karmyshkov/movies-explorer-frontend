@@ -1,6 +1,6 @@
 import React from "react";
-import { Link } from "react-router-dom";
 import "./Footer.css";
+import { Navigation } from "../Navigation";
 
 export const Footer = () => {
   return (
@@ -12,25 +12,7 @@ export const Footer = () => {
             <p className="footer__text footer__text_copirate">2020</p>
           </li>
           <li className="footer__column">
-            <nav className="footer__menu">
-              <ul className="footer__list">
-                <li className="footer__item">
-                  <Link to="/" target="_blank" className="footer__link">
-                    Яндекс.Практикум
-                  </Link>
-                </li>
-                <li className="footer__item">
-                  <Link to="/" target="_blank" className="footer__link">
-                    Github
-                  </Link>
-                </li>
-                <li className="footer__item">
-                  <Link to="/" target="_blank" className="footer__link">
-                    Facebook
-                  </Link>
-                </li>
-              </ul>
-            </nav>
+            <Navigation />
           </li>
         </ul>
       </div>

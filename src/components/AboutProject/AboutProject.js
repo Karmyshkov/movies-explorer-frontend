@@ -1,7 +1,7 @@
-import React from "react";
+import React, { memo } from "react";
 import "./AboutProject.css";
 
-export const AboutProject = () => {
+export const AboutProject = memo(() => {
   return (
     <div className="about-project">
       <h2 className="about-project__title">О проекте</h2>
@@ -29,4 +29,4 @@ export const AboutProject = () => {
       </ul>
     </div>
   );
-};
+});

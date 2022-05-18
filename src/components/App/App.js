@@ -36,6 +36,7 @@ export const App = () => {
   const [isFilteredMovie, setFilteredMovie] = useState(false);
   const [searchMovie, setSerchMovie] = useState("");
   const [errorSearchMovie, setErrorSearchMovie] = useState("");
+  const [isShowCards, setShowCards] = useState(false);
 
   const navigate = useNavigate();
 
@@ -99,22 +100,37 @@ export const App = () => {
 
   //movies
 
+  useEffect(() => {
+    moviesApi
+      .getMovie(searchMovie)
+      .then((cards) => {
+        setCards(cards);
+      })
+      .catch((err) => console.log(err));
+  }, [searchMovie]);
+
   const handleFilteredMovie = () => setFilteredMovie(!isFilteredMovie);
 
   const handleSerchMovie = (word) => setSerchMovie(word);
 
-  const handleSubmitSearcMovie = () => {
-    moviesApi
-      .searchMovie(searchMovie)
-      .then((cards) => {
-        setCards(cards);
-        localStorage.setItem("cards", JSON.stringify(cards));
-        localStorage.setItem("statusFilter", isFilteredMovie);
-        cards.length === 0
-          ? setErrorSearchMovie("Ничего не найдено")
-          : setErrorSearchMovie("");
-      })
-      .catch((err) => console.log(err));
+  const handleSubmitSearcMovie = (nameMovie) => {
+    const regexp = new RegExp(nameMovie, "gi");
+    const findedMovies = cards
+      .filter(
+        (movie) =>
+          regexp.test(movie.nameRU) ||
+          regexp.test(movie.nameEN) ||
+          regexp.test(movie.country) ||
+          regexp.test(movie.year)
+      )
+      .filter((movie) => (isFilteredMovie ? movie.duration < 70 : movie.duration >= 70));
+    localStorage.setItem("cards", JSON.stringify(findedMovies));
+    localStorage.setItem("statusFilter", isFilteredMovie);
+    findedMovies.length === 0
+      ? setErrorSearchMovie("Ничего не найдено")
+      : setErrorSearchMovie("");
+    setCards(findedMovies);
+    setShowCards(true);
   };
 
   return (
@@ -135,6 +151,7 @@ export const App = () => {
                   onSerchMovie={handleSerchMovie}
                   onSubmitSearcMovie={handleSubmitSearcMovie}
                   errorSearchMovie={errorSearchMovie}
+                  isShowCards={isShowCards}
                 />
               }
             />

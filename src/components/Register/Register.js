@@ -1,8 +1,8 @@
-import React, { useState } from "react";
+import React, { memo, useState } from "react";
 import { Link } from "react-router-dom";
 import "./Register.css";
 
-export const Register = ({ onregister }) => {
+export const Register = memo(({ onregister }) => {
   const [dataForm, setDataForm] = useState({});
 
   const handleChangeForm = (evt) =>
@@ -45,4 +45,4 @@ export const Register = ({ onregister }) => {
       </p>
     </form>
   );
-};
+});

@@ -1,8 +1,8 @@
-import React, { useContext, useState } from "react";
+import React, { memo, useContext, useState } from "react";
 import "./Profile.css";
 import { UserContext } from "../../context/UserContext";
 
-export const Profile = ({ onChangeUserInfo, onLogout }) => {
+export const Profile = memo(({ onChangeUserInfo, onLogout }) => {
   const userContext = useContext(UserContext);
 
   const [dataForm, setDataForm] = useState({
@@ -59,4 +59,4 @@ export const Profile = ({ onChangeUserInfo, onLogout }) => {
       </form>
     </div>
   );
-};
+});

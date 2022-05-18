@@ -13,8 +13,10 @@ class MoviesApi {
     return Promise.reject(`Error: ${res.status}`);
   }
 
-  getMovies() {
-    return fetch(`${this.url}`).then((dataCards) => this._checkStatus(dataCards));
+  searchMovie(countryMovie) {
+    return fetch(`${this.url}?country=${countryMovie}`).then((dataCards) =>
+      this._checkStatus(dataCards)
+    );
   }
 }
 

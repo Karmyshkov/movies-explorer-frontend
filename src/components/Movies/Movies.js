@@ -1,4 +1,5 @@
 import React, { memo } from "react";
+import "./Movies.css";
 import { SearchForm } from "../SearchForm";
 import { FilterCheckbox } from "../FilterCheckbox";
 import { MoviesCardList } from "../MoviesCardList";
@@ -15,7 +16,7 @@ export const Movies = memo(
     isShowCards,
   }) => {
     return (
-      <>
+      <div className="movies">
         <SearchForm
           searchMovie={searchMovie}
           onSerchMovie={onSerchMovie}
@@ -26,10 +27,14 @@ export const Movies = memo(
           onFilteredMovie={onFilteredMovie}
           isNotCards={Boolean(errorSearchMovie) !== true}
         />
-        {isShowCards && (
-          <MoviesCardList cards={cards} errorSearchMovie={errorSearchMovie} />
+        {errorSearchMovie ? (
+          <p className="movies__text">{errorSearchMovie}</p>
+        ) : (
+          isShowCards && (
+            <MoviesCardList cards={cards} errorSearchMovie={errorSearchMovie} />
+          )
         )}
-      </>
+      </div>
     );
   }
 );

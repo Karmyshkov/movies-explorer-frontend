@@ -12,7 +12,6 @@ export const MoviesCardList = memo(({ cards, errorSearchMovie }) => {
   return (
     <>
       <ul className="movies-card-list">
-        {errorSearchMovie && <p className="movies-card-list__text">{errorSearchMovie}</p>}
         {isMoviesPage
           ? cards?.map((movie) => (
               <MoviesCard key={movie.id} isSaved={isSaved} movie={movie} />

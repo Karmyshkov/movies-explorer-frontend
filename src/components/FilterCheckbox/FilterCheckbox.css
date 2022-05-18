@@ -59,6 +59,11 @@
   left: 18px;
 }
 
+.filter-checkbox_full-container {
+  flex-grow: 1;
+  align-items: flex-start;
+}
+
 @media screen and (max-width: 768px) {
   .filter-checkbox {
     margin-bottom: 62px;

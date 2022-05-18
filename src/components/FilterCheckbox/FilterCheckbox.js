@@ -1,9 +1,11 @@
 import React from "react";
 import "./FilterCheckbox.css";
 
-export const FilterCheckbox = ({ isFilteredMovie, onFilteredMovie }) => {
+export const FilterCheckbox = ({ isFilteredMovie, onFilteredMovie, isNotCards }) => {
   return (
-    <div className="filter-checkbox">
+    <div
+      className={`filter-checkbox ${isNotCards ? "filter-checkbox_full-container" : ""}`}
+    >
       <input
         onChange={onFilteredMovie}
         className="filter-checkbox__input"

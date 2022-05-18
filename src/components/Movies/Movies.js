@@ -21,6 +21,7 @@ export const Movies = ({
       <FilterCheckbox
         isFilteredMovie={isFilteredMovie}
         onFilteredMovie={onFilteredMovie}
+        isNotCards={cards.length === 0}
       />
       {cards.length !== 0 && <MoviesCardList cards={cards} />}
     </>

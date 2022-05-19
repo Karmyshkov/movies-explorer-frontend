@@ -19,12 +19,21 @@ export const MoviesCard = memo(({ movie, isSaved }) => {
         alt={`Обложка фильма ${movie.nameRU}`}
       />
       <div className="movies-card__inner">
-        <h3 className="movies-card__title">{movie.nameRU}</h3>
+        <a
+          href={movie.trailerLink ? movie.trailerLink : "/"}
+          className="movies-card__link"
+          target="_blank"
+          rel="noreferrer noopener"
+        >
+          {movie.nameRU}
+        </a>
 
         <p className="movies-card__time">{movie.duration}</p>
       </div>
       {isMovies ? (
-        <p className="movies-card__text">Сохранить</p>
+        <button className="movies-card__btn-save" type="button">
+          Сохранить
+        </button>
       ) : (
         <button
           className="movies-card__btn"

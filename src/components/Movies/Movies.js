@@ -14,6 +14,7 @@ export const Movies = memo(
     onSubmitSearcMovie,
     errorSearchMovie,
     isShowCards,
+    limitCards,
   }) => {
     return (
       <div className="movies">
@@ -31,7 +32,11 @@ export const Movies = memo(
           <p className="movies__text">{errorSearchMovie}</p>
         ) : (
           isShowCards && (
-            <MoviesCardList cards={cards} errorSearchMovie={errorSearchMovie} />
+            <MoviesCardList
+              cards={cards}
+              errorSearchMovie={errorSearchMovie}
+              limitCards={limitCards}
+            />
           )
         )}
       </div>

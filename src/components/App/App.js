@@ -1,4 +1,4 @@
-import React, { useState, useCallback, useEffect } from "react";
+import React, { useState, useCallback, useEffect, useRef } from "react";
 import { Routes, Route, useLocation, useNavigate } from "react-router-dom";
 import "./App.css";
 import { UserContext } from "../../context/UserContext";
@@ -40,6 +40,15 @@ export const App = () => {
   const [isShowCards, setShowCards] = useState(false);
 
   const navigate = useNavigate();
+
+  const limitCards = useRef();
+
+  limitCards.current =
+    window.innerWidth <= 1980 && window.innerWidth > 1240
+      ? 3
+      : window.innerWidth <= 1240 && window.innerWidth > 692
+      ? 2
+      : 2;
 
   const handleLogin = (data) => {
     mainApi
@@ -154,6 +163,7 @@ export const App = () => {
                   onSubmitSearcMovie={handleSubmitSearcMovie}
                   errorSearchMovie={errorSearchMovie}
                   isShowCards={isShowCards}
+                  limitCards={limitCards.current}
                 />
               }
             />

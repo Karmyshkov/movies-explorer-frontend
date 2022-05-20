@@ -147,10 +147,7 @@ export const App = () => {
   };
 
   const handleSaveMovie = (movie) =>
-    mainApi
-      .saveMovie(movie)
-      .then((movie) => console.log(movie))
-      .catch((err) => console.log(err));
+    mainApi.saveMovie(movie).catch((err) => console.log(err));
 
   useEffect(() => {
     if (isLoginIn) {

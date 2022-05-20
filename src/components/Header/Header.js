@@ -67,7 +67,10 @@ export const Header = memo(() => {
               </li>
               <li className="header__row">
                 <NavLink
-                  onClick={() => setOpenMenu(false)}
+                  onClick={() => {
+                    setOpenMenu(false);
+                    document.body.style.overflow = "auto";
+                  }}
                   to="/saved-movies"
                   className={setActiveLink}
                 >

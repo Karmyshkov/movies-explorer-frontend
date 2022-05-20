@@ -32,6 +32,9 @@ export const MoviesCardList = memo(
     const renderBtn =
       Boolean(errorSearchMovie) !== true && cards.length !== filteredCards.length;
 
+    console.log(cards);
+    console.log(renderBtn);
+
     return (
       <>
         <ul className="movies-card-list">

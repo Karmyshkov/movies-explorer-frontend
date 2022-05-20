@@ -75,6 +75,12 @@ class MainApi {
       body: JSON.stringify(movie),
     }).then((dataCard) => this._checkStatus(dataCard));
   }
+
+  getSavedMovies() {
+    return fetch(`${this.url}${"/movies"}`, { credentials: "include" }).then(
+      (dataCards) => this._checkStatus(dataCards)
+    );
+  }
 }
 
 export const mainApi = new MainApi({

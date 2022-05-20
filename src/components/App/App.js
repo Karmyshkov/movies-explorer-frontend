@@ -34,6 +34,7 @@ export const App = () => {
   const [currentUser, setCurrentUser] = useState({});
   const [cards, setCards] = useState([]);
   const [filteredCards, setFilteredCards] = useState([]);
+  const [savedCards, setSavedCards] = useState([]);
   const [isShortFilm, setShortFilm] = useState(false);
   const [searchMovie, setSerchMovie] = useState("");
   const [errorSearchMovie, setErrorSearchMovie] = useState("");
@@ -98,9 +99,9 @@ export const App = () => {
       .catch((err) => {
         setLoggedIn(false);
         console.log(err);
-        navigate("/");
+        isLoginIn && navigate("/");
       });
-  }, [location.pathname, navigate]);
+  }, [navigate, isLoginIn, location.pathname]);
 
   useEffect(() => {
     checkToken();
@@ -111,14 +112,15 @@ export const App = () => {
   //movies
 
   useEffect(() => {
-    cards.length === 0 &&
+    isLoginIn &&
+      cards?.length === 0 &&
       moviesApi
         .getMovie(searchMovie)
         .then((cards) => {
           setCards(cards);
         })
         .catch((err) => console.log(err));
-  }, [cards.length, searchMovie]);
+  }, [cards?.length, searchMovie, isLoginIn]);
 
   const handleShortFilm = () => setShortFilm(!isShortFilm);
 
@@ -149,6 +151,17 @@ export const App = () => {
       .saveMovie(movie)
       .then((movie) => console.log(movie))
       .catch((err) => console.log(err));
+
+  useEffect(() => {
+    if (isLoginIn) {
+      mainApi
+        .getSavedMovies()
+        .then((cards) => {
+          setSavedCards(cards);
+        })
+        .catch((err) => console.log(err));
+    }
+  }, [isLoginIn]);
 
   return (
     <div className="body">
@@ -185,7 +198,7 @@ export const App = () => {
               path="/saved-movies"
               element={
                 <SavedMovies
-                  cards={filteredCards}
+                  cards={savedCards}
                   isShortFilm={isShortFilm}
                   onShortFilm={handleShortFilm}
                   searchMovie={searchMovie}

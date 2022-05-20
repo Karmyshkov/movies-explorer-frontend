@@ -14,7 +14,7 @@ export const MoviesCard = memo(({ movie, isSaved, onSaveMovie }) => {
       duration: movie.duration ? movie.duration : "",
       year: movie.year ? movie.year : "",
       description: movie.description ? movie.description : "",
-      image: `${BEATFILM_URL}${movie.image ? movie.image.url : ""}`,
+      image: `${BEATFILM_URL}${movie.image?.url ? movie.image.url : ""}`,
       trailerLink: movie.trailerLink ? movie.trailerLink : "",
       thumbnail: `${BEATFILM_URL}${
         movie.image.formats.thumbnail ? movie.image.formats.thumbnail.url : ""
@@ -33,7 +33,7 @@ export const MoviesCard = memo(({ movie, isSaved, onSaveMovie }) => {
     >
       <img
         className="movies-card__img"
-        src={`${BEATFILM_URL}${movie.image.url}`}
+        src={isMovies ? `${BEATFILM_URL}${movie.image.url}` : movie.image}
         alt={`Обложка фильма ${movie.nameRU}`}
       />
       <div className="movies-card__inner">

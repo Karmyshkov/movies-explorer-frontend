@@ -29,9 +29,7 @@ export const MoviesCardList = memo(
     }, [cards, limitCards, page, isSaved, onSaveMovie]);
 
     const renderBtn =
-      Boolean(errorSearchMovie) !== true &&
-      isMoviesPage &&
-      cards.length !== filteredCards.length;
+      Boolean(errorSearchMovie) !== true && cards.length !== filteredCards.length;
 
     return (
       <>

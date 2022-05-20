@@ -7,8 +7,8 @@ import { MoviesCardList } from "../MoviesCardList";
 export const Movies = memo(
   ({
     cards,
-    isFilteredMovie,
-    onFilteredMovie,
+    isShortFilm,
+    onShortFilm,
     searchMovie,
     onSerchMovie,
     onSubmitSearcMovie,
@@ -24,8 +24,8 @@ export const Movies = memo(
           onSubmitSearcMovie={onSubmitSearcMovie}
         />
         <FilterCheckbox
-          isFilteredMovie={isFilteredMovie}
-          onFilteredMovie={onFilteredMovie}
+          isShortFilm={isShortFilm}
+          onShortFilm={onShortFilm}
           isNotCards={Boolean(errorSearchMovie) !== true}
         />
         {errorSearchMovie ? (

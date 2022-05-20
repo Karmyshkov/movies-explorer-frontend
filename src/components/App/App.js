@@ -34,7 +34,7 @@ export const App = () => {
   const [currentUser, setCurrentUser] = useState({});
   const [cards, setCards] = useState([]);
   const [filteredCards, setFilteredCards] = useState([]);
-  const [isFilteredMovie, setFilteredMovie] = useState(false);
+  const [isShortFilm, setShortFilm] = useState(false);
   const [searchMovie, setSerchMovie] = useState("");
   const [errorSearchMovie, setErrorSearchMovie] = useState("");
   const [isShowCards, setShowCards] = useState(false);
@@ -105,7 +105,7 @@ export const App = () => {
   useEffect(() => {
     checkToken();
     setCards(JSON.parse(localStorage.getItem("cards")));
-    setFilteredMovie(Boolean(localStorage.getItem("statusFilter")));
+    setShortFilm(Boolean(localStorage.getItem("isShortFilm")));
   }, [checkToken, isLoginIn]);
 
   //movies
@@ -120,7 +120,7 @@ export const App = () => {
         .catch((err) => console.log(err));
   }, [cards.length, searchMovie]);
 
-  const handleFilteredMovie = () => setFilteredMovie(!isFilteredMovie);
+  const handleShortFilm = () => setShortFilm(!isShortFilm);
 
   const handleSerchMovie = (word) => setSerchMovie(word);
 
@@ -134,9 +134,9 @@ export const App = () => {
           regexp.test(movie.country) ||
           regexp.test(movie.year)
       )
-      .filter((movie) => (isFilteredMovie ? movie.duration < 70 : movie.duration >= 70));
+      .filter((movie) => (isShortFilm ? movie.duration < 40 : movie.duration >= 40));
     localStorage.setItem("cards", JSON.stringify(findedMovies));
-    localStorage.setItem("statusFilter", isFilteredMovie);
+    localStorage.setItem("isShortFilm", isShortFilm);
     findedMovies.length === 0
       ? setErrorSearchMovie("Ничего не найдено")
       : setErrorSearchMovie("");
@@ -156,8 +156,8 @@ export const App = () => {
               element={
                 <Movies
                   cards={filteredCards}
-                  isFilteredMovie={isFilteredMovie}
-                  onFilteredMovie={handleFilteredMovie}
+                  isShortFilm={isShortFilm}
+                  onShortFilm={handleShortFilm}
                   searchMovie={searchMovie}
                   onSerchMovie={handleSerchMovie}
                   onSubmitSearcMovie={handleSubmitSearcMovie}

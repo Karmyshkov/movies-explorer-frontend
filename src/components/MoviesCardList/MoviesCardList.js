@@ -11,15 +11,12 @@ export const MoviesCardList = memo(
     const [filteredCards, setFilteredCards] = useState([]);
     const [page, setPage] = useState(1);
 
-    let isSaved = false;
-
     useEffect(() => {
       setFilteredCards(
         cards
           ?.map((movie) => (
             <MoviesCard
               key={movie.id ? movie.id : movie._id}
-              isSaved={isSaved}
               movie={movie}
               onSaveMovie={onSaveMovie}
               onDeleteMovie={onDeleteMovie}
@@ -27,13 +24,10 @@ export const MoviesCardList = memo(
           ))
           .filter((movie, index) => index < page * limitCards)
       );
-    }, [cards, limitCards, page, isSaved, onSaveMovie, onDeleteMovie]);
+    }, [cards, limitCards, page, onSaveMovie, onDeleteMovie]);
 
     const renderBtn =
       Boolean(errorSearchMovie) !== true && cards.length !== filteredCards.length;
-
-    console.log(cards);
-    console.log(renderBtn);
 
     return (
       <>

@@ -66,6 +66,15 @@ class MainApi {
       }),
     }).then((dataCard) => this._checkStatus(dataCard));
   };
+
+  saveMovie(movie) {
+    return fetch(`${this.url}/movies`, {
+      method: "POST",
+      headers: this.headers,
+      credentials: "include",
+      body: JSON.stringify(movie),
+    }).then((dataCard) => this._checkStatus(dataCard));
+  }
 }
 
 export const mainApi = new MainApi({

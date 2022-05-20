@@ -142,8 +142,12 @@ export const Header = memo(() => {
 
         {isloggedIn && (
           <>
-            <h2 className="header__title">Фильмы</h2>
-            <p className="header__hint">Сохранённые фильмы</p>
+            <Link to="/movies" className="header__title">
+              Фильмы
+            </Link>
+            <Link to="/saved-movies" className="header__hint">
+              Сохранённые фильмы
+            </Link>
           </>
         )}
       </div>

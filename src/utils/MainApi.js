@@ -1,5 +1,4 @@
-//const BASE_URL = "https://api.karmyskov-cinema.nomoredomains.work";
-const BASE_URL = "http://localhost:3000";
+import { BASE_URL } from "./constants";
 
 class MainApi {
   constructor({ url, headers }) {

@@ -23,7 +23,7 @@ class MainApi {
         email,
         password,
       }),
-    }).then((dataCard) => this._checkStatus(dataCard));
+    }).then((dataMovie) => this._checkStatus(dataMovie));
   }
 
   register({ name, email, password }) {
@@ -36,7 +36,7 @@ class MainApi {
         email,
         password,
       }),
-    }).then((dataCard) => this._checkStatus(dataCard));
+    }).then((dataMovie) => this._checkStatus(dataMovie));
   }
 
   logout = () => {
@@ -64,7 +64,7 @@ class MainApi {
         name,
         email,
       }),
-    }).then((dataCard) => this._checkStatus(dataCard));
+    }).then((dataMovie) => this._checkStatus(dataMovie));
   };
 
   saveMovie(movie) {
@@ -73,13 +73,20 @@ class MainApi {
       headers: this.headers,
       credentials: "include",
       body: JSON.stringify(movie),
-    }).then((dataCard) => this._checkStatus(dataCard));
+    }).then((dataMovie) => this._checkStatus(dataMovie));
   }
 
   getSavedMovies() {
     return fetch(`${this.url}${"/movies"}`, { credentials: "include" }).then(
-      (dataCards) => this._checkStatus(dataCards)
+      (dataMovies) => this._checkStatus(dataMovies)
     );
+  }
+
+  deleteMovie(movieId) {
+    return fetch(`${this.url}/movies/${movieId}`, {
+      method: "DELETE",
+      credentials: "include",
+    }).then((dataMovie) => this._checkStatus(dataMovie));
   }
 }
 

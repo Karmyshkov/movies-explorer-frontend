@@ -12,6 +12,7 @@ export const SavedMovies = ({
   onSubmitSearcMovie,
   errorSearchMovie,
   limitCards,
+  onDeleteMovie,
 }) => {
   return (
     <>
@@ -29,6 +30,7 @@ export const SavedMovies = ({
         cards={cards}
         errorSearchMovie={errorSearchMovie}
         limitCards={limitCards}
+        onDeleteMovie={onDeleteMovie}
       />
     </>
   );

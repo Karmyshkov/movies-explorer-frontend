@@ -4,7 +4,7 @@ import "./MoviesCardList.css";
 import { MoviesCard } from "../MoviesCard";
 
 export const MoviesCardList = memo(
-  ({ cards, errorSearchMovie, limitCards, onSaveMovie }) => {
+  ({ cards, errorSearchMovie, limitCards, onSaveMovie, onDeleteMovie }) => {
     const location = useLocation();
     const isMoviesPage = location.pathname === "/movies";
 
@@ -18,15 +18,16 @@ export const MoviesCardList = memo(
         cards
           ?.map((movie) => (
             <MoviesCard
-              key={movie.id}
+              key={movie.id ? movie.id : movie._id}
               isSaved={isSaved}
               movie={movie}
               onSaveMovie={onSaveMovie}
+              onDeleteMovie={onDeleteMovie}
             />
           ))
           .filter((movie, index) => index < page * limitCards)
       );
-    }, [cards, limitCards, page, isSaved, onSaveMovie]);
+    }, [cards, limitCards, page, isSaved, onSaveMovie, onDeleteMovie]);
 
     const renderBtn =
       Boolean(errorSearchMovie) !== true && cards.length !== filteredCards.length;

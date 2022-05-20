@@ -4,9 +4,10 @@ import "./MoviesCard.css";
 import closeIcon from "../../images/icons/close.svg";
 import { BEATFILM_URL } from "../../utils/constants";
 
-export const MoviesCard = memo(({ movie, isSaved, onSaveMovie }) => {
+export const MoviesCard = memo(({ movie, isSaved, onSaveMovie, onDeleteMovie }) => {
   const location = useLocation();
   const isMovies = location.pathname === "/movies";
+
   const handleSaveMovie = () => {
     onSaveMovie({
       country: movie.country ? movie.country : "",
@@ -25,6 +26,7 @@ export const MoviesCard = memo(({ movie, isSaved, onSaveMovie }) => {
       isSaved: isSaved,
     });
   };
+
   return (
     <li
       className={`movies-card__item ${
@@ -54,6 +56,7 @@ export const MoviesCard = memo(({ movie, isSaved, onSaveMovie }) => {
         </button>
       ) : (
         <button
+          onClick={() => onDeleteMovie(movie._id)}
           className="movies-card__btn"
           type="button"
           aria-label="Удалить из избранного"

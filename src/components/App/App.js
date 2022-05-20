@@ -163,6 +163,15 @@ export const App = () => {
     }
   }, [isLoginIn]);
 
+  const handleDeleteMovie = (movieId) => {
+    mainApi
+      .deleteMovie(movieId)
+      .then((deletedCard) => {
+        setSavedCards(savedCards.filter((card) => deletedCard._id !== card._id));
+      })
+      .catch((err) => console.log(err));
+  };
+
   return (
     <div className="body">
       <UserContext.Provider value={currentUser}>
@@ -206,6 +215,7 @@ export const App = () => {
                   onSubmitSearcMovie={handleSubmitSearcMovie}
                   errorSearchMovie={errorSearchMovie}
                   limitCards={limitCards.current}
+                  onDeleteMovie={handleDeleteMovie}
                 />
               }
             />

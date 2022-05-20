@@ -39,6 +39,7 @@ export const App = () => {
   const [searchMovie, setSerchMovie] = useState("");
   const [errorSearchMovie, setErrorSearchMovie] = useState("");
   const [isShowCards, setShowCards] = useState(false);
+  const [isShowLoader, setShowLoader] = useState(false);
 
   const navigate = useNavigate();
 
@@ -86,6 +87,7 @@ export const App = () => {
   };
 
   const checkToken = useCallback(() => {
+    setShowLoader(true);
     mainApi
       .getUserData()
       .then(({ data }) => {
@@ -100,7 +102,8 @@ export const App = () => {
         setLoggedIn(false);
         console.log(err);
         isLoginIn && navigate("/");
-      });
+      })
+      .finally(() => setShowLoader(false));
   }, [navigate, isLoginIn, location.pathname]);
 
   useEffect(() => {
@@ -190,6 +193,7 @@ export const App = () => {
                   isShowCards={isShowCards}
                   limitCards={limitCards.current}
                   onSaveMovie={handleSaveMovie}
+                  isShowLoader={isShowLoader}
                 />
               }
             />

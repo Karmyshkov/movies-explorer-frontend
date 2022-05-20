@@ -3,6 +3,7 @@ import "./Movies.css";
 import { SearchForm } from "../SearchForm";
 import { FilterCheckbox } from "../FilterCheckbox";
 import { MoviesCardList } from "../MoviesCardList";
+import { Preloader } from "../Preloader";
 
 export const Movies = memo(
   ({
@@ -16,6 +17,7 @@ export const Movies = memo(
     isShowCards,
     limitCards,
     onSaveMovie,
+    isShowLoader,
   }) => {
     return (
       <div className="movies">
@@ -41,6 +43,7 @@ export const Movies = memo(
             />
           )
         )}
+        {isShowLoader && <Preloader />}
       </div>
     );
   }

@@ -14,9 +14,11 @@ import { SavedMovies } from "../SavedMovies";
 import { ProtectedRoute } from "../ProtectedRoute";
 import { mainApi } from "../../utils/MainApi";
 import { moviesApi } from "../../utils/MoviesApi";
+import { filterCards } from "../../utils/functions";
 
 export const App = () => {
   const location = useLocation();
+
   const isRenderHeader =
     location.pathname === "/" ||
     location.pathname === "/movies" ||
@@ -29,6 +31,8 @@ export const App = () => {
     location.pathname === "/" ||
     location.pathname === "/movies" ||
     location.pathname === "/saved-movies";
+
+  const isMoviesPage = location.pathname === "/movies";
 
   const [isLoginIn, setLoggedIn] = useState(false);
   const [currentUser, setCurrentUser] = useState({});
@@ -118,28 +122,23 @@ export const App = () => {
     isLoginIn &&
       cards?.length === 0 &&
       moviesApi
-        .getMovie(searchMovie)
+        .getMovie()
         .then((cards) => {
           setCards(cards);
         })
         .catch((err) => console.log(err));
-  }, [cards?.length, searchMovie, isLoginIn]);
+  }, [cards?.length, isLoginIn]);
 
   const handleShortFilm = () => setShortFilm(!isShortFilm);
 
   const handleSerchMovie = (word) => setSerchMovie(word);
 
   const handleSubmitSearcMovie = (nameMovie) => {
-    const regexp = new RegExp(nameMovie, "gi");
-    const findedMovies = cards
-      .filter(
-        (movie) =>
-          regexp.test(movie.nameRU) ||
-          regexp.test(movie.nameEN) ||
-          regexp.test(movie.country) ||
-          regexp.test(movie.year)
-      )
-      .filter((movie) => (isShortFilm ? movie.duration < 40 : movie.duration >= 40));
+    const findedMovies = filterCards(
+      isMoviesPage ? cards : savedCards,
+      nameMovie,
+      isShortFilm
+    );
     localStorage.setItem("cards", JSON.stringify(findedMovies));
     localStorage.setItem("isShortFilm", isShortFilm);
     findedMovies.length === 0
@@ -208,7 +207,7 @@ export const App = () => {
               path="/saved-movies"
               element={
                 <SavedMovies
-                  cards={savedCards}
+                  cards={filterCards}
                   isShortFilm={isShortFilm}
                   onShortFilm={handleShortFilm}
                   searchMovie={searchMovie}

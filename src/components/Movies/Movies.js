@@ -15,6 +15,7 @@ export const Movies = memo(
     errorSearchMovie,
     isShowCards,
     limitCards,
+    onSaveMovie,
   }) => {
     return (
       <div className="movies">
@@ -36,6 +37,7 @@ export const Movies = memo(
               cards={cards}
               errorSearchMovie={errorSearchMovie}
               limitCards={limitCards}
+              onSaveMovie={onSaveMovie}
             />
           )
         )}

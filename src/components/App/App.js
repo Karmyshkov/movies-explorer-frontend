@@ -144,6 +144,12 @@ export const App = () => {
     findedMovies.length > 0 && setShowCards(true);
   };
 
+  const handleSaveMovie = (movie) =>
+    mainApi
+      .saveMovie(movie)
+      .then((movie) => console.log(movie))
+      .catch((err) => console.log(err));
+
   return (
     <div className="body">
       <UserContext.Provider value={currentUser}>
@@ -164,6 +170,7 @@ export const App = () => {
                   errorSearchMovie={errorSearchMovie}
                   isShowCards={isShowCards}
                   limitCards={limitCards.current}
+                  onSaveMovie={handleSaveMovie}
                 />
               }
             />

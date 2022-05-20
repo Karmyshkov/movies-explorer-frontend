@@ -4,9 +4,27 @@ import "./MoviesCard.css";
 import closeIcon from "../../images/icons/close.svg";
 import { BEATFILM_URL } from "../../utils/constants";
 
-export const MoviesCard = memo(({ movie, isSaved }) => {
+export const MoviesCard = memo(({ movie, isSaved, onSaveMovie }) => {
   const location = useLocation();
   const isMovies = location.pathname === "/movies";
+  const handleSaveMovie = () => {
+    onSaveMovie({
+      country: movie.country ? movie.country : "",
+      director: movie.director ? movie.director : "",
+      duration: movie.duration ? movie.duration : "",
+      year: movie.year ? movie.year : "",
+      description: movie.description ? movie.description : "",
+      image: `${BEATFILM_URL}${movie.image ? movie.image.url : ""}`,
+      trailerLink: movie.trailerLink ? movie.trailerLink : "",
+      thumbnail: `${BEATFILM_URL}${
+        movie.image.formats.thumbnail ? movie.image.formats.thumbnail.url : ""
+      }`,
+      movieId: movie.id,
+      nameRU: movie.nameRU ? movie.nameRU : "",
+      nameEN: movie.nameEN ? movie.nameEN : movie.nameEN,
+      isSaved: isSaved,
+    });
+  };
   return (
     <li
       className={`movies-card__item ${
@@ -31,7 +49,7 @@ export const MoviesCard = memo(({ movie, isSaved }) => {
         <p className="movies-card__time">{movie.duration}</p>
       </div>
       {isMovies ? (
-        <button className="movies-card__btn-save" type="button">
+        <button onClick={handleSaveMovie} className="movies-card__btn-save" type="button">
           Сохранить
         </button>
       ) : (

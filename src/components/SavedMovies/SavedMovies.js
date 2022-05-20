@@ -3,12 +3,33 @@ import { SearchForm } from "../SearchForm";
 import { FilterCheckbox } from "../FilterCheckbox";
 import { MoviesCardList } from "../MoviesCardList";
 
-export const SavedMovies = () => {
+export const SavedMovies = ({
+  cards,
+  isShortFilm,
+  onShortFilm,
+  searchMovie,
+  onSerchMovie,
+  onSubmitSearcMovie,
+  errorSearchMovie,
+  limitCards,
+}) => {
   return (
     <>
-      <SearchForm />
-      <FilterCheckbox />
-      <MoviesCardList />
+      <SearchForm
+        searchMovie={searchMovie}
+        onSerchMovie={onSerchMovie}
+        onSubmitSearcMovie={onSubmitSearcMovie}
+      />
+      <FilterCheckbox
+        isShortFilm={isShortFilm}
+        onShortFilm={onShortFilm}
+        isNotCards={Boolean(errorSearchMovie) !== true}
+      />
+      <MoviesCardList
+        cards={cards}
+        errorSearchMovie={errorSearchMovie}
+        limitCards={limitCards}
+      />
     </>
   );
 };

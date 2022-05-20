@@ -16,7 +16,7 @@ export const MoviesCardList = memo(
     useEffect(() => {
       setFilteredCards(
         cards
-          .map((movie) => (
+          ?.map((movie) => (
             <MoviesCard
               key={movie.id}
               isSaved={isSaved}

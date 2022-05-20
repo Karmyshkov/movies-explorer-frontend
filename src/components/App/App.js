@@ -180,7 +180,22 @@ export const App = () => {
             path="/saved-movies"
             element={<ProtectedRoute isLoginIn={isLoginIn} />}
           >
-            <Route isLoginIn={isLoginIn} path="/saved-movies" element={<SavedMovies />} />
+            <Route
+              isLoginIn={isLoginIn}
+              path="/saved-movies"
+              element={
+                <SavedMovies
+                  cards={filteredCards}
+                  isShortFilm={isShortFilm}
+                  onShortFilm={handleShortFilm}
+                  searchMovie={searchMovie}
+                  onSerchMovie={handleSerchMovie}
+                  onSubmitSearcMovie={handleSubmitSearcMovie}
+                  errorSearchMovie={errorSearchMovie}
+                  limitCards={limitCards.current}
+                />
+              }
+            />
           </Route>
           <Route exact path="/profile" element={<ProtectedRoute isLoginIn={isLoginIn} />}>
             <Route

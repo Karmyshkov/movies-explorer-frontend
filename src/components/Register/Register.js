@@ -2,7 +2,16 @@ import React, { memo, useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 import "./Register.css";
 import { validateEmail } from "../../utils/functions";
-import { requiredField, incorrectEmail } from "../../utils/constants";
+import {
+  requiredField,
+  incorrectEmail,
+  name,
+  email,
+  password,
+  signin,
+  register,
+  alreadyRegistered,
+} from "../../utils/constants";
 
 export const Register = memo(({ onregister }) => {
   const [dataForm, setDataForm] = useState({});
@@ -37,7 +46,7 @@ export const Register = memo(({ onregister }) => {
       }}
     >
       <label className="register__label">
-        <span className="register__heplper-text">Имя</span>
+        <span className="register__heplper-text">{name}</span>
         <input onChange={handleChangeForm} className="register__input" name="name" />
       </label>
       <p className={`register__error ${errors.name ? "register__error_show" : ""}`}>
@@ -45,7 +54,7 @@ export const Register = memo(({ onregister }) => {
       </p>
 
       <label className="register__label">
-        <span className="register__heplper-text">E-mail</span>
+        <span className="register__heplper-text">{email}</span>
         <input onChange={handleChangeForm} className="register__input" name="email" />
       </label>
       <p
@@ -59,7 +68,7 @@ export const Register = memo(({ onregister }) => {
       </p>
 
       <label className="register__label">
-        <span className="register__heplper-text">Пароль</span>
+        <span className="register__heplper-text">{password}</span>
         <input onChange={handleChangeForm} className="register__input" name="password" />
       </label>
       <p className={`register__error ${errors.password ? "register__error_show" : ""}`}>
@@ -70,12 +79,12 @@ export const Register = memo(({ onregister }) => {
         className={`register__btn ${disableBtn && "register__btn_disable"}`}
         type="submit"
       >
-        Зарегистрироваться
+        {register}
       </button>
       <p className="register__text">
-        Уже зарегистрированы?
+        {alreadyRegistered}
         <Link className="register__link" to="/sign-in">
-          Войти
+          {signin}
         </Link>
       </p>
     </form>

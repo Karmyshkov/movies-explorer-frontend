@@ -2,7 +2,15 @@ import React, { memo, useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import "./Login.css";
 import { validateEmail } from "../../utils/functions";
-import { requiredField, incorrectEmail } from "../../utils/constants";
+import {
+  requiredField,
+  incorrectEmail,
+  email,
+  password,
+  signin,
+  notRegisteredYet,
+  signup,
+} from "../../utils/constants";
 
 export const Login = memo(({ onLogin }) => {
   const [dataForm, setDataForm] = useState({});
@@ -37,7 +45,7 @@ export const Login = memo(({ onLogin }) => {
       }}
     >
       <label className="login__label">
-        <span className="login__heplper-text">E-mail</span>
+        <span className="login__heplper-text">{email}</span>
         <input onChange={handleChangeForm} className="login__input" name="email" />
       </label>
       <p
@@ -51,7 +59,7 @@ export const Login = memo(({ onLogin }) => {
       </p>
 
       <label className="login__label">
-        <span className="login__heplper-text">Пароль</span>
+        <span className="login__heplper-text">{password}</span>
         <input onChange={handleChangeForm} className="login__input" name="password" />
       </label>
       <p className={`login__error ${errors.password ? "login__error_show" : ""}`}>
@@ -62,12 +70,12 @@ export const Login = memo(({ onLogin }) => {
         className={`login__btn ${disableBtn && "login__btn_disable"}`}
         type="submit"
       >
-        Войти
+        {signin}
       </button>
       <p className="login__text">
-        Ещё не зарегистрированы?
+        {notRegisteredYet}
         <Link className="login__link" to="/sign-up">
-          Регистрация
+          {signup}
         </Link>
       </p>
     </form>

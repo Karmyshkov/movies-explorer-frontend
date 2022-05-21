@@ -4,31 +4,48 @@ import "./Login.css";
 
 export const Login = memo(({ onLogin }) => {
   const [dataForm, setDataForm] = useState({});
+  const [error, setError] = useState({});
 
-  const handleChangeForm = (evt) =>
+  const handleChangeForm = (evt) => {
     setDataForm({ ...dataForm, [evt.target.name]: evt.target.value });
+    evt.target.value === ""
+      ? setError({ ...error, [evt.target.name]: true })
+      : setError({ ...error, [evt.target.name]: false });
+  };
+
+  const disableBtn = !(
+    Object.keys(error).length === 2 &&
+    Object.values(error).find((error) => error === true) !== true
+  );
 
   return (
     <form
       className="login"
       onSubmit={(evt) => {
         evt.preventDefault();
-        onLogin(dataForm);
+        !disableBtn && onLogin(dataForm);
       }}
     >
       <label className="login__label">
         <span className="login__heplper-text">E-mail</span>
         <input onChange={handleChangeForm} className="login__input" name="email" />
       </label>
-      <p className="login__error">Что-то пошло не так...</p>
+      <p className={`login__error ${error.email ? "login__error_show" : ""}`}>
+        Что-то пошло не так...
+      </p>
 
       <label className="login__label">
         <span className="login__heplper-text">Пароль</span>
         <input onChange={handleChangeForm} className="login__input" name="password" />
       </label>
-      <p className="login__error ">Что-то пошло не так...</p>
+      <p className={`login__error ${error.password ? "login__error_show" : ""}`}>
+        Что-то пошло не так...
+      </p>
 
-      <button className="login__btn" type="submit">
+      <button
+        className={`login__btn ${disableBtn && "login__btn_disable"}`}
+        type="submit"
+      >
         Войти
       </button>
       <p className="login__text">

@@ -6,14 +6,14 @@ import user from "../../images/icons/user.svg";
 import burger from "../../images/icons/burger.svg";
 import close from "../../images/icons/close.svg";
 import {
-  signup,
-  signin,
-  mainPage,
-  moviesPage,
-  savedMoviesPage,
-  account,
-  gladToSee,
-  welcome,
+  SIGNUP,
+  SIGNIN,
+  MAIN_PAGE,
+  MOVIES_PAGE,
+  SAVED_MOVIES_PAGE,
+  ACCOUNT,
+  GLAD_TO_SEE,
+  WELCOME,
 } from "../../utils/constants";
 
 export const Header = memo(() => {
@@ -38,12 +38,12 @@ export const Header = memo(() => {
         <ul className="header__wrap">
           <li className="header__item">
             <Link className="header__link" to="/sign-up">
-              {signup}
+              {SIGNUP}
             </Link>
           </li>
           <li className="header__item">
             <Link className="header__link header__link_active" to="/sign-in">
-              {signin}
+              {SIGNIN}
             </Link>
           </li>
         </ul>
@@ -63,7 +63,7 @@ export const Header = memo(() => {
                   to="/"
                   className={setActiveLink}
                 >
-                  {mainPage}
+                  {MAIN_PAGE}
                 </NavLink>
               </li>
               <li className="header__row">
@@ -72,7 +72,7 @@ export const Header = memo(() => {
                   to="/movies"
                   className={setActiveLink}
                 >
-                  {moviesPage}
+                  {MOVIES_PAGE}
                 </NavLink>
               </li>
               <li className="header__row">
@@ -84,7 +84,7 @@ export const Header = memo(() => {
                   to="/saved-movies"
                   className={setActiveLink}
                 >
-                  {savedMoviesPage}
+                  {SAVED_MOVIES_PAGE}
                 </NavLink>
               </li>
               <li className="header__row">
@@ -94,14 +94,14 @@ export const Header = memo(() => {
                   className={`header__btn ${isOpenMenu ? "header__btn_open" : ""}`}
                   type="button"
                 >
-                  <span className="header__text">{account}</span>
+                  <span className="header__text">{ACCOUNT}</span>
                   <img className="header__img" src={user} alt="Иконка аккаунт" />
                 </Link>
               </li>
             </ul>
           </nav>
           <Link to="/profile" className="header__btn" type="button">
-            <span className="header__text">{account}</span>
+            <span className="header__text">{ACCOUNT}</span>
             <img className="header__img" src={user} alt="Иконка аккаунт" />
           </Link>
           {isOpenMenu ? (
@@ -136,7 +136,7 @@ export const Header = memo(() => {
         </>
       );
     }
-    return <h1 className="header__headline">{isSignIn ? gladToSee : welcome}</h1>;
+    return <h1 className="header__headline">{isSignIn ? GLAD_TO_SEE : WELCOME}</h1>;
   };
 
   return (
@@ -149,10 +149,10 @@ export const Header = memo(() => {
         {isloggedIn && (
           <>
             <Link to="/movies" className="header__title">
-              {moviesPage}
+              {MOVIES_PAGE}
             </Link>
             <Link to="/saved-movies" className="header__hint">
-              {savedMoviesPage}
+              {SAVED_MOVIES_PAGE}
             </Link>
           </>
         )}

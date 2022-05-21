@@ -3,13 +3,13 @@ import { Link } from "react-router-dom";
 import "./Login.css";
 import { validateEmail } from "../../utils/functions";
 import {
-  requiredField,
-  incorrectEmail,
-  email,
-  password,
-  signin,
-  notRegisteredYet,
-  signup,
+  REQUIRED_FIELD,
+  INCORRECT_EMAIL,
+  EMAIL,
+  PASSOWRD,
+  SIGNIN,
+  NOT_REGISTERED_YET,
+  SIGNUP,
 } from "../../utils/constants";
 
 export const Login = memo(({ onLogin }) => {
@@ -45,7 +45,7 @@ export const Login = memo(({ onLogin }) => {
       }}
     >
       <label className="login__label">
-        <span className="login__heplper-text">{email}</span>
+        <span className="login__heplper-text">{EMAIL}</span>
         <input onChange={handleChangeForm} className="login__input" name="email" />
       </label>
       <p
@@ -55,27 +55,27 @@ export const Login = memo(({ onLogin }) => {
             : ""
         }`}
       >
-        {incorrectEmail}
+        {INCORRECT_EMAIL}
       </p>
 
       <label className="login__label">
-        <span className="login__heplper-text">{password}</span>
+        <span className="login__heplper-text">{PASSOWRD}</span>
         <input onChange={handleChangeForm} className="login__input" name="password" />
       </label>
       <p className={`login__error ${errors.password ? "login__error_show" : ""}`}>
-        {requiredField}
+        {REQUIRED_FIELD}
       </p>
 
       <button
         className={`login__btn ${disableBtn && "login__btn_disabled"}`}
         type="submit"
       >
-        {signin}
+        {SIGNIN}
       </button>
       <p className="login__text">
-        {notRegisteredYet}
+        {NOT_REGISTERED_YET}
         <Link className="login__link" to="/sign-up">
-          {signup}
+          {SIGNUP}
         </Link>
       </p>
     </form>

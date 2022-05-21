@@ -16,6 +16,12 @@ import { mainApi } from "../../utils/MainApi";
 import { moviesApi } from "../../utils/MoviesApi";
 import { filterCards } from "../../utils/functions";
 import { Tooltip } from "../Tooltip";
+import {
+  SUCCESS_CHANGE_PROFILE,
+  ERROR_CHANGE_PROFILE,
+  ERROR_SAVE_MOVIE,
+  SUCCESS_DELETE_MOVIE,
+} from "../../utils/constants";
 
 export const App = () => {
   const location = useLocation();
@@ -71,7 +77,7 @@ export const App = () => {
         setLoggedIn(true);
         navigate("/movies");
       })
-      .catch((err) => setErrorMessage(err));
+      .catch((err) => console.log(err));
   };
 
   const handleRegister = (data) => {
@@ -87,8 +93,9 @@ export const App = () => {
       .then(() => {
         setLoggedIn(false);
         setCurrentUser({});
+        navigate("/");
       })
-      .catch((err) => setErrorMessage(err));
+      .catch((err) => console.log(err));
   };
 
   const handleChangeUserInfo = (data) => {
@@ -96,13 +103,11 @@ export const App = () => {
       .changeUserIngo(data)
       .then(() => {
         handleOpenTooltip();
-        setSuccessMessage("Данные профиля изменены!");
+        setSuccessMessage(SUCCESS_CHANGE_PROFILE);
       })
       .catch((err) => {
         handleOpenTooltip();
-        setErrorMessage(
-          err === "Error: 400" ? "Ошибка при запросе! Введены старые данные." : err
-        );
+        setErrorMessage(err === "Error: 400" ? { ERROR_CHANGE_PROFILE } : err);
       });
   };
 
@@ -113,14 +118,12 @@ export const App = () => {
       .then(({ data }) => {
         setCurrentUser(data);
         setLoggedIn(true);
-        (location.pathname === "/" ||
-          location.pathname === "/sign-in" ||
-          location.pathname === "/sign-up") &&
+        (location.pathname === "/sign-in" || location.pathname === "/sign-up") &&
           navigate("/movies");
       })
       .catch((err) => {
         setLoggedIn(false);
-        setErrorMessage(err);
+        console.log(err);
         isLoginIn && navigate("/");
       })
       .finally(() => setShowLoader(false));
@@ -142,7 +145,7 @@ export const App = () => {
         .then((cards) => {
           setCards(cards);
         })
-        .catch((err) => setErrorMessage(err));
+        .catch((err) => console.log(err));
 
     isLoginIn &&
       mainApi
@@ -150,7 +153,7 @@ export const App = () => {
         .then((cards) => {
           setSavedCards(cards);
         })
-        .catch((err) => setErrorMessage(err));
+        .catch((err) => console.log(err));
   }, [cards?.length, isLoginIn]);
 
   const handleShortFilm = () => setShortFilm(!isShortFilm);
@@ -179,9 +182,7 @@ export const App = () => {
       })
       .catch((err) => {
         handleOpenTooltip();
-        setErrorMessage(
-          err === "Error: 500" ? "Данный фильм уже добавлен в избранное!" : err
-        );
+        setErrorMessage(err === "Error: 500" ? { ERROR_SAVE_MOVIE } : err);
       });
 
   const handleDeleteMovie = (movieId) => {
@@ -189,7 +190,7 @@ export const App = () => {
       .deleteMovie(movieId)
       .then((deletedCard) => {
         handleOpenTooltip();
-        setSuccessMessage("Фильм удален из избранного!");
+        setSuccessMessage(SUCCESS_DELETE_MOVIE);
         setSavedCards(savedCards.filter((card) => deletedCard._id !== card._id));
       })
       .catch((err) => console.log(err));

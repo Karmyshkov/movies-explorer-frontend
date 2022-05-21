@@ -3,14 +3,14 @@ import { Link } from "react-router-dom";
 import "./Register.css";
 import { validateEmail } from "../../utils/functions";
 import {
-  requiredField,
-  incorrectEmail,
-  name,
-  email,
-  password,
-  signin,
-  register,
-  alreadyRegistered,
+  REQUIRED_FIELD,
+  INCORRECT_EMAIL,
+  NAME,
+  EMAIL,
+  PASSOWRD,
+  SIGNIN,
+  REGISTER,
+  ALREADY_REGISTERED,
 } from "../../utils/constants";
 
 export const Register = memo(({ onregister }) => {
@@ -46,15 +46,15 @@ export const Register = memo(({ onregister }) => {
       }}
     >
       <label className="register__label">
-        <span className="register__heplper-text">{name}</span>
+        <span className="register__heplper-text">{NAME}</span>
         <input onChange={handleChangeForm} className="register__input" name="name" />
       </label>
       <p className={`register__error ${errors.name ? "register__error_show" : ""}`}>
-        {requiredField}
+        {REQUIRED_FIELD}
       </p>
 
       <label className="register__label">
-        <span className="register__heplper-text">{email}</span>
+        <span className="register__heplper-text">{EMAIL}</span>
         <input onChange={handleChangeForm} className="register__input" name="email" />
       </label>
       <p
@@ -64,27 +64,27 @@ export const Register = memo(({ onregister }) => {
             : ""
         }`}
       >
-        {incorrectEmail}
+        {INCORRECT_EMAIL}
       </p>
 
       <label className="register__label">
-        <span className="register__heplper-text">{password}</span>
+        <span className="register__heplper-text">{PASSOWRD}</span>
         <input onChange={handleChangeForm} className="register__input" name="password" />
       </label>
       <p className={`register__error ${errors.password ? "register__error_show" : ""}`}>
-        {requiredField}
+        {REQUIRED_FIELD}
       </p>
 
       <button
         className={`register__btn ${disableBtn && "register__btn_disable"}`}
         type="submit"
       >
-        {register}
+        {REGISTER}
       </button>
       <p className="register__text">
-        {alreadyRegistered}
+        {ALREADY_REGISTERED}
         <Link className="register__link" to="/sign-in">
-          {signin}
+          {SIGNIN}
         </Link>
       </p>
     </form>

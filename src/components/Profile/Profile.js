@@ -2,7 +2,7 @@ import React, { memo, useContext, useState, useEffect } from "react";
 import "./Profile.css";
 import { UserContext } from "../../context/UserContext";
 import { validateEmail } from "../../utils/functions";
-import { name, email, editProfile, signout } from "../../utils/constants";
+import { NAME, EMAIL, EDIT_PROFILE, SIGNOUT } from "../../utils/constants";
 
 export const Profile = memo(({ onChangeUserInfo, onLogout }) => {
   const userContext = useContext(UserContext);
@@ -40,7 +40,7 @@ export const Profile = memo(({ onChangeUserInfo, onLogout }) => {
             }`}
             htmlFor="user-name"
           >
-            {name}
+            {NAME}
           </label>
           <input
             onChange={handleChangeForm}
@@ -57,7 +57,7 @@ export const Profile = memo(({ onChangeUserInfo, onLogout }) => {
             }`}
             htmlFor="user-email"
           >
-            {email}
+            {EMAIL}
           </label>
           <input
             onChange={handleChangeForm}
@@ -71,14 +71,14 @@ export const Profile = memo(({ onChangeUserInfo, onLogout }) => {
           className={`profile__btn ${!disableBtn ? "profile__btn_disabled" : ""}`}
           type="submit"
         >
-          {editProfile}
+          {EDIT_PROFILE}
         </button>
         <button
           onClick={onLogout}
           className="profile__btn profile__btn_color_red"
           type="button"
         >
-          {signout}
+          {SIGNOUT}
         </button>
       </form>
     </div>

@@ -1,6 +1,6 @@
 import React, { memo } from "react";
 import "./FilterCheckbox.css";
-import { shortFilms } from "../../utils/constants";
+import { SHORT_FILMS } from "../../utils/constants";
 
 export const FilterCheckbox = memo(({ isShortFilm, onShortFilm, isNotCards }) => {
   return (
@@ -15,7 +15,7 @@ export const FilterCheckbox = memo(({ isShortFilm, onShortFilm, isNotCards }) =>
         checked={isShortFilm}
       />
       <label className="filter-checkbox__label" htmlFor="checkbox">
-        {shortFilms}
+        {SHORT_FILMS}
       </label>
     </div>
   );

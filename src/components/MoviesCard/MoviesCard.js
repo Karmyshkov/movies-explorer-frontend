@@ -2,9 +2,9 @@ import React, { memo } from "react";
 import { useLocation } from "react-router-dom";
 import "./MoviesCard.css";
 import closeIcon from "../../images/icons/close.svg";
-import { BEATFILM_URL, save } from "../../utils/constants";
+import { BEATFILM_URL, SAVE } from "../../utils/constants";
 
-export const MoviesCard = memo(({ movie, isSaved, onSaveMovie, onDeleteMovie }) => {
+export const MoviesCard = memo(({ movie, onSaveMovie, onDeleteMovie }) => {
   const location = useLocation();
   const isMovies = location.pathname === "/movies";
 
@@ -26,12 +26,10 @@ export const MoviesCard = memo(({ movie, isSaved, onSaveMovie, onDeleteMovie }) 
     });
   };
 
-  // isSaved поправить
-
   return (
     <li
       className={`movies-card__item ${
-        isMovies === true && isSaved ? "movies-card__item_saved" : ""
+        isMovies === true && !isMovies ? "movies-card__item_saved" : ""
       }`}
     >
       <img
@@ -53,7 +51,7 @@ export const MoviesCard = memo(({ movie, isSaved, onSaveMovie, onDeleteMovie }) 
       </div>
       {isMovies ? (
         <button onClick={handleSaveMovie} className="movies-card__btn-save" type="button">
-          {save}
+          {SAVE}
         </button>
       ) : (
         <button

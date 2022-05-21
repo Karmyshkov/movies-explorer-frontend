@@ -181,16 +181,11 @@ export const App = () => {
   };
 
   const handleSaveMovie = (movie) =>
-    mainApi
-      .saveMovie(movie)
-      .then(({ data }) => {
-        savedCards.push(data);
-      })
-      .catch((err) => {
-        handleOpenTooltip();
-        setErrorMessage(ERROR_SAVE_MOVIE);
-        console.log(err);
-      });
+    mainApi.saveMovie(movie).catch((err) => {
+      handleOpenTooltip();
+      setErrorMessage(ERROR_SAVE_MOVIE);
+      console.log(err);
+    });
 
   const handleDeleteMovie = (movieId) => {
     mainApi

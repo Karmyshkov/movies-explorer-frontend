@@ -129,12 +129,13 @@ export const App = () => {
         })
         .catch((err) => console.log(err));
 
-    mainApi
-      .getSavedMovies()
-      .then((cards) => {
-        setSavedCards(cards);
-      })
-      .catch((err) => console.log(err));
+    isLoginIn &&
+      mainApi
+        .getSavedMovies()
+        .then((cards) => {
+          setSavedCards(cards);
+        })
+        .catch((err) => console.log(err));
   }, [cards?.length, isLoginIn]);
 
   const handleShortFilm = () => setShortFilm(!isShortFilm);

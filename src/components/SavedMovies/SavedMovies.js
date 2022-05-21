@@ -1,4 +1,5 @@
 import React from "react";
+import "./SavedMovies.css";
 import { SearchForm } from "../SearchForm";
 import { FilterCheckbox } from "../FilterCheckbox";
 import { MoviesCardList } from "../MoviesCardList";
@@ -15,7 +16,7 @@ export const SavedMovies = ({
   onDeleteMovie,
 }) => {
   return (
-    <>
+    <div className="saved-movies">
       <SearchForm
         searchMovie={searchMovie}
         onSerchMovie={onSerchMovie}
@@ -26,12 +27,16 @@ export const SavedMovies = ({
         onShortFilm={onShortFilm}
         isNotCards={Boolean(errorSearchMovie) !== true}
       />
-      <MoviesCardList
-        cards={cards}
-        errorSearchMovie={errorSearchMovie}
-        limitCards={limitCards}
-        onDeleteMovie={onDeleteMovie}
-      />
-    </>
+      {errorSearchMovie ? (
+        <p className="saved-movies__text">{errorSearchMovie}</p>
+      ) : (
+        <MoviesCardList
+          cards={cards}
+          errorSearchMovie={errorSearchMovie}
+          limitCards={limitCards}
+          onDeleteMovie={onDeleteMovie}
+        />
+      )}
+    </div>
   );
 };

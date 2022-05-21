@@ -23,9 +23,10 @@ export const MoviesCard = memo(({ movie, isSaved, onSaveMovie, onDeleteMovie }) 
       movieId: movie.id,
       nameRU: movie.nameRU ? movie.nameRU : "",
       nameEN: movie.nameEN ? movie.nameEN : movie.nameEN,
-      isSaved: isSaved,
     });
   };
+
+  // isSaved поправить
 
   return (
     <li

@@ -37,8 +37,9 @@ export const App = () => {
   const [isLoginIn, setLoggedIn] = useState(false);
   const [currentUser, setCurrentUser] = useState({});
   const [cards, setCards] = useState([]);
-  const [filteredCards, setFilteredCards] = useState([]);
   const [savedCards, setSavedCards] = useState([]);
+  const [filteredCards, setFilteredCards] = useState([]);
+  const [filteredSaveCards, setFilteredSaveCards] = useState([]);
   const [isShortFilm, setShortFilm] = useState(false);
   const [searchMovie, setSerchMovie] = useState("");
   const [errorSearchMovie, setErrorSearchMovie] = useState("");
@@ -112,7 +113,7 @@ export const App = () => {
 
   useEffect(() => {
     checkToken();
-    setCards(JSON.parse(localStorage.getItem("cards")));
+    setFilteredCards(JSON.parse(localStorage.getItem("cards")));
     setShortFilm(Boolean(localStorage.getItem("isShortFilm")));
   }, [checkToken, isLoginIn]);
 
@@ -127,6 +128,13 @@ export const App = () => {
           setCards(cards);
         })
         .catch((err) => console.log(err));
+
+    mainApi
+      .getSavedMovies()
+      .then((cards) => {
+        setSavedCards(cards);
+      })
+      .catch((err) => console.log(err));
   }, [cards?.length, isLoginIn]);
 
   const handleShortFilm = () => setShortFilm(!isShortFilm);
@@ -144,23 +152,12 @@ export const App = () => {
     findedMovies.length === 0
       ? setErrorSearchMovie("Ничего не найдено")
       : setErrorSearchMovie("");
-    setFilteredCards(findedMovies);
+    isMoviesPage ? setFilteredCards(findedMovies) : setFilteredSaveCards(findedMovies);
     findedMovies.length > 0 && setShowCards(true);
   };
 
   const handleSaveMovie = (movie) =>
     mainApi.saveMovie(movie).catch((err) => console.log(err));
-
-  useEffect(() => {
-    if (isLoginIn) {
-      mainApi
-        .getSavedMovies()
-        .then((cards) => {
-          setSavedCards(cards);
-        })
-        .catch((err) => console.log(err));
-    }
-  }, [isLoginIn]);
 
   const handleDeleteMovie = (movieId) => {
     mainApi
@@ -207,7 +204,7 @@ export const App = () => {
               path="/saved-movies"
               element={
                 <SavedMovies
-                  cards={filterCards}
+                  cards={filteredSaveCards.length > 0 ? filteredSaveCards : savedCards}
                   isShortFilm={isShortFilm}
                   onShortFilm={handleShortFilm}
                   searchMovie={searchMovie}

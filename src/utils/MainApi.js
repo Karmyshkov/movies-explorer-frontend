@@ -39,7 +39,7 @@ class MainApi {
   }
 
   logout = () => {
-    return fetch(`${BASE_URL}/signout`, {
+    return fetch(`${this.url}/signout`, {
       headers: {
         "Content-Type": "application/json",
       },
@@ -48,7 +48,7 @@ class MainApi {
   };
 
   getUserData = () => {
-    return fetch(`${BASE_URL}/users/me`, {
+    return fetch(`${this.url}/users/me`, {
       headers: this.headers,
       credentials: "include",
     }).then((token) => this._checkStatus(token));

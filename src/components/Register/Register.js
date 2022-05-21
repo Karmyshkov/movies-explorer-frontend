@@ -42,7 +42,7 @@ export const Register = memo(({ onregister }) => {
       className="register"
       onSubmit={(evt) => {
         evt.preventDefault();
-        disableBtn && onregister(dataForm);
+        !disableBtn && onregister(dataForm);
       }}
     >
       <label className="register__label">

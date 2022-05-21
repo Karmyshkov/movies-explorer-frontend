@@ -77,12 +77,12 @@
   opacity: 0.8;
 }
 
-.login__btn_disable {
+.login__btn_disabled {
   cursor: default;
   opacity: 0.4;
 }
 
-.login__btn_disable:hover {
+.login__btn_disabled:hover {
   opacity: 0.4;
 }
 

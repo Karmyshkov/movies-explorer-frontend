@@ -67,7 +67,7 @@ export const Login = memo(({ onLogin }) => {
       </p>
 
       <button
-        className={`login__btn ${disableBtn && "login__btn_disable"}`}
+        className={`login__btn ${disableBtn && "login__btn_disabled"}`}
         type="submit"
       >
         {signin}

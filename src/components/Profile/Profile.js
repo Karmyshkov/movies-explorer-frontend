@@ -23,8 +23,6 @@ export const Profile = memo(({ onChangeUserInfo, onLogout }) => {
 
   const disableBtn = dataForm.name.length > 0 && isValidEmail;
 
-  console.log(dataForm);
-
   return (
     <div className="profile">
       <p className="profile__title">{`Привет, ${userContext.name}!`}</p>
@@ -36,7 +34,12 @@ export const Profile = memo(({ onChangeUserInfo, onLogout }) => {
         }}
       >
         <div className="profile__row">
-          <label className="profile__label" htmlFor="user-name">
+          <label
+            className={`profile__label ${
+              dataForm.name.length === 0 ? "profile__label_error" : ""
+            }`}
+            htmlFor="user-name"
+          >
             {name}
           </label>
           <input
@@ -48,7 +51,12 @@ export const Profile = memo(({ onChangeUserInfo, onLogout }) => {
           />
         </div>
         <div className="profile__row">
-          <label className="profile__label" htmlFor="user-email">
+          <label
+            className={`profile__label ${
+              dataForm.email.length === 0 || !isValidEmail ? "profile__label_error" : ""
+            }`}
+            htmlFor="user-email"
+          >
             {email}
           </label>
           <input
@@ -59,7 +67,10 @@ export const Profile = memo(({ onChangeUserInfo, onLogout }) => {
             name="email"
           />
         </div>
-        <button className="profile__btn" type="submit">
+        <button
+          className={`profile__btn ${!disableBtn ? "profile__btn_disabled" : ""}`}
+          type="submit"
+        >
           {editProfile}
         </button>
         <button

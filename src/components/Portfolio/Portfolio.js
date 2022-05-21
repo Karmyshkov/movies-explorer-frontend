@@ -1,11 +1,17 @@
 import React from "react";
 import "./Portfolio.css";
 import arrow from "../../images/icons/arrow-link.svg";
+import {
+  portfolio,
+  staticWebSite,
+  adaptivWevSite,
+  singlePageApplication,
+} from "../../utils/constants";
 
 export const Portfolio = () => {
   return (
     <div className="portfolio">
-      <h3 className="portfolio__title">Портфолио</h3>
+      <h3 className="portfolio__title">{portfolio}</h3>
       <ul className="portfolio__list">
         <li className="portfolio__item">
           <a
@@ -14,7 +20,7 @@ export const Portfolio = () => {
             target="_blank"
             rel="noreferrer noopener"
           >
-            <h4 className="portfolio__text">Статичный сайт</h4>
+            <h4 className="portfolio__text">{staticWebSite}</h4>
           </a>
           <a
             href="https://github.com/Karmyshkov/russian-travel"
@@ -32,7 +38,7 @@ export const Portfolio = () => {
             target="_blank"
             rel="noreferrer noopener"
           >
-            <h4 className="portfolio__text">Адаптивный сайт</h4>
+            <h4 className="portfolio__text">{adaptivWevSite}</h4>
           </a>
           <a
             href="https://github.com/Karmyshkov/mesto"
@@ -50,7 +56,7 @@ export const Portfolio = () => {
             target="_blank"
             rel="noreferrer noopener"
           >
-            <h4 className="portfolio__text">Одностраничное приложение</h4>
+            <h4 className="portfolio__text">{singlePageApplication}</h4>
           </a>
           <a
             href="https://github.com/Karmyshkov/mesto-react"

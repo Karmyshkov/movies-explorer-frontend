@@ -2,7 +2,7 @@ import React, { memo } from "react";
 import { useLocation } from "react-router-dom";
 import "./MoviesCard.css";
 import closeIcon from "../../images/icons/close.svg";
-import { BEATFILM_URL } from "../../utils/constants";
+import { BEATFILM_URL, save } from "../../utils/constants";
 
 export const MoviesCard = memo(({ movie, isSaved, onSaveMovie, onDeleteMovie }) => {
   const location = useLocation();
@@ -53,7 +53,7 @@ export const MoviesCard = memo(({ movie, isSaved, onSaveMovie, onDeleteMovie }) 
       </div>
       {isMovies ? (
         <button onClick={handleSaveMovie} className="movies-card__btn-save" type="button">
-          Сохранить
+          {save}
         </button>
       ) : (
         <button

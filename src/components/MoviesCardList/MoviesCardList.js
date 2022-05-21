@@ -2,6 +2,7 @@ import React, { memo, useEffect, useState } from "react";
 import { useLocation } from "react-router-dom";
 import "./MoviesCardList.css";
 import { MoviesCard } from "../MoviesCard";
+import { yet } from "../../utils/constants";
 
 export const MoviesCardList = memo(
   ({ cards, errorSearchMovie, limitCards, onSaveMovie, onDeleteMovie }) => {
@@ -49,7 +50,7 @@ export const MoviesCardList = memo(
             className="movies-card-list__btn"
             type="button"
           >
-            Ещё
+            {yet}
           </button>
         )}
       </>

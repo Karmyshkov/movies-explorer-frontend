@@ -1,6 +1,7 @@
 import React from "react";
 import "./Navigation.css";
 import { Link } from "react-router-dom";
+import { yandexPracticume, gitHub, facebook } from "../../utils/constants";
 
 export const Navigation = () => {
   return (
@@ -8,17 +9,17 @@ export const Navigation = () => {
       <ul className="navigation__list">
         <li className="navigation__item">
           <Link to="/" target="_blank" className="navigation__link">
-            Яндекс.Практикум
+            {yandexPracticume}
           </Link>
         </li>
         <li className="navigation__item">
           <Link to="/" target="_blank" className="navigation__link">
-            Github
+            {gitHub}
           </Link>
         </li>
         <li className="navigation__item">
           <Link to="/" target="_blank" className="navigation__link">
-            Facebook
+            {facebook}
           </Link>
         </li>
       </ul>

@@ -43,7 +43,6 @@ export const App = () => {
   const [isShortFilm, setShortFilm] = useState(false);
   const [searchMovie, setSerchMovie] = useState("");
   const [errorSearchMovie, setErrorSearchMovie] = useState("");
-  const [isShowCards, setShowCards] = useState(false);
   const [isShowLoader, setShowLoader] = useState(false);
 
   const navigate = useNavigate();
@@ -154,7 +153,6 @@ export const App = () => {
       ? setErrorSearchMovie("Ничего не найдено")
       : setErrorSearchMovie("");
     isMoviesPage ? setFilteredCards(findedMovies) : setFilteredSaveCards(findedMovies);
-    findedMovies.length > 0 && setShowCards(true);
   };
 
   const handleSaveMovie = (movie) =>
@@ -187,7 +185,6 @@ export const App = () => {
                   onSerchMovie={handleSerchMovie}
                   onSubmitSearcMovie={handleSubmitSearcMovie}
                   errorSearchMovie={errorSearchMovie}
-                  isShowCards={isShowCards}
                   limitCards={limitCards.current}
                   onSaveMovie={handleSaveMovie}
                   isShowLoader={isShowLoader}

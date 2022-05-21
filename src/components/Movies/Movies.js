@@ -14,7 +14,6 @@ export const Movies = memo(
     onSerchMovie,
     onSubmitSearcMovie,
     errorSearchMovie,
-    isShowCards,
     limitCards,
     onSaveMovie,
     isShowLoader,
@@ -34,14 +33,12 @@ export const Movies = memo(
         {errorSearchMovie ? (
           <p className="movies__text">{errorSearchMovie}</p>
         ) : (
-          isShowCards && (
-            <MoviesCardList
-              cards={cards}
-              errorSearchMovie={errorSearchMovie}
-              limitCards={limitCards}
-              onSaveMovie={onSaveMovie}
-            />
-          )
+          <MoviesCardList
+            cards={cards}
+            errorSearchMovie={errorSearchMovie}
+            limitCards={limitCards}
+            onSaveMovie={onSaveMovie}
+          />
         )}
         {isShowLoader && <Preloader />}
       </div>

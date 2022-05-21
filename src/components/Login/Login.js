@@ -1,22 +1,29 @@
-import React, { memo, useState } from "react";
+import React, { memo, useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import "./Login.css";
+import { validateEmail } from "../../utils/functions";
 
 export const Login = memo(({ onLogin }) => {
   const [dataForm, setDataForm] = useState({});
-  const [error, setError] = useState({});
+  const [isValidEmail, setValidEmail] = useState(false);
+  const [errors, setErrors] = useState({});
+
+  useEffect(
+    () => setValidEmail(validateEmail(dataForm.email) === null ? false : true),
+    [dataForm.email]
+  );
 
   const handleChangeForm = (evt) => {
     setDataForm({ ...dataForm, [evt.target.name]: evt.target.value });
     evt.target.value === ""
-      ? setError({ ...error, [evt.target.name]: true })
-      : setError({ ...error, [evt.target.name]: false });
+      ? setErrors({ ...errors, [evt.target.name]: true })
+      : setErrors({ ...errors, [evt.target.name]: false });
   };
 
-  const disableBtn = !(
-    Object.keys(error).length === 2 &&
-    Object.values(error).find((error) => error === true) !== true
-  );
+  const disableBtn =
+    isValidEmail && Object.values(errors).find((error) => error === true) === undefined
+      ? false
+      : true;
 
   return (
     <form
@@ -30,7 +37,7 @@ export const Login = memo(({ onLogin }) => {
         <span className="login__heplper-text">E-mail</span>
         <input onChange={handleChangeForm} className="login__input" name="email" />
       </label>
-      <p className={`login__error ${error.email ? "login__error_show" : ""}`}>
+      <p className={`login__error ${errors.email ? "login__error_show" : ""}`}>
         Что-то пошло не так...
       </p>
 
@@ -38,7 +45,7 @@ export const Login = memo(({ onLogin }) => {
         <span className="login__heplper-text">Пароль</span>
         <input onChange={handleChangeForm} className="login__input" name="password" />
       </label>
-      <p className={`login__error ${error.password ? "login__error_show" : ""}`}>
+      <p className={`login__error ${errors.password ? "login__error_show" : ""}`}>
         Что-то пошло не так...
       </p>
 

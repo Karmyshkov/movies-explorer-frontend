@@ -1,6 +1,7 @@
-import React, { memo, useContext, useState } from "react";
+import React, { memo, useContext, useState, useEffect } from "react";
 import "./Profile.css";
 import { UserContext } from "../../context/UserContext";
+import { validateEmail } from "../../utils/functions";
 import { name, email, editProfile, signout } from "../../utils/constants";
 
 export const Profile = memo(({ onChangeUserInfo, onLogout }) => {
@@ -10,8 +11,19 @@ export const Profile = memo(({ onChangeUserInfo, onLogout }) => {
     name: userContext.name,
     email: userContext.email,
   });
+  const [isValidEmail, setValidEmail] = useState(false);
 
-  const handleChangeForm = (evt) => setDataForm({ [evt.target.name]: evt.target.value });
+  useEffect(
+    () => setValidEmail(validateEmail(dataForm.email) === null ? false : true),
+    [dataForm.email]
+  );
+
+  const handleChangeForm = (evt) =>
+    setDataForm({ ...dataForm, [evt.target.name]: evt.target.value });
+
+  const disableBtn = dataForm.name.length > 0 && isValidEmail;
+
+  console.log(dataForm);
 
   return (
     <div className="profile">
@@ -20,7 +32,7 @@ export const Profile = memo(({ onChangeUserInfo, onLogout }) => {
         className="profile__form"
         onSubmit={(evt) => {
           evt.preventDefault();
-          onChangeUserInfo(dataForm);
+          disableBtn && onChangeUserInfo(dataForm);
         }}
       >
         <div className="profile__row">

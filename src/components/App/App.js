@@ -21,6 +21,7 @@ import {
   ERROR_CHANGE_PROFILE,
   ERROR_SAVE_MOVIE,
   SUCCESS_DELETE_MOVIE,
+  ERROR_LOGIN,
 } from "../../utils/constants";
 
 export const App = () => {
@@ -77,7 +78,11 @@ export const App = () => {
         setLoggedIn(true);
         navigate("/movies");
       })
-      .catch((err) => console.log(err));
+      .catch((err) => {
+        handleOpenTooltip();
+        setErrorMessage(ERROR_LOGIN);
+        console.log(err);
+      });
   };
 
   const handleRegister = (data) => {
@@ -107,7 +112,8 @@ export const App = () => {
       })
       .catch((err) => {
         handleOpenTooltip();
-        setErrorMessage(err === "Error: 400" ? { ERROR_CHANGE_PROFILE } : err);
+        setErrorMessage(ERROR_CHANGE_PROFILE);
+        console.log(err);
       });
   };
 
@@ -182,7 +188,8 @@ export const App = () => {
       })
       .catch((err) => {
         handleOpenTooltip();
-        setErrorMessage(err === "Error: 500" ? { ERROR_SAVE_MOVIE } : err);
+        setErrorMessage(ERROR_SAVE_MOVIE);
+        console.log(err);
       });
 
   const handleDeleteMovie = (movieId) => {

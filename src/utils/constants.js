@@ -57,6 +57,7 @@ const SUCCESS_CHANGE_PROFILE = "Данные профиля изменены!";
 const ERROR_CHANGE_PROFILE = "Ошибка при запросе! Введены старые данные.";
 const ERROR_SAVE_MOVIE = "Данный фильм уже добавлен в избранное!";
 const SUCCESS_DELETE_MOVIE = "Фильм удален из избранного!";
+const ERROR_LOGIN = "Введен неверно логин или пароль";
 
 export {
   BEATFILM_URL,
@@ -116,4 +117,5 @@ export {
   ERROR_CHANGE_PROFILE,
   ERROR_SAVE_MOVIE,
   SUCCESS_DELETE_MOVIE,
+  ERROR_LOGIN,
 };

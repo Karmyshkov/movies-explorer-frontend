@@ -156,7 +156,10 @@ export const App = () => {
   };
 
   const handleSaveMovie = (movie) =>
-    mainApi.saveMovie(movie).catch((err) => console.log(err));
+    mainApi
+      .saveMovie(movie)
+      .then(({ data }) => savedCards.push(data))
+      .catch((err) => console.log(err));
 
   const handleDeleteMovie = (movieId) => {
     mainApi

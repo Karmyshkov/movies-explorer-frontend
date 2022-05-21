@@ -2,6 +2,7 @@ import React, { memo, useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 import "./Register.css";
 import { validateEmail } from "../../utils/functions";
+import { requiredField, incorrectEmail } from "../../utils/constants";
 
 export const Register = memo(({ onregister }) => {
   const [dataForm, setDataForm] = useState({});
@@ -21,15 +22,18 @@ export const Register = memo(({ onregister }) => {
   };
 
   const disableBtn =
-    isValidEmail && Object.values(errors).find((error) => error === true) === undefined
+    isValidEmail &&
+    Object.values(errors).length === 3 &&
+    Object.values(errors).find((error) => error === true) === undefined
       ? false
       : true;
+
   return (
     <form
       className="register"
       onSubmit={(evt) => {
         evt.preventDefault();
-        !disableBtn && onregister(dataForm);
+        disableBtn && onregister(dataForm);
       }}
     >
       <label className="register__label">
@@ -37,15 +41,21 @@ export const Register = memo(({ onregister }) => {
         <input onChange={handleChangeForm} className="register__input" name="name" />
       </label>
       <p className={`register__error ${errors.name ? "register__error_show" : ""}`}>
-        Что-то пошло не так...
+        {requiredField}
       </p>
 
       <label className="register__label">
         <span className="register__heplper-text">E-mail</span>
         <input onChange={handleChangeForm} className="register__input" name="email" />
       </label>
-      <p className={`register__error ${errors.email ? "register__error_show" : ""}`}>
-        Что-то пошло не так...
+      <p
+        className={`register__error ${
+          dataForm.email?.length > 0 && !validateEmail(dataForm.email)
+            ? "register__error_show"
+            : ""
+        }`}
+      >
+        {incorrectEmail}
       </p>
 
       <label className="register__label">
@@ -53,7 +63,7 @@ export const Register = memo(({ onregister }) => {
         <input onChange={handleChangeForm} className="register__input" name="password" />
       </label>
       <p className={`register__error ${errors.password ? "register__error_show" : ""}`}>
-        Что-то пошло не так...
+        {requiredField}
       </p>
 
       <button

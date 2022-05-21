@@ -1,5 +1,5 @@
-const BEATFILM_URL = "https://api.nomoreparties.co/";
-const BASE_URL = "https://api.nomoreparties.co";
+const BEATFILM_URL = "https://api.nomoreparties.co";
+const BASE_URL = "https://api.karmyskov-cinema.nomoredomains.work";
 const REQUIRED_FIELD = "Обязательное*";
 const INCORRECT_EMAIL = "Некорректный email";
 const NAME = "Имя";

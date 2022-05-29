@@ -58,6 +58,8 @@ const ERROR_CHANGE_PROFILE = "Ошибка при запросе! Введены
 const ERROR_SAVE_MOVIE = "Данный фильм уже добавлен в избранное!";
 const SUCCESS_DELETE_MOVIE = "Фильм удален из избранного!";
 const ERROR_LOGIN = "Введен неверно логин или пароль";
+const SAVE_MOVIE = "Фильм добавлен в избранное!";
+const MAIN_ERROR = "Ошибка при выполнении запроса!";
 
 export {
   BEATFILM_URL,
@@ -118,4 +120,6 @@ export {
   ERROR_SAVE_MOVIE,
   SUCCESS_DELETE_MOVIE,
   ERROR_LOGIN,
+  SAVE_MOVIE,
+  MAIN_ERROR,
 };

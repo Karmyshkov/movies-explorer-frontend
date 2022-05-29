@@ -22,6 +22,8 @@ import {
   ERROR_SAVE_MOVIE,
   SUCCESS_DELETE_MOVIE,
   ERROR_LOGIN,
+  SAVE_MOVIE,
+  MAIN_ERROR,
 } from "../../utils/constants";
 
 export const App = () => {
@@ -52,8 +54,8 @@ export const App = () => {
   const [searchMovie, setSerchMovie] = useState("");
   const [errorSearchMovie, setErrorSearchMovie] = useState("");
   const [isShowLoader, setShowLoader] = useState(false);
-  const [errorMessage, setErrorMessage] = useState("");
-  const [successMessage, setSuccessMessage] = useState("");
+  const [tooltipMessage, setTooltipMessage] = useState("");
+  const [isError, setError] = useState(false);
   const [isOpen, setOpen] = useState(false);
 
   const navigate = useNavigate();
@@ -77,10 +79,12 @@ export const App = () => {
       .then(() => {
         setLoggedIn(true);
         navigate("/movies");
+        setError(false);
       })
       .catch((err) => {
         handleOpenTooltip();
-        setErrorMessage(ERROR_LOGIN);
+        setTooltipMessage(ERROR_LOGIN);
+        setError(true);
         console.log(err);
       });
   };
@@ -115,19 +119,22 @@ export const App = () => {
   };
 
   const handleChangeUserInfo = ({ name, email }) => {
-    if (currentUser.name !== name && currentUser.email !== email) {
+    if (currentUser.name !== name || currentUser.email !== email) {
       mainApi
         .changeUserIngo({ name, email })
-        .then(() => {
+        .then(({ data }) => {
+          setCurrentUser(data);
+          setTooltipMessage(SUCCESS_CHANGE_PROFILE);
+          setError(false);
           handleOpenTooltip();
-          setSuccessMessage(SUCCESS_CHANGE_PROFILE);
         })
         .catch((err) => {
           console.log(err);
         });
     } else {
+      setTooltipMessage(ERROR_CHANGE_PROFILE);
+      setError(true);
       handleOpenTooltip();
-      setErrorMessage(ERROR_CHANGE_PROFILE);
     }
   };
 
@@ -191,21 +198,34 @@ export const App = () => {
   };
 
   const handleSaveMovie = (movie) =>
-    mainApi.saveMovie(movie).catch((err) => {
-      handleOpenTooltip();
-      setErrorMessage(ERROR_SAVE_MOVIE);
-      console.log(err);
-    });
+    mainApi
+      .saveMovie(movie)
+      .then(() => {
+        setTooltipMessage(SAVE_MOVIE);
+        setError(false);
+        handleOpenTooltip();
+      })
+      .catch((err) => {
+        console.log(err);
+        setTooltipMessage(ERROR_SAVE_MOVIE);
+        setError(true);
+        handleOpenTooltip();
+      });
 
   const handleDeleteMovie = (movieId) => {
     mainApi
       .deleteMovie(movieId)
       .then((deletedCard) => {
         handleOpenTooltip();
-        setSuccessMessage(SUCCESS_DELETE_MOVIE);
+        setTooltipMessage(SUCCESS_DELETE_MOVIE);
+        setError(false);
         setSavedCards(savedCards.filter((card) => deletedCard._id !== card._id));
       })
-      .catch((err) => console.log(err));
+      .catch((err) => {
+        console.log(err);
+        setTooltipMessage(MAIN_ERROR);
+        setError(true);
+      });
   };
 
   return (
@@ -276,8 +296,8 @@ export const App = () => {
         <Tooltip
           isOpen={isOpen}
           onCloseTooltip={handleCloseTooltip}
-          successMessage={successMessage}
-          errorMessage={errorMessage}
+          tooltipMessage={tooltipMessage}
+          isError={isError}
         />
       </UserContext.Provider>
     </div>

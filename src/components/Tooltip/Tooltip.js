@@ -1,15 +1,16 @@
 import React from "react";
 import "./Tooltip.css";
 
-export const Tooltip = ({ isOpen, onCloseTooltip, successMessage, errorMessage }) => {
+export const Tooltip = ({ isOpen, onCloseTooltip, tooltipMessage, isError }) => {
+  console.log(tooltipMessage);
   return (
     <div
       onClick={onCloseTooltip}
       className={`tooltip ${isOpen ? "tooltip_opened" : ""} ${
-        successMessage ? "tooltip_success" : "tooltip_error"
+        isError ? "tooltip_error" : "tooltip_success"
       } `}
     >
-      <h2 className="tooltip__title">{successMessage ? successMessage : errorMessage}</h2>
+      <h2 className="tooltip__title">{tooltipMessage}</h2>
     </div>
   );
 };

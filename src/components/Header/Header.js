@@ -16,7 +16,7 @@ import {
   WELCOME,
 } from "../../utils/constants";
 
-export const Header = memo(() => {
+export const Header = memo(({ isLoginIn }) => {
   const [isOpenMenu, setOpenMenu] = useState(false);
 
   const location = useLocation();
@@ -24,7 +24,7 @@ export const Header = memo(() => {
   const isMain = location.pathname === "/";
   const isSignIn = location.pathname === "/sign-in";
   const isSignUp = location.pathname === "/sign-up";
-  const isloggedIn =
+  const logininPages =
     location.pathname === "/movies" ||
     location.pathname === "/saved-movies" ||
     location.pathname === "/profile";
@@ -34,7 +34,12 @@ export const Header = memo(() => {
 
   const renderElements = () => {
     if (isMain) {
-      return (
+      return isLoginIn ? (
+        <Link to="/profile" className="header__btn" type="button">
+          <span className="header__text">{ACCOUNT}</span>
+          <img className="header__img" src={user} alt="Иконка аккаунт" />
+        </Link>
+      ) : (
         <ul className="header__wrap">
           <li className="header__item">
             <Link className="header__link" to="/sign-up">
@@ -49,7 +54,7 @@ export const Header = memo(() => {
         </ul>
       );
     }
-    if (isloggedIn) {
+    if (logininPages) {
       return (
         <>
           <nav className={`header__menu ${isOpenMenu ? "header__menu_open" : ""}`}>
@@ -146,7 +151,7 @@ export const Header = memo(() => {
           <img src={logo} alt="Логотип учебного проекта" />
         </Link>
 
-        {isloggedIn && (
+        {logininPages && (
           <>
             <Link to="/movies" className="header__title">
               {MOVIES_PAGE}

@@ -98,6 +98,8 @@ export const App = () => {
       .then(() => {
         setLoggedIn(false);
         setCurrentUser({});
+        localStorage.removeItem("cards");
+        localStorage.removeItem("isShortFilm");
         navigate("/");
       })
       .catch((err) => console.log(err));
@@ -125,7 +127,7 @@ export const App = () => {
         setCurrentUser(data);
         setLoggedIn(true);
         (location.pathname === "/sign-in" || location.pathname === "/sign-up") &&
-          navigate("/movies");
+          navigate("/");
       })
       .catch((err) => {
         setLoggedIn(false);
@@ -138,10 +140,8 @@ export const App = () => {
   useEffect(() => {
     checkToken();
     setFilteredCards(JSON.parse(localStorage.getItem("cards")));
-    setShortFilm(Boolean(localStorage.getItem("isShortFilm")));
+    setShortFilm(localStorage.getItem("isShortFilm") === "false" ? false : true);
   }, [checkToken, isLoginIn]);
-
-  //movies
 
   useEffect(() => {
     isLoginIn &&
@@ -201,7 +201,7 @@ export const App = () => {
   return (
     <div className="body">
       <UserContext.Provider value={currentUser}>
-        {isRenderHeader && <Header />}
+        {isRenderHeader && <Header isLoginIn={isLoginIn} />}
         <Routes>
           <Route path="/" element={<Main />} />
           <Route exact path="/movies" element={<ProtectedRoute isLoginIn={isLoginIn} />}>

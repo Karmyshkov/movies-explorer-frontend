@@ -1,5 +1,5 @@
 const BEATFILM_URL = "https://api.nomoreparties.co";
-const BASE_URL = "https://api.karmyskov-cinema.nomoredomains.work";
+const BASE_URL = "http://localhost:3000";
 const REQUIRED_FIELD = "Обязательное*";
 const INCORRECT_EMAIL = "Некорректный email";
 const NAME = "Имя";
@@ -52,7 +52,7 @@ const ABOUT_ME_TITLE = "Студент";
 const ABOUT_ME_NAME = "Евгений";
 const ABOUT_ME_PROFESSION = "Фронтенд-разработчик, 25 лет";
 const ABOUT_ME_DESCRIPTION =
-  "Я&nbsp;родился и&nbsp;живу в&nbsp;Саратове, закончил факультет экономики СГУ.У&nbsp;меня есть жена и&nbsp;дочь. Я&nbsp;люблю слушать музыку, а&nbsp;ещёувлекаюсь бегом. Недавно начал кодить. С&nbsp;2015 года работалв&nbsp;компании &laquo;СКБ Контур&raquo;. После того, как прошёл курспо&nbsp;веб-разработке, начал заниматься фриланс-заказами и&nbsp;ушёлс&nbsp;постоянной работы.";
+  "Я родился и живу в Саратове, закончил факультет экономики СГУ. У меня есть жена и дочь. Я люблю слушать музыку, а ещё увлекаюсь бегом. Недавно начал кодить. С 2015 года работал в компании «СКБ Контур». После того, как прошёл курс по веб-разработке, начал заниматься фриланс-заказами и ушёл с постоянной работы.";
 const SUCCESS_CHANGE_PROFILE = "Данные профиля изменены!";
 const ERROR_CHANGE_PROFILE = "Ошибка при запросе! Введены старые данные.";
 const ERROR_SAVE_MOVIE = "Данный фильм уже добавлен в избранное!";

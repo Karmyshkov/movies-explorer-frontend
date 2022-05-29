@@ -47,7 +47,12 @@ export const Register = memo(({ onregister }) => {
     >
       <label className="register__label">
         <span className="register__heplper-text">{NAME}</span>
-        <input onChange={handleChangeForm} className="register__input" name="name" />
+        <input
+          onChange={handleChangeForm}
+          className="register__input"
+          name="name"
+          type="name"
+        />
       </label>
       <p className={`register__error ${errors.name ? "register__error_show" : ""}`}>
         {REQUIRED_FIELD}
@@ -55,7 +60,12 @@ export const Register = memo(({ onregister }) => {
 
       <label className="register__label">
         <span className="register__heplper-text">{EMAIL}</span>
-        <input onChange={handleChangeForm} className="register__input" name="email" />
+        <input
+          onChange={handleChangeForm}
+          className="register__input"
+          name="email"
+          type="email"
+        />
       </label>
       <p
         className={`register__error ${
@@ -69,7 +79,12 @@ export const Register = memo(({ onregister }) => {
 
       <label className="register__label">
         <span className="register__heplper-text">{PASSOWRD}</span>
-        <input onChange={handleChangeForm} className="register__input" name="password" />
+        <input
+          onChange={handleChangeForm}
+          className="register__input"
+          name="password"
+          type="password"
+        />
       </label>
       <p className={`register__error ${errors.password ? "register__error_show" : ""}`}>
         {REQUIRED_FIELD}

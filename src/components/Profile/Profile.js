@@ -48,6 +48,7 @@ export const Profile = memo(({ onChangeUserInfo, onLogout }) => {
             className="profile__input"
             id="user-name"
             name="name"
+            type="text"
           />
         </div>
         <div className="profile__row">
@@ -65,6 +66,7 @@ export const Profile = memo(({ onChangeUserInfo, onLogout }) => {
             className="profile__input"
             id="user-email"
             name="email"
+            type="email"
           />
         </div>
         <button

@@ -46,7 +46,12 @@ export const Login = memo(({ onLogin }) => {
     >
       <label className="login__label">
         <span className="login__heplper-text">{EMAIL}</span>
-        <input onChange={handleChangeForm} className="login__input" name="email" />
+        <input
+          onChange={handleChangeForm}
+          className="login__input"
+          name="email"
+          type="text"
+        />
       </label>
       <p
         className={`login__error ${
@@ -60,7 +65,12 @@ export const Login = memo(({ onLogin }) => {
 
       <label className="login__label">
         <span className="login__heplper-text">{PASSOWRD}</span>
-        <input onChange={handleChangeForm} className="login__input" name="password" />
+        <input
+          onChange={handleChangeForm}
+          className="login__input"
+          name="password"
+          type="password"
+        />
       </label>
       <p className={`login__error ${errors.password ? "login__error_show" : ""}`}>
         {REQUIRED_FIELD}

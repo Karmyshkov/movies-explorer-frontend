@@ -13,7 +13,7 @@ import {
 
 export const AboutMe = () => {
   return (
-    <div className="about-me">
+    <div className="about-me" id="aboutMe">
       <h2 className="about-me__title">{ABOUT_ME_TITLE}</h2>
       <div className="about-me__row">
         <div className="about-me__inner">

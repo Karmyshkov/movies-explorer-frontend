@@ -1,5 +1,4 @@
 import React from "react";
-import { Link } from "react-router-dom";
 import "./NavTab.css";
 import { ABOUT_PROJECT, TECHNOLOGIES, STUDENT } from "../../utils/constants";
 
@@ -7,19 +6,19 @@ export const NavTab = () => {
   return (
     <ul className="navtab">
       <li className="navtab__item">
-        <Link to="/" className="navtab__link">
+        <a href="#aboutProject" className="navtab__link">
           {ABOUT_PROJECT}
-        </Link>
+        </a>
       </li>
       <li className="navtab__item">
-        <Link to="/" className="navtab__link">
+        <a href="#teach" className="navtab__link">
           {TECHNOLOGIES}
-        </Link>
+        </a>
       </li>
       <li className="navtab__item">
-        <Link to="/" className="navtab__link">
+        <a href="#aboutMe" className="navtab__link">
           {STUDENT}
-        </Link>
+        </a>
       </li>
     </ul>
   );

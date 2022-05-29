@@ -15,7 +15,7 @@ import {
 
 export const Techs = () => {
   return (
-    <div className="techs">
+    <div className="techs" id="teach">
       <div className="techs__wrap">
         <h2 className="techs__title">{TEACH_TITLE}</h2>
         <div className="techs__inner">

@@ -114,18 +114,21 @@ export const App = () => {
       .catch((err) => console.log(err));
   };
 
-  const handleChangeUserInfo = (data) => {
-    mainApi
-      .changeUserIngo(data)
-      .then(() => {
-        handleOpenTooltip();
-        setSuccessMessage(SUCCESS_CHANGE_PROFILE);
-      })
-      .catch((err) => {
-        handleOpenTooltip();
-        setErrorMessage(ERROR_CHANGE_PROFILE);
-        console.log(err);
-      });
+  const handleChangeUserInfo = ({ name, email }) => {
+    if (currentUser.name !== name && currentUser.email !== email) {
+      mainApi
+        .changeUserIngo({ name, email })
+        .then(() => {
+          handleOpenTooltip();
+          setSuccessMessage(SUCCESS_CHANGE_PROFILE);
+        })
+        .catch((err) => {
+          console.log(err);
+        });
+    } else {
+      handleOpenTooltip();
+      setErrorMessage(ERROR_CHANGE_PROFILE);
+    }
   };
 
   const checkToken = useCallback(() => {

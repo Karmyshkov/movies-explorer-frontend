@@ -32,23 +32,23 @@ export const MoviesCard = memo(({ movie, onSaveMovie, onDeleteMovie }) => {
         isMovies === true && !isMovies ? "movies-card__item_saved" : ""
       }`}
     >
-      <img
-        className="movies-card__img"
-        src={isMovies ? `${BEATFILM_URL}${movie.image.url}` : movie.image}
-        alt={`Обложка фильма ${movie.nameRU}`}
-      />
-      <div className="movies-card__inner">
-        <a
-          href={movie.trailerLink ? movie.trailerLink : "/"}
-          className="movies-card__link"
-          target="_blank"
-          rel="noreferrer noopener"
-        >
-          {movie.nameRU}
-        </a>
+      <a
+        href={movie.trailerLink ? movie.trailerLink : "/"}
+        className="movies-card__link"
+        target="_blank"
+        rel="noreferrer noopener"
+      >
+        <img
+          className="movies-card__img"
+          src={isMovies ? `${BEATFILM_URL}${movie.image.url}` : movie.image}
+          alt={`Обложка фильма ${movie.nameRU}`}
+        />
+        <div className="movies-card__inner">
+          <h3 className="movies-card__title">{movie.nameRU}</h3>
 
-        <p className="movies-card__time">{movie.duration}</p>
-      </div>
+          <p className="movies-card__time">{movie.duration}</p>
+        </div>
+      </a>
       {isMovies ? (
         <button onClick={handleSaveMovie} className="movies-card__btn-save" type="button">
           {SAVE}

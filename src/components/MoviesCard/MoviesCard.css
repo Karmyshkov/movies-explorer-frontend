@@ -43,16 +43,19 @@
 
 .movies-card__link {
   text-decoration: none;
-  max-width: 250px;
-  font-size: 13px;
-  color: var(--color-primary);
-  font-weight: 500;
-  line-height: 16px;
   transition: 0.3s opacity;
 }
 
 .movies-card__link:hover {
   opacity: 0.6;
+}
+
+.movies-card__title {
+  max-width: 250px;
+  font-size: 13px;
+  color: var(--color-primary);
+  font-weight: 500;
+  line-height: 16px;
 }
 
 .movies-card__time {
@@ -84,11 +87,16 @@
   color: var(--color-primary);
   font-weight: 400;
   line-height: 9px;
-  transition: 0.3s opacity;
+  transition: 0.3s opacity, 0.3s background-color, 0.3s color;
 }
 
 .movies-card__item:hover > .movies-card__btn-save {
   opacity: 1;
+}
+
+.movies-card__btn-save:hover {
+  color: var(--color-secondary);
+  background-color: var(--bg-blue);
 }
 
 .movies-card__btn {

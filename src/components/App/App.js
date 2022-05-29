@@ -128,9 +128,7 @@ export const App = () => {
           setError(false);
           handleOpenTooltip();
         })
-        .catch((err) => {
-          console.log(err);
-        });
+        .catch((err) => console.log(err));
     } else {
       setTooltipMessage(ERROR_CHANGE_PROFILE);
       setError(true);
@@ -161,22 +159,18 @@ export const App = () => {
   }, [checkToken, isLoginIn]);
 
   useEffect(() => {
-    isLoginIn &&
+    if (isLoginIn) {
       cards?.length === 0 &&
-      moviesApi
-        .getMovie()
-        .then((cards) => {
-          setCards(cards);
-        })
-        .catch((err) => console.log(err));
+        moviesApi
+          .getMovie()
+          .then((cards) => setCards(cards))
+          .catch((err) => console.log(err));
 
-    isLoginIn &&
       mainApi
         .getSavedMovies()
-        .then((cards) => {
-          setSavedCards(cards);
-        })
+        .then((cards) => setSavedCards(cards))
         .catch((err) => console.log(err));
+    }
   }, [cards?.length, isLoginIn]);
 
   const handleShortFilm = () => setShortFilm(!isShortFilm);
@@ -200,7 +194,8 @@ export const App = () => {
   const handleSaveMovie = (movie) =>
     mainApi
       .saveMovie(movie)
-      .then(() => {
+      .then(({ data }) => {
+        setSavedCards((prevState) => [...prevState, data]);
         setTooltipMessage(SAVE_MOVIE);
         setError(false);
         handleOpenTooltip();

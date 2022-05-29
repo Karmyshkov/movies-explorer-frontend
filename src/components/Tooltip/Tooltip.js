@@ -2,7 +2,6 @@ import React from "react";
 import "./Tooltip.css";
 
 export const Tooltip = ({ isOpen, onCloseTooltip, tooltipMessage, isError }) => {
-  console.log(tooltipMessage);
   return (
     <div
       onClick={onCloseTooltip}

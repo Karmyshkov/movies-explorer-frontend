@@ -85,10 +85,19 @@ export const App = () => {
       });
   };
 
-  const handleRegister = (data) => {
+  const handleRegister = ({ name, email, password }) => {
     mainApi
-      .register(data)
-      .then(() => navigate("/sign-in"))
+      .register({ name, email, password })
+      .then((data) => {
+        if (data) {
+          handleLogin({ email, password })
+            .then(() => {
+              setLoggedIn(true);
+              navigate("/movies");
+            })
+            .catch((err) => console.log(err));
+        }
+      })
       .catch((err) => console.log(err));
   };
 
@@ -120,7 +129,6 @@ export const App = () => {
   };
 
   const checkToken = useCallback(() => {
-    setShowLoader(true);
     mainApi
       .getUserData()
       .then(({ data }) => {
@@ -133,8 +141,7 @@ export const App = () => {
         setLoggedIn(false);
         console.log(err);
         isLoginIn && navigate("/");
-      })
-      .finally(() => setShowLoader(false));
+      });
   }, [navigate, isLoginIn, location.pathname]);
 
   useEffect(() => {

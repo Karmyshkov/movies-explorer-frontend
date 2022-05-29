@@ -24,6 +24,10 @@ import {
   ERROR_LOGIN,
   SAVE_MOVIE,
   MAIN_ERROR,
+  LIMIT_FOR_LARGE,
+  LIMIT_FOR_MEDIUM,
+  LIMIT_FOR_SMALL,
+  NOT_FOUND_TEXT,
 } from "../../utils/constants";
 
 export const App = () => {
@@ -51,8 +55,11 @@ export const App = () => {
   const [filteredCards, setFilteredCards] = useState([]);
   const [filteredSaveCards, setFilteredSaveCards] = useState([]);
   const [isShortFilm, setShortFilm] = useState(false);
+  const [isShortSaveFilm, setShortSaveFilm] = useState(false);
   const [searchMovie, setSerchMovie] = useState("");
+  const [searchSaveMovie, setSerchSaveMovie] = useState("");
   const [errorSearchMovie, setErrorSearchMovie] = useState("");
+  const [errorSearchSaveMovie, setErrorSearchSaveMovie] = useState("");
   const [isShowLoader, setShowLoader] = useState(false);
   const [tooltipMessage, setTooltipMessage] = useState("");
   const [isError, setError] = useState(false);
@@ -64,10 +71,10 @@ export const App = () => {
 
   limitCards.current =
     window.innerWidth <= 1980 && window.innerWidth > 1240
-      ? 3
+      ? LIMIT_FOR_LARGE
       : window.innerWidth <= 1240 && window.innerWidth > 692
-      ? 2
-      : 2;
+      ? LIMIT_FOR_MEDIUM
+      : LIMIT_FOR_SMALL;
 
   const handleOpenTooltip = () => setOpen(true);
 
@@ -173,21 +180,29 @@ export const App = () => {
     }
   }, [cards?.length, isLoginIn]);
 
-  const handleShortFilm = () => setShortFilm(!isShortFilm);
+  const handleShortFilm = () =>
+    isMoviesPage ? setShortFilm(!isShortFilm) : setShortSaveFilm(!isShortSaveFilm);
 
-  const handleSerchMovie = (word) => setSerchMovie(word);
+  const handleSerchMovie = (word) =>
+    isMoviesPage ? setSerchMovie(word) : setSerchSaveMovie(word);
 
   const handleSubmitSearcMovie = (nameMovie) => {
     const findedMovies = filterCards(
       isMoviesPage ? cards : savedCards,
       nameMovie,
-      isShortFilm
+      isMoviesPage ? isShortFilm : isShortSaveFilm
     );
-    localStorage.setItem("cards", JSON.stringify(findedMovies));
-    localStorage.setItem("isShortFilm", isShortFilm);
-    findedMovies.length === 0
-      ? setErrorSearchMovie("Ничего не найдено")
-      : setErrorSearchMovie("");
+    if (isMoviesPage) {
+      localStorage.setItem("cards", JSON.stringify(findedMovies));
+      localStorage.setItem("isShortFilm", isShortFilm);
+    }
+    if (findedMovies.length === 0) {
+      isMoviesPage
+        ? setErrorSearchMovie(NOT_FOUND_TEXT)
+        : setErrorSearchSaveMovie(NOT_FOUND_TEXT);
+    } else {
+      isMoviesPage ? setErrorSearchMovie("") : setErrorSearchSaveMovie("");
+    }
     isMoviesPage ? setFilteredCards(findedMovies) : setFilteredSaveCards(findedMovies);
   };
 
@@ -259,12 +274,12 @@ export const App = () => {
               element={
                 <SavedMovies
                   cards={filteredSaveCards.length > 0 ? filteredSaveCards : savedCards}
-                  isShortFilm={isShortFilm}
+                  isShortFilm={isShortSaveFilm}
                   onShortFilm={handleShortFilm}
-                  searchMovie={searchMovie}
+                  searchMovie={searchSaveMovie}
                   onSerchMovie={handleSerchMovie}
                   onSubmitSearcMovie={handleSubmitSearcMovie}
-                  errorSearchMovie={errorSearchMovie}
+                  errorSearchMovie={errorSearchSaveMovie}
                   limitCards={limitCards.current}
                   onDeleteMovie={handleDeleteMovie}
                 />

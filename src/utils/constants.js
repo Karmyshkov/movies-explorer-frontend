@@ -60,6 +60,10 @@ const SUCCESS_DELETE_MOVIE = "Фильм удален из избранного!
 const ERROR_LOGIN = "Введен неверно логин или пароль";
 const SAVE_MOVIE = "Фильм добавлен в избранное!";
 const MAIN_ERROR = "Ошибка при выполнении запроса!";
+const LIMIT_FOR_LARGE = 3;
+const LIMIT_FOR_MEDIUM = 2;
+const LIMIT_FOR_SMALL = 2;
+const NOT_FOUND_TEXT = "Ничего не найдено";
 
 export {
   BEATFILM_URL,
@@ -122,4 +126,8 @@ export {
   ERROR_LOGIN,
   SAVE_MOVIE,
   MAIN_ERROR,
+  LIMIT_FOR_LARGE,
+  LIMIT_FOR_MEDIUM,
+  LIMIT_FOR_SMALL,
+  NOT_FOUND_TEXT,
 };

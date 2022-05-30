@@ -24,22 +24,13 @@ export const Header = memo(({ isLoginIn }) => {
   const isMain = location.pathname === "/";
   const isSignIn = location.pathname === "/sign-in";
   const isSignUp = location.pathname === "/sign-up";
-  const logininPages =
-    location.pathname === "/movies" ||
-    location.pathname === "/saved-movies" ||
-    location.pathname === "/profile";
 
   const setActiveLink = ({ isActive }) =>
     isActive ? "header__menu-link header__menu-link_active" : "header__menu-link";
 
   const renderElements = () => {
-    if (isMain) {
-      return isLoginIn ? (
-        <Link to="/profile" className="header__btn" type="button">
-          <span className="header__text">{ACCOUNT}</span>
-          <img className="header__img" src={user} alt="Иконка аккаунт" />
-        </Link>
-      ) : (
+    if (isMain && !isLoginIn) {
+      return (
         <ul className="header__wrap">
           <li className="header__item">
             <Link className="header__link" to="/sign-up">
@@ -54,7 +45,8 @@ export const Header = memo(({ isLoginIn }) => {
         </ul>
       );
     }
-    if (logininPages) {
+
+    if (isLoginIn) {
       return (
         <>
           <nav className={`header__menu ${isOpenMenu ? "header__menu_open" : ""}`}>
@@ -151,7 +143,7 @@ export const Header = memo(({ isLoginIn }) => {
           <img src={logo} alt="Логотип учебного проекта" />
         </Link>
 
-        {logininPages && (
+        {isLoginIn && (
           <>
             <Link to="/movies" className="header__title">
               {MOVIES_PAGE}

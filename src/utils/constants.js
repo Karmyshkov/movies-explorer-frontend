@@ -64,6 +64,7 @@ const LIMIT_FOR_LARGE = 3;
 const LIMIT_FOR_MEDIUM = 2;
 const LIMIT_FOR_SMALL = 2;
 const NOT_FOUND_TEXT = "Ничего не найдено";
+const LOGIN_SUCCESS = "Вы успешно вошли в систему!";
 
 export {
   BEATFILM_URL,
@@ -130,4 +131,5 @@ export {
   LIMIT_FOR_MEDIUM,
   LIMIT_FOR_SMALL,
   NOT_FOUND_TEXT,
+  LOGIN_SUCCESS,
 };

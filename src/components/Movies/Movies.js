@@ -8,6 +8,7 @@ import { Preloader } from "../Preloader";
 export const Movies = memo(
   ({
     cards,
+    savedCards,
     isShortFilm,
     onShortFilm,
     searchMovie,
@@ -35,6 +36,7 @@ export const Movies = memo(
         ) : (
           <MoviesCardList
             cards={cards}
+            savedCards={savedCards}
             errorSearchMovie={errorSearchMovie}
             limitCards={limitCards}
             onSaveMovie={onSaveMovie}

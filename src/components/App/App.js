@@ -28,6 +28,7 @@ import {
   LIMIT_FOR_MEDIUM,
   LIMIT_FOR_SMALL,
   NOT_FOUND_TEXT,
+  LOGIN_SUCCESS,
 } from "../../utils/constants";
 
 export const App = () => {
@@ -86,6 +87,8 @@ export const App = () => {
       .then(() => {
         setLoggedIn(true);
         navigate("/movies");
+        handleOpenTooltip();
+        setTooltipMessage(LOGIN_SUCCESS);
         setError(false);
       })
       .catch((err) => {
@@ -244,60 +247,46 @@ export const App = () => {
         {isRenderHeader && <Header isLoginIn={isLoginIn} />}
         <Routes>
           <Route path="/" element={<Main />} />
-          <Route exact path="/movies" element={<ProtectedRoute isLoginIn={isLoginIn} />}>
-            <Route
-              path="/movies"
-              element={
-                <Movies
-                  cards={filteredCards}
-                  isShortFilm={isShortFilm}
-                  onShortFilm={handleShortFilm}
-                  searchMovie={searchMovie}
-                  onSerchMovie={handleSerchMovie}
-                  onSubmitSearcMovie={handleSubmitSearcMovie}
-                  errorSearchMovie={errorSearchMovie}
-                  limitCards={limitCards.current}
-                  onSaveMovie={handleSaveMovie}
-                  isShowLoader={isShowLoader}
-                />
-              }
-            />
-          </Route>
           <Route
-            exact
+            path="/movies"
+            element={
+              <Movies
+                cards={filteredCards}
+                isShortFilm={isShortFilm}
+                onShortFilm={handleShortFilm}
+                searchMovie={searchMovie}
+                onSerchMovie={handleSerchMovie}
+                onSubmitSearcMovie={handleSubmitSearcMovie}
+                errorSearchMovie={errorSearchMovie}
+                limitCards={limitCards.current}
+                onSaveMovie={handleSaveMovie}
+                isShowLoader={isShowLoader}
+              />
+            }
+          />
+          <Route
             path="/saved-movies"
-            element={<ProtectedRoute isLoginIn={isLoginIn} />}
-          >
-            <Route
-              isLoginIn={isLoginIn}
-              path="/saved-movies"
-              element={
-                <SavedMovies
-                  cards={filteredSaveCards.length > 0 ? filteredSaveCards : savedCards}
-                  isShortFilm={isShortSaveFilm}
-                  onShortFilm={handleShortFilm}
-                  searchMovie={searchSaveMovie}
-                  onSerchMovie={handleSerchMovie}
-                  onSubmitSearcMovie={handleSubmitSearcMovie}
-                  errorSearchMovie={errorSearchSaveMovie}
-                  limitCards={limitCards.current}
-                  onDeleteMovie={handleDeleteMovie}
-                />
-              }
-            />
-          </Route>
-          <Route exact path="/profile" element={<ProtectedRoute isLoginIn={isLoginIn} />}>
-            <Route
-              isLoginIn={isLoginIn}
-              path="/profile"
-              element={
-                <Profile
-                  onChangeUserInfo={handleChangeUserInfo}
-                  onLogout={handleLogout}
-                />
-              }
-            />
-          </Route>
+            element={
+              <SavedMovies
+                cards={filteredSaveCards.length > 0 ? filteredSaveCards : savedCards}
+                isShortFilm={isShortSaveFilm}
+                onShortFilm={handleShortFilm}
+                searchMovie={searchSaveMovie}
+                onSerchMovie={handleSerchMovie}
+                onSubmitSearcMovie={handleSubmitSearcMovie}
+                errorSearchMovie={errorSearchSaveMovie}
+                limitCards={limitCards.current}
+                onDeleteMovie={handleDeleteMovie}
+              />
+            }
+          />
+          <Route
+            path="/profile"
+            element={
+              <Profile onChangeUserInfo={handleChangeUserInfo} onLogout={handleLogout} />
+            }
+          />
+
           <Route path="/sign-in" element={<Login onLogin={handleLogin} />} />
           <Route path="/sign-up" element={<Register onregister={handleRegister} />} />
           <Route path="*" element={<NotFound />} />

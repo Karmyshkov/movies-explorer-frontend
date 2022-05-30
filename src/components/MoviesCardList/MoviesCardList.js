@@ -5,12 +5,14 @@ import { MoviesCard } from "../MoviesCard";
 import { YET } from "../../utils/constants";
 
 export const MoviesCardList = memo(
-  ({ cards, errorSearchMovie, limitCards, onSaveMovie, onDeleteMovie }) => {
+  ({ cards, savedCards, errorSearchMovie, limitCards, onSaveMovie, onDeleteMovie }) => {
     const location = useLocation();
     const isMoviesPage = location.pathname === "/movies";
 
     const [filteredCards, setFilteredCards] = useState([]);
     const [page, setPage] = useState(1);
+
+    // console.log(cards?.map((movie) => movie));
 
     useEffect(() => {
       setFilteredCards(

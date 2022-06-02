@@ -4,7 +4,7 @@ import "./MoviesCard.css";
 import closeIcon from "../../images/icons/close.svg";
 import { BEATFILM_URL, SAVE } from "../../utils/constants";
 
-export const MoviesCard = memo(({ movie, onSaveMovie, onDeleteMovie }) => {
+export const MoviesCard = memo(({ movie, isSaved, onSaveMovie, onDeleteMovie }) => {
   const location = useLocation();
   const isMovies = location.pathname === "/movies";
 
@@ -29,7 +29,7 @@ export const MoviesCard = memo(({ movie, onSaveMovie, onDeleteMovie }) => {
   return (
     <li
       className={`movies-card__item ${
-        isMovies === true && !isMovies ? "movies-card__item_saved" : ""
+        isMovies === true && isSaved ? "movies-card__item_saved" : ""
       }`}
     >
       <a

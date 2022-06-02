@@ -9,7 +9,7 @@ export const NotFound = () => {
     <div className="not-found">
       <h1 className="not-found__title">{NOT_FOUND_ERROR}</h1>
       <p className="not-found__subtitle">{NOT_FOUND_PAGE}</p>
-      <button onClick={() => navigate(-1)} className="not-found__btn" type="button">
+      <button onClick={() => navigate("/")} className="not-found__btn" type="button">
         {BACK}
       </button>
     </div>

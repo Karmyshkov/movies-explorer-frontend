@@ -252,6 +252,7 @@ export const App = () => {
             element={
               <Movies
                 cards={filteredCards}
+                savedCards={savedCards}
                 isShortFilm={isShortFilm}
                 onShortFilm={handleShortFilm}
                 searchMovie={searchMovie}

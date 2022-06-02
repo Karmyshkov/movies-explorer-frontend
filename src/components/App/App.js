@@ -169,19 +169,22 @@ export const App = () => {
   }, [checkToken, isLoginIn]);
 
   useEffect(() => {
+    setShowLoader(true);
     if (isLoginIn) {
       cards?.length === 0 &&
         moviesApi
           .getMovie()
           .then((cards) => setCards(cards))
-          .catch((err) => console.log(err));
+          .catch((err) => console.log(err))
+          .finally(() => setShowLoader(false));
 
       mainApi
         .getSavedMovies()
         .then((cards) => setSavedCards(cards))
-        .catch((err) => console.log(err));
+        .catch((err) => console.log(err))
+        .finally(() => setShowLoader(false));
     }
-  }, [cards?.length, isLoginIn]);
+  }, [cards, isLoginIn]);
 
   const handleShortFilm = () =>
     isMoviesPage ? setShortFilm(!isShortFilm) : setShortSaveFilm(!isShortSaveFilm);

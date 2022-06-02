@@ -209,21 +209,28 @@ export const App = () => {
     isMoviesPage ? setFilteredCards(findedMovies) : setFilteredSaveCards(findedMovies);
   };
 
-  const handleSaveMovie = (movie) =>
-    mainApi
-      .saveMovie(movie)
-      .then(({ data }) => {
-        setSavedCards((prevState) => [...prevState, data]);
-        setTooltipMessage(SAVE_MOVIE);
-        setError(false);
-        handleOpenTooltip();
-      })
-      .catch((err) => {
-        console.log(err);
-        setTooltipMessage(ERROR_SAVE_MOVIE);
-        setError(true);
-        handleOpenTooltip();
-      });
+  const handleSaveMovie = (movie) => {
+    if (savedCards.find((savedCard) => savedCard.movieId === movie.movieId)) {
+      handleOpenTooltip();
+      setTooltipMessage(ERROR_SAVE_MOVIE);
+      setError(true);
+    } else {
+      mainApi
+        .saveMovie(movie)
+        .then(({ data }) => {
+          setSavedCards((prevState) => [...prevState, data]);
+          setTooltipMessage(SAVE_MOVIE);
+          setError(false);
+          handleOpenTooltip();
+        })
+        .catch((err) => {
+          console.log(err);
+          setTooltipMessage(ERROR_SAVE_MOVIE);
+          setError(true);
+          handleOpenTooltip();
+        });
+    }
+  };
 
   const handleDeleteMovie = (movieId) => {
     mainApi

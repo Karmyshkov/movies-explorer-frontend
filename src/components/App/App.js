@@ -257,47 +257,51 @@ export const App = () => {
         {isRenderHeader && <Header isLoginIn={isLoginIn} />}
         <Routes>
           <Route path="/" element={<Main />} />
-          <Route
-            path="/movies"
-            element={
-              <Movies
-                cards={filteredCards}
-                savedCards={savedCards}
-                isShortFilm={isShortFilm}
-                onShortFilm={handleShortFilm}
-                searchMovie={searchMovie}
-                onSerchMovie={handleSerchMovie}
-                onSubmitSearcMovie={handleSubmitSearcMovie}
-                errorSearchMovie={errorSearchMovie}
-                limitCards={limitCards.current}
-                onSaveMovie={handleSaveMovie}
-                isShowLoader={isShowLoader}
-              />
-            }
-          />
-          <Route
-            path="/saved-movies"
-            element={
-              <SavedMovies
-                cards={filteredSaveCards.length > 0 ? filteredSaveCards : savedCards}
-                isShortFilm={isShortSaveFilm}
-                onShortFilm={handleShortFilm}
-                searchMovie={searchSaveMovie}
-                onSerchMovie={handleSerchMovie}
-                onSubmitSearcMovie={handleSubmitSearcMovie}
-                errorSearchMovie={errorSearchSaveMovie}
-                limitCards={limitCards.current}
-                onDeleteMovie={handleDeleteMovie}
-              />
-            }
-          />
-          <Route
-            path="/profile"
-            element={
-              <Profile onChangeUserInfo={handleChangeUserInfo} onLogout={handleLogout} />
-            }
-          />
-
+          <Route element={<ProtectedRoute isLoginIn={isLoginIn} />}>
+            <Route
+              path="/movies"
+              element={
+                <Movies
+                  cards={filteredCards}
+                  savedCards={savedCards}
+                  isShortFilm={isShortFilm}
+                  onShortFilm={handleShortFilm}
+                  searchMovie={searchMovie}
+                  onSerchMovie={handleSerchMovie}
+                  onSubmitSearcMovie={handleSubmitSearcMovie}
+                  errorSearchMovie={errorSearchMovie}
+                  limitCards={limitCards.current}
+                  onSaveMovie={handleSaveMovie}
+                  isShowLoader={isShowLoader}
+                />
+              }
+            />
+            <Route
+              path="/saved-movies"
+              element={
+                <SavedMovies
+                  cards={filteredSaveCards.length > 0 ? filteredSaveCards : savedCards}
+                  isShortFilm={isShortSaveFilm}
+                  onShortFilm={handleShortFilm}
+                  searchMovie={searchSaveMovie}
+                  onSerchMovie={handleSerchMovie}
+                  onSubmitSearcMovie={handleSubmitSearcMovie}
+                  errorSearchMovie={errorSearchSaveMovie}
+                  limitCards={limitCards.current}
+                  onDeleteMovie={handleDeleteMovie}
+                />
+              }
+            />
+            <Route
+              path="/profile"
+              element={
+                <Profile
+                  onChangeUserInfo={handleChangeUserInfo}
+                  onLogout={handleLogout}
+                />
+              }
+            />
+          </Route>
           <Route path="/sign-in" element={<Login onLogin={handleLogin} />} />
           <Route path="/sign-up" element={<Register onregister={handleRegister} />} />
           <Route path="*" element={<NotFound />} />

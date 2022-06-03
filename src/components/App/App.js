@@ -81,6 +81,8 @@ export const App = () => {
 
   const handleCloseTooltip = () => setOpen(false);
 
+  useEffect(() => handleCloseTooltip(), [location.pathname]);
+
   const handleLogin = (data) => {
     mainApi
       .login(data)

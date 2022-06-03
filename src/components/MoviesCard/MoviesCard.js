@@ -21,8 +21,8 @@ export const MoviesCard = memo(({ movie, isSaved, onSaveMovie, onDeleteMovie }) 
         movie.image.formats.thumbnail ? movie.image.formats.thumbnail.url : " "
       }`,
       movieId: movie.id,
-      nameRU: movie.nameRU ? movie.nameRU : "",
-      nameEN: movie.nameEN ? movie.nameEN : movie.nameEN,
+      nameRU: movie.nameRU ? movie.nameRU : " ",
+      nameEN: movie.nameEN ? movie.nameEN : " ",
     });
   };
 

@@ -39,6 +39,10 @@
   line-height: 13px;
 }
 
+.profile__label_error {
+  color: var(--color-error);
+}
+
 .profile__input {
   background-color: transparent;
   border: none;
@@ -78,6 +82,15 @@
 .profile__btn_color_red {
   margin-top: 16px;
   color: var(--color-error);
+}
+
+.profile__btn_disabled {
+  cursor: default;
+  opacity: 0.4;
+}
+
+.profile__btn_disabled:hover {
+  opacity: 0.4;
 }
 
 @media screen and (max-width: 786px) {

@@ -1,0 +1,36 @@
+.tooltip {
+  cursor: pointer;
+  display: none;
+  position: absolute;
+  bottom: 10%;
+  left: 30px;
+  padding: 6px 30px;
+  border-radius: 5px;
+  transition: 0.3s opacity;
+}
+
+.tooltip:hover {
+  opacity: 0.8;
+}
+
+.tooltip_opened {
+  display: block;
+}
+
+.tooltip_error {
+  background-color: var(--bg-error);
+}
+
+.tooltip_success {
+  background-color: var(--bg-primary);
+}
+
+.tooltip__title {
+  margin: 0;
+  font-size: 12px;
+  color: var(--color-secondary);
+  font-weight: 500;
+  line-height: 28px;
+  max-width: 500px;
+  text-align: center;
+}

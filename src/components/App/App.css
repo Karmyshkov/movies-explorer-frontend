@@ -1,4 +1,5 @@
 .body {
+  position: relative;
   font-family: var(--ff);
   -moz-osx-font-smoothing: grayscale;
   -webkit-font-smoothing: antialiased;

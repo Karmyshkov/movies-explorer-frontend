@@ -1,0 +1,30 @@
+.navigation__menu {
+}
+
+.navigation__list {
+  margin: 0;
+  padding: 0;
+  display: flex;
+}
+
+.navigation__item {
+  list-style: none;
+  margin-right: 20px;
+  transition: 0.3s opacity;
+}
+
+.navigation__item:hover {
+  opacity: 0.8;
+}
+
+.navigation__item:last-of-type {
+  margin: 0;
+}
+
+.navigation__link {
+  text-decoration: none;
+  font-size: 13px;
+  color: var(--color-primary);
+  font-weight: 400;
+  line-height: 16px;
+}

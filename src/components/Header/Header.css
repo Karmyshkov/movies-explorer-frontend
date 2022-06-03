@@ -39,20 +39,30 @@
 }
 
 .header__title {
-  margin: 0;
+  text-decoration: none;
   font-size: 13px;
   color: var(--color-primary);
   font-weight: 500;
   line-height: 18px;
   margin: 0 16px 0 44px;
+  transition: 0.3s opacity;
+}
+
+.header__title:hover {
+  opacity: 0.8;
 }
 
 .header__hint {
-  margin: 0;
+  text-decoration: none;
   font-size: 13px;
   color: var(--color-primary);
   font-weight: 400;
   line-height: 18px;
+  transition: 0.3s opacity;
+}
+
+.header__hint:hover {
+  opacity: 0.8;
 }
 
 .header__img {

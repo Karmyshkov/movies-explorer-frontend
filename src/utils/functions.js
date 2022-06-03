@@ -1,3 +1,5 @@
+import { IS_SHORT_MOVIE } from "./constants";
+
 const filterCards = (cards, searchTag, isShortFilm) => {
   const regexp = new RegExp(searchTag, "gi");
   return cards
@@ -8,7 +10,9 @@ const filterCards = (cards, searchTag, isShortFilm) => {
         regexp.test(movie.country) ||
         regexp.test(movie.year)
     )
-    .filter((movie) => (isShortFilm ? movie.duration < 40 : movie.duration >= 40));
+    .filter((movie) =>
+      isShortFilm ? movie.duration < IS_SHORT_MOVIE : movie.duration >= IS_SHORT_MOVIE
+    );
 };
 
 const validateEmail = (email) => {

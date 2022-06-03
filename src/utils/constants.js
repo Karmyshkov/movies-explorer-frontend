@@ -1,5 +1,5 @@
 const BEATFILM_URL = "https://api.nomoreparties.co";
-const BASE_URL = "https://api.karmyskov-cinema.nomoredomains.work";
+const BASE_URL = "http://localhost:3000";
 const REQUIRED_FIELD = "Обязательное*";
 const INCORRECT_EMAIL = "Некорректный email";
 const NAME = "Имя";
@@ -65,6 +65,7 @@ const LIMIT_FOR_MEDIUM = 2;
 const LIMIT_FOR_SMALL = 2;
 const NOT_FOUND_TEXT = "Ничего не найдено";
 const LOGIN_SUCCESS = "Вы успешно вошли в систему!";
+const IS_SHORT_MOVIE = 40;
 
 export {
   BEATFILM_URL,
@@ -132,4 +133,5 @@ export {
   LIMIT_FOR_SMALL,
   NOT_FOUND_TEXT,
   LOGIN_SUCCESS,
+  IS_SHORT_MOVIE,
 };

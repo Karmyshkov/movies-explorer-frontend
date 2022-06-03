@@ -26,6 +26,25 @@ export const MoviesCard = memo(({ movie, isSaved, onSaveMovie, onDeleteMovie }) 
     });
   };
 
+  const renderBtn = () => {
+    if (isSaved === undefined) {
+      return isMovies ? (
+        <button onClick={handleSaveMovie} className="movies-card__btn-save" type="button">
+          {SAVE}
+        </button>
+      ) : (
+        <button
+          onClick={() => onDeleteMovie(movie._id)}
+          className="movies-card__btn"
+          type="button"
+          aria-label="Удалить из избранного"
+        >
+          <img src={closeIcon} alt="Иконка крестика" />
+        </button>
+      );
+    }
+  };
+
   return (
     <li
       className={`movies-card__item ${
@@ -49,20 +68,7 @@ export const MoviesCard = memo(({ movie, isSaved, onSaveMovie, onDeleteMovie }) 
           <p className="movies-card__time">{movie.duration}</p>
         </div>
       </a>
-      {isMovies ? (
-        <button onClick={handleSaveMovie} className="movies-card__btn-save" type="button">
-          {SAVE}
-        </button>
-      ) : (
-        <button
-          onClick={() => onDeleteMovie(movie._id)}
-          className="movies-card__btn"
-          type="button"
-          aria-label="Удалить из избранного"
-        >
-          <img src={closeIcon} alt="Иконка крестика" />
-        </button>
-      )}
+      {renderBtn()}
     </li>
   );
 });

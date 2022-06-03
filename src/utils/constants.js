@@ -55,7 +55,6 @@ const ABOUT_ME_DESCRIPTION =
   "Я родился и живу в Саратове, закончил факультет экономики СГУ. У меня есть жена и дочь. Я люблю слушать музыку, а ещё увлекаюсь бегом. Недавно начал кодить. С 2015 года работал в компании «СКБ Контур». После того, как прошёл курс по веб-разработке, начал заниматься фриланс-заказами и ушёл с постоянной работы.";
 const SUCCESS_CHANGE_PROFILE = "Данные профиля изменены!";
 const ERROR_CHANGE_PROFILE = "Ошибка при запросе! Введены старые данные.";
-const ERROR_SAVE_MOVIE = "Данный фильм уже добавлен в избранное!";
 const SUCCESS_DELETE_MOVIE = "Фильм удален из избранного!";
 const ERROR_LOGIN = "Введен неверно логин или пароль";
 const SAVE_MOVIE = "Фильм добавлен в избранное!";
@@ -123,7 +122,6 @@ export {
   ABOUT_ME_DESCRIPTION,
   SUCCESS_CHANGE_PROFILE,
   ERROR_CHANGE_PROFILE,
-  ERROR_SAVE_MOVIE,
   SUCCESS_DELETE_MOVIE,
   ERROR_LOGIN,
   SAVE_MOVIE,

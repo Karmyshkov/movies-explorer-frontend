@@ -19,7 +19,6 @@ import { Tooltip } from "../Tooltip";
 import {
   SUCCESS_CHANGE_PROFILE,
   ERROR_CHANGE_PROFILE,
-  ERROR_SAVE_MOVIE,
   SUCCESS_DELETE_MOVIE,
   ERROR_LOGIN,
   SAVE_MOVIE,
@@ -249,26 +248,15 @@ export const App = () => {
   };
 
   const handleSaveMovie = (movie) => {
-    if (savedCards.find((savedCard) => savedCard.movieId === movie.movieId)) {
-      handleOpenTooltip();
-      setTooltipMessage(ERROR_SAVE_MOVIE);
-      setError(true);
-    } else {
-      mainApi
-        .saveMovie(movie)
-        .then(({ data }) => {
-          setSavedCards((prevState) => [...prevState, data]);
-          setTooltipMessage(SAVE_MOVIE);
-          setError(false);
-          handleOpenTooltip();
-        })
-        .catch((err) => {
-          console.log(err);
-          setTooltipMessage(ERROR_SAVE_MOVIE);
-          setError(true);
-          handleOpenTooltip();
-        });
-    }
+    mainApi
+      .saveMovie(movie)
+      .then(({ data }) => {
+        setSavedCards((prevState) => [...prevState, data]);
+        setTooltipMessage(SAVE_MOVIE);
+        setError(false);
+        handleOpenTooltip();
+      })
+      .catch((err) => console.log(err));
   };
 
   const handleDeleteMovie = (movieId) => {

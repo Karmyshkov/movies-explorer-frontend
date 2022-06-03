@@ -6,7 +6,7 @@
 }
 
 .movies-card__item:hover {
-  opacity: 0.8;
+  opacity: 0.6;
 }
 
 .movies-card__item_saved {
@@ -44,10 +44,6 @@
 .movies-card__link {
   text-decoration: none;
   transition: 0.3s opacity;
-}
-
-.movies-card__link:hover {
-  opacity: 0.6;
 }
 
 .movies-card__title {

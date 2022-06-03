@@ -81,6 +81,28 @@ export const App = () => {
 
   const handleCloseTooltip = () => setOpen(false);
 
+  useEffect(() => {
+    isMoviesPage
+      ? JSON.parse(localStorage.getItem("cards"))?.length === 0 &&
+        setErrorSearchMovie(NOT_FOUND_TEXT)
+      : JSON.parse(localStorage.getItem("saveCards"))?.length === 0 &&
+        setErrorSearchSaveMovie(NOT_FOUND_TEXT);
+  }, [isMoviesPage]);
+
+  useEffect(() => {
+    isLoginIn && localStorage.setItem("searchMovie", searchMovie ? searchMovie : "");
+  }, [isLoginIn, searchMovie]);
+
+  useEffect(() => {
+    isLoginIn &&
+      localStorage.setItem("searchSaveMovie", searchSaveMovie ? searchSaveMovie : "");
+  }, [isLoginIn, searchSaveMovie]);
+
+  useEffect(() => {
+    setSerchMovie(localStorage.getItem("searchMovie"));
+    setSerchSaveMovie(localStorage.getItem("searchSaveMovie"));
+  }, [location.pathname]);
+
   useEffect(() => handleCloseTooltip(), [location.pathname]);
 
   const handleLogin = (data) => {
@@ -125,6 +147,10 @@ export const App = () => {
         setCurrentUser({});
         localStorage.removeItem("cards");
         localStorage.removeItem("isShortFilm");
+        localStorage.removeItem("searchMovie");
+        localStorage.removeItem("searchSaveMovie");
+        localStorage.removeItem("saveCards");
+        localStorage.removeItem("isShortSaveFilm");
         navigate("/");
       })
       .catch((err) => console.log(err));
@@ -166,9 +192,14 @@ export const App = () => {
 
   useEffect(() => {
     checkToken();
-    setFilteredCards(JSON.parse(localStorage.getItem("cards")));
-    setShortFilm(localStorage.getItem("isShortFilm") === "false" ? false : true);
-  }, [checkToken, isLoginIn]);
+    if (isMoviesPage) {
+      setFilteredCards(JSON.parse(localStorage.getItem("cards")));
+      setShortFilm(localStorage.getItem("isShortFilm") === "false" ? false : true);
+    } else {
+      setFilteredSaveCards(JSON.parse(localStorage.getItem("saveCards")));
+      setShortFilm(localStorage.getItem("isShortSaveFilm") === "false" ? false : true);
+    }
+  }, [isMoviesPage, checkToken, isLoginIn]);
 
   useEffect(() => {
     setShowLoader(true);
@@ -203,6 +234,9 @@ export const App = () => {
     if (isMoviesPage) {
       localStorage.setItem("cards", JSON.stringify(findedMovies));
       localStorage.setItem("isShortFilm", isShortFilm);
+    } else {
+      localStorage.setItem("saveCards", JSON.stringify(findedMovies));
+      localStorage.setItem("isShortSaveFilm", isShortSaveFilm);
     }
     if (findedMovies.length === 0) {
       isMoviesPage
@@ -282,7 +316,9 @@ export const App = () => {
               path="/saved-movies"
               element={
                 <SavedMovies
-                  cards={filteredSaveCards.length > 0 ? filteredSaveCards : savedCards}
+                  cards={
+                    localStorage.getItem("saveCards") ? filteredSaveCards : savedCards
+                  }
                   isShortFilm={isShortSaveFilm}
                   onShortFilm={handleShortFilm}
                   searchMovie={searchSaveMovie}

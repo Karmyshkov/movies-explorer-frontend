@@ -196,7 +196,9 @@ export const App = () => {
       setShortFilm(localStorage.getItem("isShortFilm") === "false" ? false : true);
     } else {
       setFilteredSaveCards(JSON.parse(localStorage.getItem("saveCards")));
-      setShortFilm(localStorage.getItem("isShortSaveFilm") === "false" ? false : true);
+      setShortSaveFilm(
+        localStorage.getItem("isShortSaveFilm") === "false" ? false : true
+      );
     }
   }, [isMoviesPage, checkToken, isLoginIn]);
 

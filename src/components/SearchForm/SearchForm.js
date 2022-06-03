@@ -14,7 +14,7 @@ export const SearchForm = memo(({ searchMovie, onSerchMovie, onSubmitSearcMovie 
       <label className="search-form__label">
         <input
           onChange={(evt) => onSerchMovie(evt.target.value)}
-          value={searchMovie}
+          value={searchMovie || ""}
           className="search-form__input"
           placeholder="Фильм"
           required

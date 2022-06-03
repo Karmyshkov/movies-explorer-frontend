@@ -10,15 +10,15 @@ export const MoviesCard = memo(({ movie, isSaved, onSaveMovie, onDeleteMovie }) 
 
   const handleSaveMovie = () => {
     onSaveMovie({
-      country: movie.country ? movie.country : "",
-      director: movie.director ? movie.director : "",
-      duration: movie.duration ? movie.duration : "",
-      year: movie.year ? movie.year : "",
-      description: movie.description ? movie.description : "",
-      image: `${BEATFILM_URL}${movie.image?.url ? movie.image.url : ""}`,
-      trailerLink: movie.trailerLink ? movie.trailerLink : "",
+      country: movie.country ? movie.country : " ",
+      director: movie.director ? movie.director : " ",
+      duration: movie.duration ? movie.duration : " ",
+      year: movie.year ? movie.year : " ",
+      description: movie.description ? movie.description : " ",
+      image: `${BEATFILM_URL}${movie.image?.url ? movie.image.url : " "}`,
+      trailerLink: movie.trailerLink ? movie.trailerLink : " ",
       thumbnail: `${BEATFILM_URL}${
-        movie.image.formats.thumbnail ? movie.image.formats.thumbnail.url : ""
+        movie.image.formats.thumbnail ? movie.image.formats.thumbnail.url : " "
       }`,
       movieId: movie.id,
       nameRU: movie.nameRU ? movie.nameRU : "",

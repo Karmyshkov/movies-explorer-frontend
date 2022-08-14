@@ -1,12 +1,22 @@
-import React, { useState } from "react";
+import React, { memo, useState } from "react";
 import { Link, NavLink, useLocation } from "react-router-dom";
 import "./Header.css";
 import logo from "../../images/icons/logo.svg";
 import user from "../../images/icons/user.svg";
 import burger from "../../images/icons/burger.svg";
 import close from "../../images/icons/close.svg";
+import {
+  SIGNUP,
+  SIGNIN,
+  MAIN_PAGE,
+  MOVIES_PAGE,
+  SAVED_MOVIES_PAGE,
+  ACCOUNT,
+  GLAD_TO_SEE,
+  WELCOME,
+} from "../../utils/constants";
 
-export const Header = () => {
+export const Header = memo(({ isLoginIn }) => {
   const [isOpenMenu, setOpenMenu] = useState(false);
 
   const location = useLocation();
@@ -14,32 +24,29 @@ export const Header = () => {
   const isMain = location.pathname === "/";
   const isSignIn = location.pathname === "/sign-in";
   const isSignUp = location.pathname === "/sign-up";
-  const isloggedIn =
-    location.pathname === "/movies" ||
-    location.pathname === "/saved-movies" ||
-    location.pathname === "/profile";
 
   const setActiveLink = ({ isActive }) =>
     isActive ? "header__menu-link header__menu-link_active" : "header__menu-link";
 
   const renderElements = () => {
-    if (isMain) {
+    if (isMain && !isLoginIn) {
       return (
         <ul className="header__wrap">
           <li className="header__item">
             <Link className="header__link" to="/sign-up">
-              Регистрация
+              {SIGNUP}
             </Link>
           </li>
           <li className="header__item">
             <Link className="header__link header__link_active" to="/sign-in">
-              Войти
+              {SIGNIN}
             </Link>
           </li>
         </ul>
       );
     }
-    if (isloggedIn) {
+
+    if (isLoginIn) {
       return (
         <>
           <nav className={`header__menu ${isOpenMenu ? "header__menu_open" : ""}`}>
@@ -53,7 +60,7 @@ export const Header = () => {
                   to="/"
                   className={setActiveLink}
                 >
-                  Главная
+                  {MAIN_PAGE}
                 </NavLink>
               </li>
               <li className="header__row">
@@ -62,16 +69,19 @@ export const Header = () => {
                   to="/movies"
                   className={setActiveLink}
                 >
-                  Фильмы
+                  {MOVIES_PAGE}
                 </NavLink>
               </li>
               <li className="header__row">
                 <NavLink
-                  onClick={() => setOpenMenu(false)}
+                  onClick={() => {
+                    setOpenMenu(false);
+                    document.body.style.overflow = "auto";
+                  }}
                   to="/saved-movies"
                   className={setActiveLink}
                 >
-                  Сохранённые фильмы
+                  {SAVED_MOVIES_PAGE}
                 </NavLink>
               </li>
               <li className="header__row">
@@ -81,14 +91,14 @@ export const Header = () => {
                   className={`header__btn ${isOpenMenu ? "header__btn_open" : ""}`}
                   type="button"
                 >
-                  <span className="header__text">Аккаунт</span>
+                  <span className="header__text">{ACCOUNT}</span>
                   <img className="header__img" src={user} alt="Иконка аккаунт" />
                 </Link>
               </li>
             </ul>
           </nav>
           <Link to="/profile" className="header__btn" type="button">
-            <span className="header__text">Аккаунт</span>
+            <span className="header__text">{ACCOUNT}</span>
             <img className="header__img" src={user} alt="Иконка аккаунт" />
           </Link>
           {isOpenMenu ? (
@@ -123,11 +133,7 @@ export const Header = () => {
         </>
       );
     }
-    return (
-      <h1 className="header__headline">
-        {isSignIn ? "Рады видеть!" : "Добро пожаловать!"}
-      </h1>
-    );
+    return <h1 className="header__headline">{isSignIn ? GLAD_TO_SEE : WELCOME}</h1>;
   };
 
   return (
@@ -137,14 +143,18 @@ export const Header = () => {
           <img src={logo} alt="Логотип учебного проекта" />
         </Link>
 
-        {isloggedIn && (
+        {isLoginIn && (
           <>
-            <h2 className="header__title">Фильмы</h2>
-            <p className="header__hint">Сохранённые фильмы</p>
+            <Link to="/movies" className="header__title">
+              {MOVIES_PAGE}
+            </Link>
+            <Link to="/saved-movies" className="header__hint">
+              {SAVED_MOVIES_PAGE}
+            </Link>
           </>
         )}
       </div>
       {renderElements()}
     </header>
   );
-};
+});
